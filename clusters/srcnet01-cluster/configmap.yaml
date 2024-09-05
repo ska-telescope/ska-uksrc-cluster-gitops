@@ -27,6 +27,8 @@ data:
         machineFlavor: vm.ska.cpu.general.medium
         machineCount: 3
         autoscale: true
+        machineCountMin: 3
+        machineCountMax: 6        
 
     addons:
       # Use the cilium CNI
