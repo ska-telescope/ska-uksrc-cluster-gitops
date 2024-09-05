@@ -24,8 +24,9 @@ data:
 
     nodeGroups:
       - name: workers
-        machineFlavor: vm.ska.cpu.general.small
+        machineFlavor: vm.ska.cpu.general.medium
         machineCount: 3
+        autoscale: true
 
     addons:
       # Use the cilium CNI
