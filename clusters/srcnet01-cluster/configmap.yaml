@@ -27,7 +27,7 @@ data:
         machineFlavor: vm.ska.cpu.general.medium
         machineCount: 3
         autoscale: true
-        machineCountMin: 3
+        machineCountMin: 1
         machineCountMax: 6        
 
     addons:
