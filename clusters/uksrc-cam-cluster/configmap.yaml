@@ -26,7 +26,7 @@ data:
       - name: workers
         machineFlavor: vm.ska.cpu.himem.eighth
         autoscale: true
-        machineCountMin: 3
+        machineCountMin: 2
         machineCountMax: 9      
 
     # Configuration for the cluster autoscaler
