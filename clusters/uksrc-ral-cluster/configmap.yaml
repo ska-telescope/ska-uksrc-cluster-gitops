@@ -95,3 +95,31 @@ data:
         enabled: false
       mellanoxNetworkOperator:
         enabled: false
+
+      # set availabilty zone as upstream uses nova by default
+      openstack:
+        csiCinder:
+          defaultStorageClass:
+            availabilityZone: ceph
+
+    kubeNetwork:
+      # By default, use the private network range 10.0.0.0/12 for the cluster network
+      # We split it into two equally-sized blocks for pods and services
+      # This gives ~500,000 addresses in each block and distinguishes it from
+      # internal net on 172.16.x.y
+      pods:
+        cidrBlocks:
+          - 10.0.0.0/13
+      services:
+        cidrBlocks:
+          - 10.8.0.0/13
+      serviceDomain: cluster.local
+
+    clusterNetworking:
+      internalNetwork: 
+        nodeCidr: 192.168.128.0/17
+
+    # Settings for registry mirrors
+    registryMirrors: { docker.io: ["https://dockerhub.stfc.ac.uk"] }
+
+
