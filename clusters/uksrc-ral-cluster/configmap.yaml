@@ -1,0 +1,97 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: uksrc-ral-cluster-config
+  namespace: capi-self
+data:
+  values.yaml: |
+    # Must match the name of the (sealed) secret in credentials.yaml
+    cloudCredentialsSecretName: uksrc-ral-cluster-credentials
+
+    kubernetesVersion: 1.28.7
+    machineImageId: 7288e8a2-976a-4b53-8b10-0be864c94af8
+
+    clusterNetworking:
+      externalNetworkId: 5283f642-8bd8-48b6-8608-fa3006ff4539
+      internalNetwork:
+        networkFilter:
+          id: e04ec697-e979-487c-929d-3c92893f15df
+          name: UKSRC-Network
+
+    controlPlane:
+      machineFlavor: l3.micro
+      machineCount: 3
+
+    nodeGroups:
+      - name: workers
+        machineFlavor: dep-l2.xsmall
+        autoscale: true
+        machineCountMin: 2
+        machineCountMax: 5      
+
+    # Configuration for the cluster autoscaler
+    autoscaler:
+      # The image to use for the autoscaler component
+      image:
+        repository: registry.k8s.io/autoscaling/cluster-autoscaler
+        pullPolicy: IfNotPresent
+        tag: v1.28.6
+      imagePullSecrets: []
+      # Any extra args for the autoscaler
+      extraArgs:
+        # Make sure logs go to stderr
+        logtostderr: true
+        stderrthreshold: info
+        # Output at a decent log level
+        v: 4
+        # Cordon nodes before terminating them so new pods are not scheduled there
+        cordon-node-before-terminating: "true"
+        # When scaling up, choose the node group that will result in the least idle CPU after
+        expander: least-waste,random
+        # Allow pods in kube-system to prevent a node from being deleted
+        skip-nodes-with-system-pods: "true"
+        # Allow pods with emptyDirs to be evicted
+        skip-nodes-with-local-storage: "false"
+        # Allow pods with custom controllers to be evicted
+        skip-nodes-with-custom-controller-pods: "false"
+
+    apiServer:
+      # Indicates whether to deploy a load balancer for the API server
+      enableLoadBalancer: true
+      # Indicates what loadbalancer provider to use. Default is amphora
+      loadBalancerProvider:
+      # Restrict loadbalancer access to select IPs
+      # allowedCidrs
+      #  - 192.168.0.0/16  # needed for cluster to init
+      #  - 10.10.0.0/16  # IPv4 Internal Network
+      #  - 123.123.123.123 # some other IPs
+      # Indicates whether to associate a floating IP with the API server
+      associateFloatingIP: false
+      # The specific floating IP to associate with the API server
+      # If not given, a new IP will be allocated if required
+      floatingIP:
+      # The specific fixed IP to associate with the API server
+      # If enableLoadBalancer is true, this will become the VIP of the load balancer
+      # If enableLoadBalancer and associateFloatingIP are both false, this should be
+      # the IP of a pre-allocated port to be used as the VIP
+      fixedIP:
+      # The port to use for the API server
+      port: 6443
+
+    addons:
+      # Use the cilium CNI
+      cni:
+        type: cilium
+
+      # Enable the monitoring stack
+      monitoring:
+        enabled: true
+
+      # Disable NFD and the NVIDIA/Mellanox operators
+      nodeFeatureDiscovery:
+        enabled: false
+      nvidiaGPUOperator:
+        enabled: false
+      mellanoxNetworkOperator:
+        enabled: false
