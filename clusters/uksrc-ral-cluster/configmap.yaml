@@ -20,15 +20,15 @@ data:
           name: UKSRC-Network
 
     controlPlane:
-      machineFlavor: l3.micro
+      machineFlavor: l3.nano
       machineCount: 3
 
     nodeGroups:
       - name: workers
-        machineFlavor: dep-l2.xsmall
+        machineFlavor: l3.nano
         autoscale: true
-        machineCountMin: 2
-        machineCountMax: 5      
+        machineCountMin: 3
+        machineCountMax: 10    
 
     # Configuration for the cluster autoscaler
     autoscaler:

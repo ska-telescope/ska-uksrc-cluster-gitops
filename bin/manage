@@ -448,6 +448,13 @@ async def wait_for_cluster(ek_client, namespace):
         namespace = namespace
     )
 
+    # Return the kubeconfig for the first CAPI cluster in the namespace
+    cluster = await ekclusters.first(namespace = namespace)
+    name = cluster["metadata"]["name"]
+    eksecrets = await ek_client.api("v1").resource("secrets")
+    capi_kubeconfig = await eksecrets.fetch(f"{name}-kubeconfig", namespace = namespace)
+    return base64.b64decode(capi_kubeconfig.data["value"])
+
     # Wait for all the addons to become ready
     ekaddons = await ek_client.api_preferred_version("addons.stackhpc.com")
     ekmanifests = await ekaddons.resource("manifests")
@@ -463,12 +470,7 @@ async def wait_for_cluster(ek_client, namespace):
         namespace = namespace
     )
 
-    # Return the kubeconfig for the first CAPI cluster in the namespace
-    cluster = await ekclusters.first(namespace = namespace)
-    name = cluster["metadata"]["name"]
-    eksecrets = await ek_client.api("v1").resource("secrets")
-    capi_kubeconfig = await eksecrets.fetch(f"{name}-kubeconfig", namespace = namespace)
-    return base64.b64decode(capi_kubeconfig.data["value"])
+
 
 
 def fetch_git_info():
