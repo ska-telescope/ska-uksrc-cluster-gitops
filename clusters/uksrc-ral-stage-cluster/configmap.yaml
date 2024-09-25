@@ -116,15 +116,14 @@ data:
       serviceDomain: cluster.local
 
     # add ingress here
-    # ingress:
-    #   enabled: true
-    #   nginx:
-    #     release:
-    #       values:
-    #         controller:
-    #           allowSnippetAnnotations: true
-    #           service:
-    #              "loadBalancerIP": "130.246.80.45"
+    ingress:
+      enabled: true
+      nginx:
+        release:
+          values:
+            controller:
+              allowSnippetAnnotations: true
+
 
 
     # Settings for registry mirrors
