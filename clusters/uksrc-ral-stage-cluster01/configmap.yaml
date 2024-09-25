@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: uksrc-ral-stage-cluster-config
+  name: uksrc-ral-stage-cluster01-config
   namespace: capi-self
 data:
   values.yaml: |
     # Must match the name of the (sealed) secret in credentials.yaml
-    cloudCredentialsSecretName: uksrc-ral-stage-cluster-credentials
+    cloudCredentialsSecretName: uksrc-ral-stage-cluster01-credentials
 
     kubernetesVersion: 1.28.7
     machineImageId: 7288e8a2-976a-4b53-8b10-0be864c94af8
@@ -27,8 +27,8 @@ data:
       - name: workers
         machineFlavor: l3.nano
         autoscale: true
-        machineCountMin: 3
-        machineCountMax: 10    
+        machineCountMin: 1
+        machineCountMax: 1    
 
     # Configuration for the cluster autoscaler
     autoscaler:
@@ -101,15 +101,13 @@ data:
         csiCinder:
           defaultStorageClass:
             availabilityZone: ceph
-      ingress:
-        enabled: true
-        nginx:
-          release:
-            values:
-              controller:
-                allowSnippetAnnotations: true
-                service:
-                  "loadBalancerIP": "130.246.80.45"
+      # ingress:
+      #   enabled: true
+      #   nginx:
+      #     release:
+      #       values:
+      #         controller:
+      #           allowSnippetAnnotations: true
 
 
 
