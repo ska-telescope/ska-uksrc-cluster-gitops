@@ -17,7 +17,6 @@ data:
       externalNetworkId: 5283f642-8bd8-48b6-8608-fa3006ff4539
       internalNetwork:
         networkFilter:
-          id: e04ec697-e979-487c-929d-3c92893f15df
           name: UKSRC-Network
 
     controlPlane:
