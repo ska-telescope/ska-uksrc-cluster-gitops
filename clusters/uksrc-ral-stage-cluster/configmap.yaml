@@ -101,6 +101,13 @@ data:
         csiCinder:
           defaultStorageClass:
             availabilityZone: ceph
+      ingress:
+        enabled: true
+        nginx:
+          release:
+            values:
+              controller:
+                allowSnippetAnnotations: true
 
     kubeNetwork:
       # By default, use the private network range 10.0.0.0/12 for the cluster network
@@ -114,17 +121,6 @@ data:
         cidrBlocks:
           - 10.8.0.0/13
       serviceDomain: cluster.local
-
-    # add ingress here
-    ingress:
-      enabled: true
-      nginx:
-        release:
-          values:
-            controller:
-              allowSnippetAnnotations: true
-
-
 
     # Settings for registry mirrors
     registryMirrors: { docker.io: ["https://dockerhub.stfc.ac.uk"] }
