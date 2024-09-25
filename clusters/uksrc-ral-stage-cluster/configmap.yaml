@@ -108,8 +108,7 @@ data:
             values:
               controller:
                 allowSnippetAnnotations: true
-                service:
-                  "loadBalancerIP": "130.246.80.45"
+
 
 
     kubeNetwork:
