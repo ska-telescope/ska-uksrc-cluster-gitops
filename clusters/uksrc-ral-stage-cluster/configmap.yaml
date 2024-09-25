@@ -18,6 +18,7 @@ data:
       internalNetwork:
         networkFilter:
           id: e04ec697-e979-487c-929d-3c92893f15df
+          name: UKSRC-Network
 
     controlPlane:
       machineFlavor: l3.nano
