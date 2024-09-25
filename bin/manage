@@ -558,46 +558,46 @@ async def bootstrap(cluster):
     path = resolve_cluster(cluster)
 
     with kind_cluster() as (helm_kind, ek_kind):
-        # Bootstrap Flux on the kind cluster
-        await bootstrap_flux(helm_kind)
-        # Install the Flux resources for the CAPI cluster on the kind cluster
-        await kustomize_install(ek_kind, path)
-        await wait_for_helm_releases(ek_kind)
-        # Wait for the CAPI cluster to become ready and extract the kubeconfig
-        kubeconfig_content = await wait_for_cluster(ek_kind, "capi-self")
-        # Initialise Helm and easykube clients for the CAPI cluster
+        # # Bootstrap Flux on the kind cluster
+        # await bootstrap_flux(helm_kind)
+        # # Install the Flux resources for the CAPI cluster on the kind cluster
+        # await kustomize_install(ek_kind, path)
+        # await wait_for_helm_releases(ek_kind)
+        # # Wait for the CAPI cluster to become ready and extract the kubeconfig
+        # kubeconfig_content = await wait_for_cluster(ek_kind, "capi-self")
+        # # Initialise Helm and easykube clients for the CAPI cluster
         kubeconfig_capi = path / "kubeconfig"
-        with open(kubeconfig_capi, "wb") as fh:
-            fh.write(kubeconfig_content)
-        ek_capi = easykube.Configuration.from_kubeconfig(kubeconfig_capi).async_client()
-        helm_capi = pyhelm3.Client(kubeconfig = kubeconfig_capi)
-        # Bootstrap Flux on the CAPI cluster
-        await bootstrap_flux(helm_capi)
-        # Bootstrap Cluster API on the CAPI cluster
-        await kustomize_install(ek_capi, REPO_ROOT / "components" / "cluster-api")
-        await wait_for_helm_releases(ek_capi)
-        await wait_for_capi_providers(ek_capi)
-        # Move the cluster resources from the kind cluster to the CAPI cluster
-        await move_capi_resources(ek_kind, ek_capi, "capi-self")
-        await wait_for_cluster(ek_capi, "capi-self")
-        # At this point, the cluster is self-managed
-        # Bootstrap the sealed secrets
-        await kustomize_install(ek_capi, REPO_ROOT / "components" / "sealed-secrets")
-        await wait_for_helm_releases(ek_capi)
-        # Seal the cluster credentials using kubeseal
-        credentials_path = path / "credentials.yaml"
-        exec(
-            "kubeseal",
-            "--kubeconfig", kubeconfig_capi,
-            "--format", "yaml",
-            "--controller-name", "sealed-secrets",
-            "--controller-namespace", "sealed-secrets-system",
-            "--secret-file", credentials_path,
-            "--sealed-secret-file", credentials_path
-        )
+        # with open(kubeconfig_capi, "wb") as fh:
+        #     fh.write(kubeconfig_content)
+        # ek_capi = easykube.Configuration.from_kubeconfig(kubeconfig_capi).async_client()
+        # helm_capi = pyhelm3.Client(kubeconfig = kubeconfig_capi)
+        # # Bootstrap Flux on the CAPI cluster
+        # await bootstrap_flux(helm_capi)
+        # # Bootstrap Cluster API on the CAPI cluster
+        # await kustomize_install(ek_capi, REPO_ROOT / "components" / "cluster-api")
+        # await wait_for_helm_releases(ek_capi)
+        # await wait_for_capi_providers(ek_capi)
+        # # Move the cluster resources from the kind cluster to the CAPI cluster
+        # await move_capi_resources(ek_kind, ek_capi, "capi-self")
+        # await wait_for_cluster(ek_capi, "capi-self")
+        # # At this point, the cluster is self-managed
+        # # Bootstrap the sealed secrets
+        # await kustomize_install(ek_capi, REPO_ROOT / "components" / "sealed-secrets")
+        # await wait_for_helm_releases(ek_capi)
+        # # Seal the cluster credentials using kubeseal
+        # credentials_path = path / "credentials.yaml"
+        # exec(
+        #     "kubeseal",
+        #     "--kubeconfig", kubeconfig_capi,
+        #     "--format", "yaml",
+        #     "--controller-name", "sealed-secrets",
+        #     "--controller-namespace", "sealed-secrets-system",
+        #     "--secret-file", credentials_path,
+        #     "--sealed-secret-file", credentials_path
+        # )
         # Commit and push the changes to the remote
-        exec("git", "add", path)
-        exec("git", "commit", "-m", f"Bootstrap cluster - {cluster}")
+        # exec("git", "add", path)
+        # exec("git", "commit", "-m", f"Bootstrap cluster - {cluster}")
         exec("git", "push")
         # Get the git origin and branch for the source
         origin, branch = fetch_git_info()

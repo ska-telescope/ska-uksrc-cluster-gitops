@@ -12,10 +12,6 @@ data:
     kubernetesVersion: 1.28.7
     machineImageId: 7288e8a2-976a-4b53-8b10-0be864c94af8
 
-    # clusterNetworking:
-    #   externalNetworkId: 5283f642-8bd8-48b6-8608-fa3006ff4539
-    #   internalNetwork:
-    #       id: e04ec697-e979-487c-929d-3c92893f15df
 
     clusterNetworking:
       externalNetworkId: 5283f642-8bd8-48b6-8608-fa3006ff4539
@@ -118,6 +114,17 @@ data:
         cidrBlocks:
           - 10.8.0.0/13
       serviceDomain: cluster.local
+
+    # add ingress here
+    ingress:
+      enabled: true
+      nginx:
+        release:
+          values:
+            controller:
+              allowSnippetAnnotations: true
+              service:
+                 "loadBalancerIP": "130.246.80.45"
 
 
     # Settings for registry mirrors
