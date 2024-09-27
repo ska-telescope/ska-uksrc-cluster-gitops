@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: "*services.130-246-80-45.sslip.io"  # Replace with your domain
+  - host: "*.services.130-246-80-45.sslip.io"  # Replace with your domain
     http:
       paths:
       - path: /
