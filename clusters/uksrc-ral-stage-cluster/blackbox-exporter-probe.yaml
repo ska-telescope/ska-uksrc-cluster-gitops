@@ -9,6 +9,7 @@ metadata:
   name: demo-probe
   namespace: monitoring-system
 spec:
+  module: http_2xx 
   prober:
     url: prometheus-blackbox-exporter.monitoring.svc:9115
   targets:
@@ -16,13 +17,4 @@ spec:
       static:
         - https://xrootd01.uksrc.rl.ac.uk:1094 
         - https://perfsonar01.jc.rl.ac.uk
-  module: http_2xx  
-  additionalScrapeConfigs:
-    tcp_probe:
-      prober:
-        url: prometheus-blackbox-exporter.monitoring.svc:9115
-      targets:
-        staticConfig:
-          static:
-            - xrootd01.uksrc.rl.ac.uk:1094  
-      module: tcp_connect  
+
