@@ -7,6 +7,7 @@ resources:
   - credentials.yaml
   - blackbox-exporter-service.yaml
   - blackbox-exporter-probe.yaml
+  - prometheus-ingress.yaml
 
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
