@@ -11,7 +11,7 @@ metadata:
 spec:
   module: http_2xx 
   prober:
-    url: prometheus-blackbox-exporter.monitoring.svc:9115
+    url: prometheus-blackbox-exporter.monitoring-system.svc:9115
   targets:
     staticConfig:
       static:
