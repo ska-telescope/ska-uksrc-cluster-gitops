@@ -1,11 +1,10 @@
 resources:
+  - configmap.yaml
+  - credentials.yaml
   - ../../components/flux
   - ../../components/sealed-secrets
   - ../../components/cluster-api
   - ../../components/cluster
-  - ../../infrastructure/ingress
-  - configmap.yaml
-  - credentials.yaml
 
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
