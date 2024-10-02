@@ -3,15 +3,10 @@ stages:
   - test
   - deploy
 
-variables:
-  # Define any global variables here
-  PROJECT_NAME: "my_project"
-
 build_job:
   stage: build
   script:
     - echo "Building the project..."
-    - # Add your build commands here
   artifacts:
     paths:
       - build/
@@ -20,7 +15,6 @@ test_job:
   stage: test
   script:
     - echo "Running tests..."
-    - # Add your test commands here
   dependencies:
     - build_job
 
@@ -28,6 +22,5 @@ deploy_job:
   stage: deploy
   script:
     - echo "Deploying the project..."
-    - # Add your deploy commands here
   only:
     - main
