@@ -18,9 +18,9 @@ test_job:
   dependencies:
     - build_job
 
-deploy_job:
-  stage: deploy
-  script:
-    - echo "Deploying the project..."
-  only:
-    - main
+# deploy_job:
+#   stage: deploy
+#   script:
+#     - echo "Deploying the project..."
+#   only:
+#     - main
