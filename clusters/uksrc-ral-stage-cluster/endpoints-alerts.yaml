@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: endpoint-alerts
+  namespace: monitoring-system
+  labels:
+    prometheus: kube-prometheus
+    role: alert-rules
+spec:
+  groups:
+    - name: blackbox-endpoint-alerts
+      rules:
+        - alert: EndpointDown
+          expr: probe_success == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Endpoint {{ $labels.instance }} is down"
+            description: "The endpoint {{ $labels.instance }} is not reachable for over 5 minutes."
