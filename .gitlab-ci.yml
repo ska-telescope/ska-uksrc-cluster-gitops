@@ -1,0 +1,26 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - echo "Building the project..."
+  artifacts:
+    paths:
+      - build/
+
+test_job:
+  stage: test
+  script:
+    - echo "Running tests..."
+  dependencies:
+    - build_job
+
+# deploy_job:
+#   stage: deploy
+#   script:
+#     - echo "Deploying the project..."
+#   only:
+#     - main
