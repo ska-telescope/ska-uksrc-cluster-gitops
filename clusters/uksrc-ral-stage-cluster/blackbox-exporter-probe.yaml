@@ -38,5 +38,5 @@ spec:
     staticConfig:
       static:
         - https://does-not-exist.com
-        - https://testsitewith4041.com 
+        - https://testsitewith404.com 
 
