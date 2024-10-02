@@ -17,5 +17,6 @@ spec:
       static:
         - https://xrootd01.uksrc.rl.ac.uk:1094 
         - https://perfsonar01.jc.rl.ac.uk
-        - https://google.com
+        - https://google.com 
+        - https://does-not-exist.com 
 
