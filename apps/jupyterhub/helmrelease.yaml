@@ -13,7 +13,7 @@ spec:
   - kind: ConfigMap
     name: jupyterhub-config
   - kind: Secret
-    name: jupyterhub-keycloak-config
+    name: jupyterhub-secret-config
     valuesKey: keycloakClientSecret
     targetPath: hub.config.GenericOAuthenticator.client_secret
   install:
