@@ -5,6 +5,8 @@ resources:
   - ../../components/sealed-secrets
   - ../../components/cluster-api
   - ../../components/cluster
+# After bootstrap add the apps and services here
+  - ../../../apps/jupyterhub
 
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack

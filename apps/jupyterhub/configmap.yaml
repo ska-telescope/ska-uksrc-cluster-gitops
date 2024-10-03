@@ -26,7 +26,7 @@ data:
         # IP must match NGINX ingress controller's
         # load balancer IP.
         # See `kubectl get svc -n ingress-nginx`
-        - &host 128-232-226-29.sslip.io
+        - &host 128-232-223-30.sslip.io
       pathSuffix: ""
       tls:
         - hosts:
