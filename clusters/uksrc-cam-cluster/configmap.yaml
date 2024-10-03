@@ -24,7 +24,7 @@ data:
 
     nodeGroups:
       - name: workers
-        machineFlavor: vm.ska.cpu.himem.eighth
+        machineFlavor: vm.ska.cpu.general.eighth
         autoscale: true
         machineCountMin: 2
         machineCountMax: 9      
