@@ -14,11 +14,12 @@ spec:
     name: jupyterhub-config
   - kind: Secret
     name: jupyterhub-secret-config
-    values:
-      - key: client_secret
-        targetPath: hub.config.GenericOAuthenticator.client_secret
-      - key: client_id
-        targetPath: hub.config.GenericOAuthenticator.client_id
+    valuesKey: client_secret
+    targetPath: hub.config.GenericOAuthenticator.client_secret
+  - kind: Secret
+    name: jupyterhub-secret-config
+    valuesKey: client_id
+    targetPath: hub.config.GenericOAuthenticator.client_id
   install:
     createNamespace: true
     remediation:
