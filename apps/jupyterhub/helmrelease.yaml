@@ -9,9 +9,10 @@ spec:
     kind: HelmChart
     name: jupyterhub
   releaseName: jupyterhub
+  valuesFiles:
+    - values.yaml
+    - values-jupyterhub.yaml
   valuesFrom:
-  - kind: ConfigMap
-    name: jupyterhub-config
   - kind: Secret
     name: jupyterhub-secret-config
     valuesKey: client_secret
