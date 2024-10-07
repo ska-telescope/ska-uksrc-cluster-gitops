@@ -5,13 +5,16 @@ metadata:
   name: jupyterhub
   namespace: jupyterhub
 spec:
-  chartRef:
-    kind: HelmChart
-    name: jupyterhub
+  chart:
+    spec:
+      chart: jupyterhub
+      sourceRef:
+        kind: HelmRepository
+        name: jupyterhub
+      valuesFiles:
+      - values.yaml
+      - values-jupyterhub.yaml
   releaseName: jupyterhub
-  valuesFiles:
-    - values.yaml
-    - values-jupyterhub.yaml
   valuesFrom:
   - kind: Secret
     name: jupyterhub-secret-config
