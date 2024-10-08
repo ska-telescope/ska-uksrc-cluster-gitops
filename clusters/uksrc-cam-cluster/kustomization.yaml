@@ -1,5 +1,5 @@
 resources:
-  # - configmap.yaml
+  - configmap.yaml
   - credentials.yaml
   - ../../components/flux
   - ../../components/sealed-secrets
