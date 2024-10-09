@@ -11,11 +11,10 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: jupyterhub
-      valuesFiles:
-      - values.yaml
-      - values-jupyterhub.yaml
   releaseName: jupyterhub
   valuesFrom:
+  - kind: ConfigMap
+    name: jupyterhub-config  
   - kind: Secret
     name: jupyterhub-secret-config
     valuesKey: client_secret
