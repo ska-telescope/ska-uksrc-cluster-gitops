@@ -1,14 +1,15 @@
 resources:
+  - configmap.yaml
+  - credentials.yaml
   - ../../components/flux
   - ../../components/sealed-secrets
   - ../../components/cluster-api
   - ../../components/cluster
-  - configmap.yaml
-  - credentials.yaml
-  - blackbox-exporter-service.yaml
-  - blackbox-exporter-probe.yaml
-  - prometheus-ingress.yaml
-  - grafana-ingress.yaml
+# After bootstrap add the apps and services here
+  - ../../infra/blackbox-exporter-service.yaml
+  - ../../infra/blackbox-exporter-probe.yaml
+  - ../../infra/prometheus-ingress.yaml
+  - ../../infra/grafana-ingress.yaml
 
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
