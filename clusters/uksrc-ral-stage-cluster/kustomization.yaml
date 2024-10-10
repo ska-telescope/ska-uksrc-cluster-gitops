@@ -7,7 +7,7 @@ resources:
   - ../../components/cluster
 # After bootstrap add the apps and services here
   - ../../components/nginx-ingress
-  - ../../apps/jupyterhub
+  # - ../../apps/jupyterhub
   - ../../infra/blackbox-exporter-service.yaml
   - ../../infra/blackbox-exporter-probe.yaml
   - ../../infra/prometheus-ingress.yaml
