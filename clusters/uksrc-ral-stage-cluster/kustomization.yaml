@@ -7,11 +7,8 @@ resources:
   - ../../components/cluster
 # After bootstrap add the apps and services here
   - ../../components/nginx-ingress
+  - ../../infra
   # - ../../apps/jupyterhub
-  - ../../infra/blackbox-exporter-service.yaml
-  - ../../infra/blackbox-exporter-probe.yaml
-  - ../../infra/prometheus-ingress.yaml
-  - ../../infra/grafana-ingress.yaml
 
 
 # Patch the Helm release for the cluster to update the release name

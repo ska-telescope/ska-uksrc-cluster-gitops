@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: uksrc-ral-staging-ingress
+  annotations: 
+    cert-manager.io/issuer: "letsencrypt-staging"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - ral.uksrc.org
+    secretName: uksrc-ral-tls
+  rules:
+  - host: ral-stage.uksrc.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jupyterhub
+            port:
+              number: 443
