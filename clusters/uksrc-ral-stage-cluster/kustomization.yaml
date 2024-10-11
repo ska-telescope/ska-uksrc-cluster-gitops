@@ -7,8 +7,8 @@ resources:
   - ../../components/cluster
 # After bootstrap add the apps and services here
   - ../../components/nginx-ingress
-  - ../../infra
-  # - ../../apps/jupyterhub
+  - ../../infra/
+  - ../../apps/jupyterhub
 
 
 # Patch the Helm release for the cluster to update the release name
