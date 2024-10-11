@@ -5,4 +5,4 @@ resources:
   - blackbox-exporter-probe.yaml
   - prometheus-ingress.yaml
   - grafana-ingress.yaml
-  - endpoints-alerts.yaml
+  - endpoint-alerts.yaml
