@@ -1,0 +1,8 @@
+resources:
+  - Chart.yaml
+  - configmap-datasets.yaml
+  - soda-deployment.yaml
+  - soda-ingress.yaml
+  - soda-pvc.yaml
+  - soda-service.yaml
+  - values.yaml
