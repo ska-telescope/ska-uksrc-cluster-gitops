@@ -1,3 +1,6 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmChart
 name: ska-src-soda
 description: A chart for the deployment of the SODA service.
 version: 0.0.1
