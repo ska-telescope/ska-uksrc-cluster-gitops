@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: ska-src-soda
+      chart: /etc/helm
       version: 0.0.1
       sourceRef:
         kind: GitRepository
