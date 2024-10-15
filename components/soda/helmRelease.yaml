@@ -24,7 +24,7 @@ spec:
       enabled: true
       host: soda.ral.uksrc.org
     persistence:
-      storageClass: ""  
+      storageClass: "csi-cinder"  
       existingClaim: ""
       enabled: true
       accessMode: ReadOnlyMany
