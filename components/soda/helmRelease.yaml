@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: /etc/helm
+      chart: etc/helm
       version: 0.0.1
       sourceRef:
         kind: GitRepository
