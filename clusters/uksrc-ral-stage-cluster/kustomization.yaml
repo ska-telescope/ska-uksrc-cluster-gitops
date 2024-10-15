@@ -9,9 +9,7 @@ resources:
   # - ../../components/nginx-ingress
   - ../../infra/
   # - ../../apps/jupyterhub
-
-# for soda
-  # - ../../components/soda
+  - ../../components/soda
 
 
 # Patch the Helm release for the cluster to update the release name
