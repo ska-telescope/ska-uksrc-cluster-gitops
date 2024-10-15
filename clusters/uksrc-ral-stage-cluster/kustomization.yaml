@@ -8,10 +8,10 @@ resources:
 # After bootstrap add the apps and services here
   # - ../../components/nginx-ingress
   - ../../infra/
-  - ../../apps/jupyterhub
+  # - ../../apps/jupyterhub
 
 # for soda
-  - ../../components/soda
+  # - ../../components/soda
 
 
 # Patch the Helm release for the cluster to update the release name
