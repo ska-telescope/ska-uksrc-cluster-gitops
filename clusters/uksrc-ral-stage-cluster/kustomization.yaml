@@ -6,7 +6,7 @@ resources:
   - ../../components/cluster-api
   - ../../components/cluster
 # After bootstrap add the apps and services here
-  - ../../components/nginx-ingress
+  # - ../../components/nginx-ingress
   - ../../infra/
   - ../../apps/jupyterhub
 
