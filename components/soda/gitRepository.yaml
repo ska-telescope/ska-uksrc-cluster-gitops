@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: soda-repo
+  namespace: ska-src-soda
+spec:
+  interval: 5m
+  url: https://gitlab.com/ska-telescope/src/src-ia/ska-src-ia-vo-soda-deployment
+  ref:
+    branch: main 
