@@ -1,0 +1,37 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: soda-release
+  namespace: ska-src-soda
+spec:
+  chart:
+    spec:
+      chart: ska-src-soda
+      version: 0.0.1
+      sourceRef:
+        kind: GitRepository
+        name: soda-repo    
+        namespace: ska-src-soda
+  interval: 1h
+  values:
+    deployment:
+      namespace: ska-src-soda
+    image:
+      repository: harbor.srcdev.skao.int/soda/visivo-vlkb-soda
+      tag: 1.6.2
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      host: soda.ral.uksrc.org
+    persistence:
+      storageClass: ""  
+      existingClaim: ""
+      enabled: true
+      accessMode: ReadOnlyMany
+      size: 10Gi
+    config:
+      datasets: |-
+        fits_path_surveys=/srv/soda/datasets
+        fits_path_cutouts=/srv/soda/cutouts
+        ivoid_authority=test.skao
+        ivoid_resource_key=datasets/fits
