@@ -6,9 +6,9 @@ resources:
   - ../../components/cluster-api
   - ../../components/cluster
 # After bootstrap add the apps and services here
-  - ../../components/nginx-ingress
+  # - ../../components/nginx-ingress
   - ../../infra/
-  - ../../apps/jupyterhub
+  - ../../sites/ral-stage
 
 
 # Patch the Helm release for the cluster to update the release name
