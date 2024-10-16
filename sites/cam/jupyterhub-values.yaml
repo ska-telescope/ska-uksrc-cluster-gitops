@@ -7,7 +7,7 @@ spec:
   values:
     ingress:
       hosts:
-        - host: 128-232-227-30.sslip.io
+        - &host 128-232-227-30.sslip.io
     hub:
       config:
         GenericOAuthenticator:
