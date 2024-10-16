@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: jupyterhub
+  namespace: jupyterhub
+spec:
+  values:
+    ingress:
+      hosts:
+        - host: 128-232-227-30.sslip.io
+      tls:
+        - secretName: uksrc-cam-tls
+      config:
+        JupyterHub:
+          oauth_callback_url: https://cam.uksrc.org/jupyterhub/hub/oauth_callback
+          authorize_url: https://ska-iam.stfc.ac.uk/authorize
+          token_url: https://ska-iam.stfc.ac.uk/token
+          userdata_url: https://ska-iam.stfc.ac.uk/userinfo
+        baseURL: https://cam.uksrc.org/jupyterhub

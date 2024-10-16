@@ -8,9 +8,7 @@ resources:
 # After bootstrap add the apps and services here
   # - ../../components/nginx-ingress
   - ../../infra/
-  # - ../../apps/jupyterhub
-  - ../../components/soda
-
+  # - ../../sites/ral-stage
 
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
