@@ -8,11 +8,9 @@ spec:
     ingress:
       hosts:
         - host: 130-246-80-45.sslip.io
-      tls:
-        - secretName: uksrc-ral-stage-tls
     hub:
       config:
-        JupyterHub:
+        GenericOAuthenticator:
           oauth_callback_url: https://ral-stage.uksrc.org/jupyterhub/hub/oauth_callback
           authorize_url: https://ska-iam.stfc.ac.uk/authorize
           token_url: https://ska-iam.stfc.ac.uk/token
