@@ -10,6 +10,7 @@ spec:
         - host: 130-246-80-45.sslip.io
       tls:
         - secretName: uksrc-ral-tls
+    hub:
       config:
         JupyterHub:
           oauth_callback_url: https://ral.uksrc.org/jupyterhub/hub/oauth_callback
