@@ -8,11 +8,9 @@ spec:
     ingress:
       hosts:
         - host: 128-232-227-30.sslip.io
-      tls:
-        - secretName: uksrc-cam-tls
     hub:
       config:
-        JupyterHub:
+        GenericOAuthenticator:
           oauth_callback_url: https://cam.uksrc.org/jupyterhub/hub/oauth_callback
           authorize_url: https://ska-iam.stfc.ac.uk/authorize
           token_url: https://ska-iam.stfc.ac.uk/token
