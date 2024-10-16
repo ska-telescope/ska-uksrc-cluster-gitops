@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: ska-src-soda
+  name: ska-src-soda
+  namespace: {{ .Values.deployment.namespace }}
+spec:
+  type: NodePort
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    io.kompose.service: ska-src-soda
+status:
+  loadBalancer: {}
