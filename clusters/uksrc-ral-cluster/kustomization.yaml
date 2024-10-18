@@ -9,8 +9,8 @@ resources:
 
   # After bootstrap add the apps and services here
   # - ../../components/nginx-ingress
-  - ../../infra/
-  - ../../sites/ral
+  # - ../../infra/
+  # - ../../sites/ral
 
 
 # Patch the Helm release for the cluster to update the release name
