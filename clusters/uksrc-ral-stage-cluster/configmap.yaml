@@ -101,14 +101,14 @@ data:
         csiCinder:
           defaultStorageClass:
             availabilityZone: ceph
-      ingress:
-        enabled: true
-        nginx:
-          release:
-            values:
-              controller:
-                service:
-                  loadBalancerIP: "130.246.80.45"
+      # ingress:
+      #   enabled: true
+      #   nginx:
+      #     release:
+      #       values:
+      #         controller:
+      #           service:
+      #             loadBalancerIP: "130.246.80.45"
 
 
 
