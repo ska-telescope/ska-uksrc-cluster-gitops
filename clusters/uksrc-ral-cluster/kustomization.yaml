@@ -3,7 +3,6 @@ resources:
   - ../../components/sealed-secrets
   - ../../components/cluster-api
   - ../../components/cluster
-  - ../../infrastructure/ingress
   - configmap.yaml
   - credentials.yaml
 

@@ -67,10 +67,10 @@ data:
       #  - 10.10.0.0/16  # IPv4 Internal Network
       #  - 123.123.123.123 # some other IPs
       # Indicates whether to associate a floating IP with the API server
-      associateFloatingIP: false
+      associateFloatingIP: true
       # The specific floating IP to associate with the API server
       # If not given, a new IP will be allocated if required
-      floatingIP:
+      floatingIP: 130.246.215.245
       # The specific fixed IP to associate with the API server
       # If enableLoadBalancer is true, this will become the VIP of the load balancer
       # If enableLoadBalancer and associateFloatingIP are both false, this should be
@@ -123,10 +123,6 @@ data:
         cidrBlocks:
           - 10.8.0.0/13
       serviceDomain: cluster.local
-
-    clusterNetworking:
-      internalNetwork: 
-        nodeCidr: 192.168.128.0/17
 
     # Settings for registry mirrors
     registryMirrors: { docker.io: ["https://dockerhub.stfc.ac.uk"] }
