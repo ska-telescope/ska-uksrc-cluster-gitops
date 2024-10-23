@@ -10,7 +10,8 @@ metadata:
 spec:
   rules:
   # - host: {{ .Values.ingress.host }}
-  - host: soda.ral.uksrc.org
+  # - host: soda.ral.uksrc.org
+  - host: ral.uksrc.org
     http:
       paths:
       - path: /
