@@ -47,7 +47,7 @@ spec:
         # IP must match NGINX ingress controller's
         # load balancer IP.
         # See `kubectl get svc -n ingress-nginx`
-        - &host 128-232-223-30.sslip.io
+        - &host 130-246-81-193.sslip.io
       pathSuffix: "/jupyterhub"
       tls:
         - hosts:

@@ -2,13 +2,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../apps/jupyterhub
-patches:
-  - path: jupyterhub-values.yaml
-    target:
-      kind: HelmRelease
----
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
   - ../../apps/soda
+# ---
+# apiVersion: kustomize.config.k8s.io/v1beta1
+# kind: Kustomization
+# resources:
+#   - ../../apps/jupyterhub
+# patches:
+#   - path: jupyterhub-values.yaml
+#     target:
+#       kind: HelmRelease
