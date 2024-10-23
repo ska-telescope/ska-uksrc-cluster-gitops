@@ -22,8 +22,7 @@ spec:
       pullPolicy: Always
     ingress:
       enabled: true
-      # host: soda.ral.uksrc.org
-      host: ral.uksrc.org
+      host: soda.ral.uksrc.org
     persistence:
       storageClass: "csi-cinder"  
       existingClaim: ""
