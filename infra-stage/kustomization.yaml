@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - blackbox-exporter-service.yaml
+  - blackbox-exporter-probe.yaml
+  - prometheus-ingress.yaml
+  - grafana-ingress.yaml
+  - endpoints-alerts.yaml
