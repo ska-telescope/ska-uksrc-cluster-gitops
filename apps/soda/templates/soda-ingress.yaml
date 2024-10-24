@@ -10,8 +10,8 @@ metadata:
 spec:
   rules:
   # - host: {{ .Values.ingress.host }}
-  # - host: soda.ral.uksrc.org
-  - host: soda.130-246-81-193.sslip.io
+  - host: soda.ral.uksrc.org
+  # - host: soda.130-246-81-193.sslip.io
     http:
       paths:
       - path: /
