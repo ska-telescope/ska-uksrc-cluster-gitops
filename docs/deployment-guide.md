@@ -17,7 +17,7 @@ The clusters created using configurations derived from this repository are "self
 means that the Cluster API controllers and the resources defining the cluster are managed on the
 cluster itself.
 
-## Cluster Bootstrapping Methodolgy
+## Cluster Bootstrapping Methodology
 
 The use of self-managed clusters creates a bootstrapping problem, i.e. how does the cluster get
 created if it manages itself? The solution to this is to use a one-off bootstrapping process that
@@ -52,7 +52,6 @@ At this point, the cluster is self-managed using Flux and the ephemeral cluster 
 This repository includes [a Python script](./bin/manage) that performs these steps (see below).
 
 ## Prerequisites.
-
 You will can deploy from a Linux Bastion host or locally from your Macbook or a Windows machine with WSL installed. Note while it is a nice to deploy from a local machine, we should be restricting access to our cluster to private networks and not exposing the K8s API to the internet so a Bastion is the prefered method.
 
 ### Cloud Credentials
@@ -321,3 +320,68 @@ stringData:
         auth_type: "v3applicationcredential"
 ```
 
+## Cluster Bootstrap
+
+To start the bootstrap we need to create a Python Virtual Environment. For ease of use it is recommended to create a bash function.
+
+Edit your `.bashrc` file and add the following.
+
+```sh
+function bootstrap() {
+        cd ~/ska-uksrc-cluster-gitops/  <--- Must match the path of the cloned Git repo
+        python3 -m venv ./.venv
+        source .venv/bin/activate
+        pip install -U pip
+        pip install -r requirements.txt
+}
+```
+
+To enter the *venv* run the function, note you only need the `source .bashrc` after the inital edit of the `.bashrc`.
+
+```sh
+source .bashrc
+bootstrap
+```
+
+Alternatively you can run the commands manually.
+
+```sh
+        cd ~/ska-uksrc-cluster-gitops/  <--- Must match the path of the cloned Git repo
+        python3 -m venv ./.venv
+        source .venv/bin/activate
+        pip install -U pip
+        pip install -r requirements.txt
+```
+
+
+Now we're ready to bootstrap our cluster, run the `manage` command for the cluster that you created:
+
+```sh
+./bin/manage bootstrap uksrc-ral
+```
+
+The bootstrap process should take around 30 to 40 minutes.
+
+To monitor the deployment, in a new Terminal window connect to the Kind cluster and monitor events.
+
+```sh
+kind export kubeconfig
+
+kubectl get events -A --watch
+```
+
+Note that the output is very 'chatty', you're likely to see 'errors' or 'warnings' as the cluster waits for components to come online.
+
+You can also check the `cluster-api` once it starts its deployment, use `kubens` to check for the `capi-self` namespace, if it exists switch to that namespace.
+
+```sh
+kubens capi-self
+```
+
+Check the cluster-api.
+
+```sh
+kubectl get cluster-api
+```
+
+Troubleshooting link here.
