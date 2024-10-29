@@ -5,7 +5,7 @@ resources:
   - ../../apps/soda
   - jupyterhub-namespace.yaml
   - jupyterhub-secret.yaml
-  - ../../apps/jupyterhub  
+  # - ../../apps/jupyterhub
 patches:
   - path: jupyterhub-values.yaml
     target:
