@@ -26,7 +26,7 @@ data:
         # IP must match NGINX ingress controller's
         # load balancer IP.
         # See `kubectl get svc -n ingress-nginx`
-        - &host 128-232-223-30.sslip.io
+        - &host 130-246-81-193.sslip.io
       pathSuffix: "/jupyterhub"
       tls:
         - hosts:
@@ -70,8 +70,6 @@ data:
         db:
             pvc:
               storageClassName: csi-cinder
-
-
 
       # We install the kubernetes client here so that we can use it to
       # detect weather the cluster has any GPU nodes, allowing us to show/hide
@@ -140,17 +138,24 @@ data:
 
     singleuser:
       memory:
-          limit: 1G
-          guarantee: 1G
+        limit: 1G
+        guarantee: 1G
 
       cpu:
-          limit: 0.5
-          guarantee: 0.5
+        limit: 0.5
+        guarantee: 0.5
 
       storage:
-          dynamic:
-            storageClass: csi-cinder
-          capacity: 1Gi
+        dynamic:
+          storageClass: csi-cinder
+        capacity: 1Gi
+        extraVolumes:
+          - name: jupyterhub-cephshare
+            persistentVolumeClaim:
+              claimName: jupyterhub-ceph-volume
+        extraVolumeMounts:
+          - name: jupyterhub-cephshare
+            mountPath: /home/shared
 
       defaultUrl: /lab
       # Defines the default image
