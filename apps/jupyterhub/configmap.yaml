@@ -149,13 +149,13 @@ data:
         dynamic:
           storageClass: csi-cinder
         capacity: 1Gi
-        extraVolumes:
-          - name: jupyterhub-cephshare
-            persistentVolumeClaim:
-              claimName: jupyterhub-ceph-volume
-        extraVolumeMounts:
-          - name: jupyterhub-cephshare
-            mountPath: /home/shared
+        # extraVolumes:
+        #   - name: jupyterhub-cephshare
+        #     persistentVolumeClaim:
+        #       claimName: jupyterhub-ceph-volume
+        # extraVolumeMounts:
+        #   - name: jupyterhub-cephshare
+        #     mountPath: /home/shared
 
       defaultUrl: /lab
       # Defines the default image

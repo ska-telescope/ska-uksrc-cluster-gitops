@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../apps/soda
   - ../../apps/jupyterhub
+  - jupyterhub-seecret.yaml
 patches:
   - path: jupyterhub-values.yaml
     target:
