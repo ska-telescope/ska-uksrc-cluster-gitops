@@ -6,10 +6,10 @@ resources:
   - ../../components/cluster-api
   - ../../components/cluster
 # After bootstrap add the apps and services here
-  # - ../../components/nginx-ingress
-  - ../../infra-stage/
-  # - ../../sites/ral-stage
-
+  - ../../infra-prod/
+  - ../../apps/soda
+  - ../../apps/jupyterhub/overlays/ral-stage
+  
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
 # We also add our configmap to the values sources for the release
