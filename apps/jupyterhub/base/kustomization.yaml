@@ -1,9 +1,9 @@
 resources:
-  # - namespace.yaml
+  - namespace.yaml
   - helmrepository.yaml
   - helmchart.yaml
   - helmrelease.yaml
   # - configmap.yaml
-  # - secret.yaml
+  - secret.yaml
   - extra-rbac.yaml
   # - issuers.yaml
