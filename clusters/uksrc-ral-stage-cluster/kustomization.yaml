@@ -6,7 +6,7 @@ resources:
   - ../../components/cluster-api
   - ../../components/cluster
 # After bootstrap add the apps and services here
-  - ../../infra-/overlays/ral-stage
+  - ../../infra/overlays/ral-stage
   - ../../apps/soda
   - ../../apps/jupyterhub/overlays/ral-stage
   
