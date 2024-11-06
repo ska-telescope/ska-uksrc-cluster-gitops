@@ -54,7 +54,7 @@ spec:
         # load balancer IP.
         # See `kubectl get svc -n ingress-nginx`
         - &host 130-246-81-193.sslip.io
-      pathSuffix: "/jupyterhub"
+      pathSuffix: "jupyterhub"
       tls:
         - hosts:
           - *host
