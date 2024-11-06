@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: ska-src-service-gatekeeper
+  namespace: ska-src-gatekeeper
+spec:
+  interval: 5m
+  url: https://gitlab.com/ska-telescope/src/src-dm/ska-src-dm-da-service-gatekeeper
+  ref:
+    branch: main
