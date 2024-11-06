@@ -1,7 +1,7 @@
 resources:
   - namespace.yaml
   - gitRepository.yaml
-  - helmchart.yaml
+  - helmChart.yaml
   - helmRelease.yaml
   - gatekeeper-secret.yaml
   # - issuers.yaml
