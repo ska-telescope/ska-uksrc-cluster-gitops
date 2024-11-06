@@ -14,7 +14,7 @@ spec:
     sourceRef:
       kind: GitRepository
       name: ska-src-service-gatekeeper
-      namespace: ska-src-service-gatekeeper
+      namespace: ska-src-gatekeeper
     interval: 1m
   valuesFile: values.yaml
   values:
