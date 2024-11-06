@@ -1,0 +1,25 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmChart
+metadata:
+  name: ska-src-service-gatekeeper
+  description: A chart for the deployment of the SRCNet Service Gatekeeper (modified ingress-nginx).
+spec:
+  chart:
+    version: 0.0.1
+    appVersion: 0.0.1
+    apiVersion: v2
+    keywords:
+      - etc/helm
+    type: application
+    sourceRef:
+      kind: GitRepository
+      name: ska-src-service-gatekeeper
+      namespace: ska-src-service-gatekeeper
+    interval: 1m
+  valuesFile: values.yaml
+  values:
+    home: https://gitlab.com/ska-telescope/src/src-dm/ska-src-dm-da-service-gatekeeper
+  dependencies:
+    - name: ingress-nginx
+      version: "4.11.3"
+      repository: "https://kubernetes.github.io/ingress-nginx"
