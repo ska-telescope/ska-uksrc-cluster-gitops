@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - gitrepository.yaml
-  - helmchart.yaml
+  # - helmchart.yaml
   - helmrelease.yaml
   - gatekeeper-secret.yaml
   # - issuers.yaml
