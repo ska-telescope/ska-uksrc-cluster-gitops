@@ -8,6 +8,8 @@ spec:
     spec:
       chart: etc/helm
       version: 0.0.1
+      appVersion: 0.0.1
+      apiVersion: v2
       sourceRef:
         kind: GitRepository
         name:  ska-src-service-gatekeeper
