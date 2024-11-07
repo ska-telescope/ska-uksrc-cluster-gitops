@@ -5,14 +5,14 @@ metadata:
   namespace: ska-src-gatekeeper
 spec:
   chart:
-    version: 0.0.1
-    appVersion: 0.0.1
-    apiVersion: v2
-    keywords:
-      - etc/helm
-    type: application
-    sourceRef:
-      kind: GitRepository
-      name: ska-src-service-gatekeeper
-      namespace: ska-src-gatekeeper
-    interval: 1m
+  version: 0.0.1
+  appVersion: 0.0.1
+  apiVersion: v2
+  keywords:
+    - etc/helm
+  type: application
+  sourceRef:
+    kind: GitRepository
+    name: ska-src-service-gatekeeper
+    namespace: ska-src-gatekeeper
+  interval: 5m
