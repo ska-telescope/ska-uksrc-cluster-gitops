@@ -98,5 +98,5 @@ spec:
               configMap:
                 name: site-capabilities-lua-config
       
-      deployment_echo:
-        namespace: ska-src-gatekeeper-echo
+    deployment_echo:
+      namespace: ska-src-gatekeeper-echo
