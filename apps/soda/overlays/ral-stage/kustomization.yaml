@@ -7,4 +7,4 @@ patches:
   - path: soda-values.yaml
     target:
       kind: HelmRelease
-      name: soda
+      name: soda-release
