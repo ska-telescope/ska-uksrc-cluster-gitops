@@ -8,6 +8,10 @@ spec:
     ingress:
       hosts:
         - host: jupyterhub.ral-stage.uksrc.org
+      tls:
+        - hosts: 
+            - jupyterhub.ral-stage.uksrc.org
+
     hub:
       config:
         GenericOAuthenticator:
