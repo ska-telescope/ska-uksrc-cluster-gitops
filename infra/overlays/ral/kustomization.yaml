@@ -4,11 +4,17 @@ kind: Kustomization
 resources:
   - ../../base
 patches:
-  - path: grafana-ingress.yaml
-    target:
+  - target:
       kind: Ingress
       name: grafana-ingress
-  - path: prometheus-ingress.yaml 
-    target:
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: grafana.ral.uksrc.org
+  - target:
       kind: Ingress
       name: prometheus-ingress
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: prometheus.ral.uksrc.org
