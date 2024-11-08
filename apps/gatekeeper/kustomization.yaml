@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - gitrepository.yaml
-  - helmRelease.yaml
+  - helmrelease.yaml
   - gatekeeper-secret.yaml
 patches:
   - target:
