@@ -2,8 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - namespace.yaml
-  - gitrepository.yaml
-  # - helmchart.yaml
-  - helmrelease.yaml
+  - gitRepository.yaml
+  - helmRelease.yaml
   - gatekeeper-secret.yaml
-  # - issuers.yaml
+patches:
+  - target:
+      kind: HelmChart
+      name: Chart.yaml
+    patch: |-
+      - op: remove
+        path: /dependencies/0
