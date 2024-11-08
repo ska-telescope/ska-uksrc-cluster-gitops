@@ -1,0 +1,10 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: soda
+  namespace: soda
+spec:
+  values:
+    ingress:
+      hosts:
+        - host: soda.ral.uksrc.org

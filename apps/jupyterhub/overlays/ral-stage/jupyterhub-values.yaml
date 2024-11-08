@@ -7,7 +7,7 @@ spec:
   values:
     ingress:
       hosts:
-        - host: 130-246-80-45.sslip.io
+        - host: jupyterhub.ral-stage.uksrc.org
     hub:
       config:
         GenericOAuthenticator:
