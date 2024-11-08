@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules: 
-  - host: "grafana.130-246-81-193.sslip.io" 
+  - host: grafana.ral.uksrc.org
 
 
 
