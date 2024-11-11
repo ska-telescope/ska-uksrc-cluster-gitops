@@ -9,7 +9,7 @@ resources:
   # After bootstrap add the apps and services here
   - ../../infra/overlays/ral
   - ../../apps/soda/overlays/ral
-  - ../../apps/gatekeeper
+  # - ../../apps/gatekeeper
   - ../../apps/jupyterhub/overlays/ral
 
 # Patch the Helm release for the cluster to update the release name
