@@ -21,16 +21,13 @@ data:
       enabled: true
       ingressClassName: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-prod
+        cert-manager.io/cluster-issuer: "letsencrypt-staging"
       hosts:
-        # IP must match NGINX ingress controller's
-        # load balancer IP.
-        # See `kubectl get svc -n ingress-nginx`
-        - &host 130-246-81-193.sslip.io
-      pathSuffix: "/jupyterhub"
+        -  jupyterhub.ral.uksrc.org
+      pathSuffix: ""
       tls:
         - hosts:
-          - *host
+          -  jupyterhub.ral.uksrc.org
           secretName: jupyterhub-ingress-cert
 
     hub:
@@ -51,7 +48,7 @@ data:
           # client_id: <stored-in-sealed-secret>
           # client_secret: <stored-in-sealed-secret>
           # Must match ingress host
-          oauth_callback_url: https://ral.uksrc.org/jupyterhub/hub/oauth_callback
+          oauth_callback_url: https://jupyterhub.ral.uksrc.org/hub/oauth_callback
           authorize_url: https://ska-iam.stfc.ac.uk/authorize
           token_url: https://ska-iam.stfc.ac.uk/token
           userdata_url: https://ska-iam.stfc.ac.uk/userinfo 
