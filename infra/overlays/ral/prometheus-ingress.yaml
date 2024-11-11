@@ -8,6 +8,3 @@ metadata:
 spec:
   rules:
   - host: prometheus.ral.uksrc.org 
-
-
-
