@@ -50,14 +50,12 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
       hosts:
-        # IP must match NGINX ingress controller's
-        # load balancer IP.
-        # See `kubectl get svc -n ingress-nginx`
-        - &host 130-246-81-193.sslip.io
-      pathSuffix: "jupyterhub"
+        - host: jupyterhub.ral.uksrc.org
+      pathSuffix: ""
+      pathType: Prefix
       tls:
         - hosts:
-          - *host
+          - jupyterhub.ral.uksrc.org
           secretName: jupyterhub-ingress-cert
 
     hub:
