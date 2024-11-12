@@ -7,7 +7,7 @@ spec:
   values:
     ingress:
       hosts:
-        - host: jupyterhub.ral-stage.uksrc.org
+        - jupyterhub.ral-stage.uksrc.org
       tls:
         - hosts: 
             - jupyterhub.ral-stage.uksrc.org

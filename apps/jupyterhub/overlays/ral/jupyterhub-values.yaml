@@ -7,10 +7,11 @@ spec:
   values:
     ingress:
       hosts:
-        - host: jupyterhub.ral.uksrc.org
+        - jupyterhub.ral.uksrc.org
       tls:
         - hosts: 
             - jupyterhub.ral.uksrc.org
+
     hub:
       config:
         GenericOAuthenticator:
