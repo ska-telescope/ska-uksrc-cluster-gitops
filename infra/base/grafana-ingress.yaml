@@ -5,6 +5,7 @@ metadata:
   namespace: monitoring-system
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
   rules:
@@ -19,6 +20,9 @@ spec:
             name: kube-prometheus-stack-grafana
             port:
               number: 80
-
+  tls:
+  - hosts:
+    - "grafana.ral.uksrc.org"
+    secretName: grafana-ingress-cert
 
 
