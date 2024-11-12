@@ -177,11 +177,11 @@ spec:
           storageClass: csi-cinder
         capacity: 1Gi
         # extraVolumes:
-        #   - name: jupyterhub-cephshare
+        #   - name: cephfs-share-static-pv
         #     persistentVolumeClaim:
         #       claimName: jupyterhub-ceph-volume
         # extraVolumeMounts:
-        #   - name: jupyterhub-cephshare
+        #   - name: cephfs-share-static-pv
         #     mountPath: /home/shared
 
       defaultUrl: /lab
