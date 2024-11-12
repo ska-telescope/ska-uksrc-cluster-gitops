@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - blackbox-exporter-service.yaml
   - blackbox-exporter-probe.yaml
-  # - prometheus-ingress.yaml
+  - prometheus-ingress.yaml
   - grafana-ingress.yaml
   - endpoints-alerts.yaml
