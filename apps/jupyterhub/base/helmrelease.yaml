@@ -23,8 +23,6 @@ spec:
     mode: enabled
   interval: 5m
   valuesFrom:
-  # - kind: ConfigMap
-  #   name: jupyterhub-config  
   - kind: Secret
     name: jupyterhub-secret-config
     valuesKey: client_secret
@@ -34,23 +32,17 @@ spec:
     valuesKey: client_id
     targetPath: hub.config.GenericOAuthenticator.client_id
   values:
-    # Add JupyterHub customisations here
-    # See https://artifacthub.io/packages/helm/jupyterhub/jupyterhub
-
-    # We don't need a load balancer for the proxy
-    # since we want to use ingress instead.
     proxy:
       service:
         type: ClusterIP
 
-    # Make JupyterHub accessible via ingress
     ingress:
       enabled: true
       ingressClassName: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
       hosts:
-        - host: jupyterhub.ral.uksrc.org
+        - jupyterhub.ral.uksrc.org
       pathSuffix: ""
       pathType: Prefix
       tls:
@@ -62,20 +54,14 @@ spec:
       allowNamedServers: true
       namedServerLimitPerUser: 5
       activeServerLimit: 3
-      # Server startup fails with default
-      # restrictive network policy.
       networkPolicy:
         enabled: false
 
-      # Configure IAM authentication
       config:
         JupyterHub:
           authenticator_class: generic-oauth
         GenericOAuthenticator:
           login_service: "SKA-IAM"
-          # client_id: <stored-in-sealed-secret>
-          # client_secret: <stored-in-sealed-secret>
-          # Must match ingress host
           oauth_callback_url: https://ral.uksrc.org/jupyterhub/hub/oauth_callback
           authorize_url: https://ska-iam.stfc.ac.uk/authorize
           token_url: https://ska-iam.stfc.ac.uk/token
@@ -187,16 +173,4 @@ spec:
       image:
         name: quay.io/jupyter/minimal-notebook
         tag: "2024-08-05"
-      # Build these dynamically in extraConfig above instead
-      # profileList:
-      #   - display_name: "Minimal environment"
-      #     description: "To avoid too much bells and whistles: Python."
-      #     default: true
-      #   - display_name: "Datascience environment"
-      #     description: "If you want the additional bells and whistles: Python, R, and Julia."
-      #     kubespawner_override:
-      #       image: quay.io/jupyter/datascience-notebook:2024-08-05
-      #   - display_name: "Spark environment"
-      #     description: "The Jupyter Stacks spark image!"
-      #     kubespawner_override:
-      #       image: quay.io/jupyter/all-spark-notebook:2024-08-05
+
