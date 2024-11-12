@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jupyterhub-ceph-volume
+  namespace: jupyterhub
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: ""
+  volumeMode: Filesystem
+  # volumeName should be same as PV name
+  volumeName: cephfs-share-static-pv
