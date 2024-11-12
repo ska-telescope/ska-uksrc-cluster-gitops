@@ -176,13 +176,13 @@ spec:
         dynamic:
           storageClass: csi-cinder
         capacity: 1Gi
-        # extraVolumes:
-        #   - name: cephfs-share-static-pv
-        #     persistentVolumeClaim:
-        #       claimName: jupyterhub-ceph-volume
-        # extraVolumeMounts:
-        #   - name: cephfs-share-static-pv
-        #     mountPath: /home/shared
+        extraVolumes:
+          - name: cephfs-share-static-pv
+            persistentVolumeClaim:
+              claimName: jupyterhub-ceph-volume
+        extraVolumeMounts:
+          - name: cephfs-share-static-pv
+            mountPath: /home/shared
 
       defaultUrl: /lab
       # Defines the default image
