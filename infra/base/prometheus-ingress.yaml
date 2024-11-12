@@ -5,6 +5,7 @@ metadata:
   namespace: monitoring-system
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
   rules:
@@ -18,3 +19,7 @@ spec:
             name: kube-prometheus-stack-prometheus
             port:
               number: 9090
+  tls:
+  - hosts:
+    - "prometheus.ral.uksrc.org"
+    secretName: prometheus-ingress-cert
