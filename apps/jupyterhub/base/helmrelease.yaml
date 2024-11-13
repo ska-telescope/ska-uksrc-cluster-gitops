@@ -39,10 +39,10 @@ spec:
         enabled: true
         type: letsencrypt
         letsencrypt:
-          contactEmail: sm2921@cam.ac.ukß
+          contactEmail: sm2921@cam.ac.uk
           # Specify custom server here (https://acme-staging-v02.api.letsencrypt.org/directory) to hit staging LE
-          acmeServer: https://acme-staging-v02.api.letsencrypt.org/directory
-          # acmeServer: https://acme-v02.api.letsencrypt.org/directory
+          # acmeServer: https://acme-staging-v02.api.letsencrypt.org/directory
+          acmeServer: https://acme-v02.api.letsencrypt.org/directory
         secret:
           name: jupyterhub-ingress-cert
           key: tls.key
