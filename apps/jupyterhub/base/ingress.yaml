@@ -1,23 +1,24 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: jupyterhub
-#   annotations: 
-#     cert-manager.io/issuer: "letsencrypt-staging"
-# spec:
-#   ingressClassName: nginx
-#   tls:
-#   - hosts:
-#     - ral.uksrc.org
-#     secretName: ral-tls-secret
-#   rules:
-#   - host: ral.uksrc.org
-#     http:
-#       paths:
-#       - path: /juypterhub/
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: jupyterhub
-#             port:
-#               number: 443
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jupyterhub
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: jupyterhub.ral.uksrc.org
+    http:
+      paths:
+        - backend:
+            service:
+              name: proxy-public
+              port:
+                name: http
+          path: /
+          pathType: Prefix
+  tls:
+  - hosts:
+    - jupyterhub.ral.uksrc.org
+    secretName: jupyterhub-ingress-cert
