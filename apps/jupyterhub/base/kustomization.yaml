@@ -8,4 +8,5 @@ resources:
   - secret.yaml
   - extra-rbac.yaml
   - jupyterhub-pvc.yaml
-  # - issuers.yaml
+  # - ingress.yaml
+  # - certificate.yaml
