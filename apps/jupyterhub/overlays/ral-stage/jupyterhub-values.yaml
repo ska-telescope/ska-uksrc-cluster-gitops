@@ -10,7 +10,8 @@ spec:
         - jupyterhub.ral-stage.uksrc.org
       tls:
         - hosts: 
-            - jupyterhub.ral-stage.uksrc.org
+          - jupyterhub.ral-stage.uksrc.org
+          secretName: jupyterhub-ingress-cert
 
     hub:
       config:
