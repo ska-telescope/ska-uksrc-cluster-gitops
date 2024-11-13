@@ -7,7 +7,11 @@ spec:
   values:
     ingress:
       hosts:
-        - &host 128-232-227-30.sslip.io
+      - jupyterhub.cam.uksrc.org
+      tls:
+        - hosts: 
+          - jupyterhub.cam.uksrc.org
+          secretName: jupyterhub-ingress-cert      
     hub:
       config:
         GenericOAuthenticator:
