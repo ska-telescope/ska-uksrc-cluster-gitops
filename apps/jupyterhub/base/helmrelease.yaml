@@ -36,7 +36,7 @@ spec:
       service:
         type: ClusterIP
       https:
-        enabled: true
+        enabled: false
         type: letsencrypt
         letsencrypt:
           contactEmail: sm2921@cam.ac.uk
