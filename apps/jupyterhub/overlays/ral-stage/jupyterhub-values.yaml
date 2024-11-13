@@ -16,7 +16,7 @@ spec:
     hub:
       config:
         GenericOAuthenticator:
-          oauth_callback_url: https://ral-stage.uksrc.org/jupyterhub/hub/oauth_callback
+          oauth_callback_url: https://jupyterhub.ral-stage.uksrc.org/hub/oauth_callback
           authorize_url: https://ska-iam.stfc.ac.uk/authorize
           token_url: https://ska-iam.stfc.ac.uk/token
           userdata_url: https://ska-iam.stfc.ac.uk/userinfo
