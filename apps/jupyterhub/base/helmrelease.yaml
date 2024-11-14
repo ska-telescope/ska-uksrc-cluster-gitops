@@ -59,6 +59,9 @@ spec:
         enabled: false
 
       config:
+        Authenticator:
+          enable_auth_state: true
+          allow_all: true
         JupyterHub:
           authenticator_class: generic-oauth
         BinderSpawner:
@@ -74,12 +77,12 @@ spec:
             - profile
             - email
             - offline_access
-          username_claim: preferred_username
+          username_key: preferred_username
           userdata_token_method: GET
-          userdata_params:
-            state: state
+          userdata_params: { "state": "state" }
           allowed_groups:
             - "src/uksrc"
+          manage_groups: true
 
         baseURL: https://jupyterhub.ral.uksrc.org/
 
