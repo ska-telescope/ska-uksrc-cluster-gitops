@@ -25,6 +25,12 @@ data:
 
     nodeGroups:
       - name: workers
+        machineFlavor: l3.nano
+        autoscale: true
+        machineCountMin: 2
+        machineCountMax: 3   
+
+      - name: workers-medium
         machineFlavor: l3.medium
         autoscale: true
         machineCountMin: 3
