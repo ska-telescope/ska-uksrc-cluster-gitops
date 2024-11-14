@@ -77,9 +77,9 @@ spec:
           username_claim: preferred_username
           userdata_token_method: GET
           userdata_params:
-          state: state
-              allowed_groups:
-                - "src/uksrc"
+            state: state
+          allowed_groups:
+            - "src/uksrc"
 
         baseURL: https://jupyterhub.ral.uksrc.org/
 
