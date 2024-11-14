@@ -35,20 +35,6 @@ spec:
     proxy:
       service:
         type: ClusterIP
-      https:
-        enabled: false
-        type: letsencrypt
-        letsencrypt:
-          contactEmail: sm2921@cam.ac.uk
-          # Specify custom server here (https://acme-staging-v02.api.letsencrypt.org/directory) to hit staging LE
-          # acmeServer: https://acme-staging-v02.api.letsencrypt.org/directory
-          acmeServer: https://acme-v02.api.letsencrypt.org/directory
-        secret:
-          name: jupyterhub-ingress-cert
-          key: tls.key
-          crt: tls.crt
-        hosts:
-          - jupyterhub.ral.uksrc.org
 
     ingress:
       enabled: true
@@ -75,12 +61,14 @@ spec:
       config:
         JupyterHub:
           authenticator_class: generic-oauth
+        BinderSpawner:
+          auth_enabled: true
         GenericOAuthenticator:
           login_service: "SKA-IAM"
           oauth_callback_url: https://ral.uksrc.org/jupyterhub/hub/oauth_callback
           authorize_url: https://ska-iam.stfc.ac.uk/authorize
           token_url: https://ska-iam.stfc.ac.uk/token
-          userdata_url: https://ska-iam.stfc.ac.uk/userinfo 
+          userdata_url: https://ska-iam.stfc.ac.uk/userinfo
           scope:
             - openid
             - profile
@@ -89,9 +77,11 @@ spec:
           username_claim: preferred_username
           userdata_token_method: GET
           userdata_params:
-            state: state
+          state: state
+              allowed_groups:
+                - "src/uksrc"
 
-        baseURL: https://ral.uksrc.org/jupyterhub
+        baseURL: https://jupyterhub.ral.uksrc.org/
 
         db:
             pvc:

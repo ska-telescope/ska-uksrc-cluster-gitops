@@ -20,4 +20,4 @@ spec:
           authorize_url: https://ska-iam.stfc.ac.uk/authorize
           token_url: https://ska-iam.stfc.ac.uk/token
           userdata_url: https://ska-iam.stfc.ac.uk/userinfo
-        baseURL: https://jupyterhub.ral-stage.uksrc.org/jupyterhub
+        baseURL: https://jupyterhub.ral-stage.uksrc.org/
