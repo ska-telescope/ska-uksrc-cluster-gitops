@@ -31,7 +31,7 @@ data:
         machineCountMax: 3   
 
       - name: workers-medium
-        machineFlavor: l3.medium
+        machineFlavor: l3.small
         autoscale: true
         machineCountMin: 3
         machineCountMax: 10    
