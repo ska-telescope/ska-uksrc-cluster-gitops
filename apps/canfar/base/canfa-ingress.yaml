@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "canfar.ral.uksrc.org"  
+  - host: "place-holder-host"  
     http:
       paths:
       - path: /
