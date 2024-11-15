@@ -18,7 +18,7 @@ spec:
         - https://xrootd01.uksrc.rl.ac.uk:1094 
         - https://perfsonar01.jc.rl.ac.uk
         - https://google.com
-        - http://soda.130-246-81-193.sslip.io
+        - http://soda.ral.uksrc.org
 
 ---
 apiVersion: monitoring.coreos.com/v1
