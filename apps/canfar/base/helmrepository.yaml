@@ -1,0 +1,17 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: science-platform
+  namespace: skaha-system
+spec:
+  url: https://images.opencadc.org/chartrepo/platform
+  interval: 1h
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: science-platform-client
+  namespace: skaha-system
+spec:
+  url: https://images.opencadc.org/chartrepo/client 
+  interval: 1h
