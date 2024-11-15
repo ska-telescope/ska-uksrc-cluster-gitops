@@ -1,9 +1,9 @@
 resources:
-  - namespace.yaml
-  - helmrepository.yaml
-  - helmchart.yaml
-  - helmrelease.yaml
-  - canfa-ingress.yaml
-  - pv.yaml
-  - pvc.yaml
+  # - namespace.yaml
+  # - helmrepository.yaml
+  # - helmchart.yaml
+  # - helmrelease.yaml
+  # - canfa-ingress.yaml
+  # - pv.yaml
+  # - pvc.yaml
   # - posix-mapper/helmrelease.yaml
