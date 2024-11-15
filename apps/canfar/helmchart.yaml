@@ -1,12 +1,12 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmChart
-metadata:
-  name: base
-  namespace: skaha-system
-spec:
-  chart: base
-  version: "0.3.3" 
-  sourceRef:
-    kind: HelmRepository
-    name: science-platform
-  interval: 10m
+# apiVersion: source.toolkit.fluxcd.io/v1
+# kind: HelmChart
+# metadata:
+#   name: base
+#   namespace: skaha-system
+# spec:
+#   chart: base
+#   version: "0.3.3" 
+#   sourceRef:
+#     kind: HelmRepository
+#     name: science-platform
+#   interval: 10m
