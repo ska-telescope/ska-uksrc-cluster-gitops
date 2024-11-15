@@ -50,8 +50,8 @@ spec:
 
         # The Resource ID of the Service that contains the Posix Mapping information
         # posixMapperResourceID: "ivo://espsrc.iaa.csic.es/posix-mapper"
-        # posixMapperResourceID: "https://cam.uksrc.hpc.cam.ac.uk/posix-mapper"
-        posixMapperResourceID: "ivo://uksrc.org/posix-mapper"
+        posixMapperResourceID: "ivo://cam.uksrc.hpc.cam.ac.uk/posix-mapper"
+        # posixMapperResourceID: "ivo://uksrc.org/posix-mapper"
 
         # URI or URL of the OIDC (IAM) server
         oidcURI: https://ska-iam.stfc.ac.uk/
