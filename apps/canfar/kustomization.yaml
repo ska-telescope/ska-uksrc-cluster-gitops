@@ -6,4 +6,4 @@ resources:
   - canfa-ingress.yaml
   - pv.yaml
   - pvc.yaml
-  - posix-mapper/helmrelease.yaml
+  # - posix-mapper/helmrelease.yaml
