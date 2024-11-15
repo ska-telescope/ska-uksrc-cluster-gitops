@@ -11,7 +11,7 @@ resources:
   - ../../infra/overlays/ral
   - ../../apps/soda/overlays/ral
   # - ../../apps/gatekeeper
-  # - ../../apps/jupyterhub/overlays/ral
+  - ../../apps/jupyterhub/overlays/ral
   # - ../../apps/canfar/overlays/ral
   - ../../apps/canfar
 
