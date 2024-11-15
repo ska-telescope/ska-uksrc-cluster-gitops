@@ -174,7 +174,7 @@ spec:
               claimName: jupyterhub-ceph-volume
         extraVolumeMounts:
           - name: cephfs-share-static-pv
-            mountPath: /home/shared
+            mountPath: /home/jovyan/shared
 
       defaultUrl: /lab
       # Defines the default image
