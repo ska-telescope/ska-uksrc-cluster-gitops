@@ -1,25 +1,25 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: canfar-ingress
-#   namespace: skaha-system
-#   annotations:
-#     nginx.ingress.kubernetes.io/rewrite-target: /
-#     cert-manager.io/cluster-issuer: letsencrypt-prod
-# spec:
-#   ingressClassName: nginx
-#   rules:
-#   - host: "canfar.ral.uksrc.org"  
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: canfar-service
-#             port:
-#               number: 80
-#   tls:
-#   - hosts:
-#     - "canfar.ral.uksrc.org"
-#     secretName: canfar-tls-secret
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: canfar-ingress
+  namespace: skaha-system
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "canfar.ral.uksrc.org"  
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: canfar-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - "canfar.ral.uksrc.org"
+    secretName: canfar-tls-secret

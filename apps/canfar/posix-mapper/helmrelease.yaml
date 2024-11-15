@@ -1,68 +1,58 @@
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: posix-mapper
-#   namespace: skaha-system
-# spec:
-#   interval: 5m
-#   chart:
-#     spec:
-#       chart: posixmapper
-#       version: 0.1.11
-#       sourceRef:
-#         kind: HelmRepository
-#         name: science-platform
-#         namespace: skaha-system
-#   values:
-#     replicaCount: 1
-#     skaha:
-#       namespace: skaha-system
-#     deployment:
-#       hostname: canfar.ral.uksrc.org  # Change this to the actual hostname
-#     posixMapper:
-#       image:
-#         repository: images.opencadc.org/platform/posix-mapper
-#         tag: 0.2.1
-#         pullPolicy: IfNotPresent
-#       resourceID:  ivo://uksrc.org/posix-mapper
-#       oidcURI: https://ska-iam.stfc.ac.uk/
-#       gmsID: ivo://skao.int/gms
-#       resources:
-#         requests:
-#           memory: "500M"
-#           cpu: "500m"
-#         limits:
-#           memory: "500M"
-#           cpu: "500m"
-#       minUID: 1000
-#       minGID: 900000
-#       registryURL: https://spsrc27.iaa.csic.es/reg
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: posix-mapper
+  namespace: skaha-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: posixmapper
+      version: 0.1.11
+      sourceRef:
+        kind: HelmRepository
+        name: science-platform
+        namespace: skaha-system
+  values:
+    replicaCount: 1
+    skaha:
+      namespace: skaha-system
+    deployment:
+      hostname: canfar.ral.uksrc.org  # Change this to the actual hostname
+    posixMapper:
+      image:
+        repository: images.opencadc.org/platform/posix-mapper
+        tag: 0.2.1
+        pullPolicy: IfNotPresent
+      resourceID:  ivo://uksrc.org/posix-mapper
+      oidcURI: https://ska-iam.stfc.ac.uk/
+      gmsID: ivo://skao.int/gms
+      resources:
+        requests:
+          memory: "500M"
+          cpu: "500m"
+        limits:
+          memory: "500M"
+          cpu: "500m"
+      minUID: 1000
+      minGID: 900000
+      registryURL: https://spsrc27.iaa.csic.es/reg
 
-#       # Optionally mount a custom CA certificate
-#       extraVolumeMounts:
-#       - mountPath: "/config/cacerts"
-#         name: cacert-volume
+      # Optionally mount a custom CA certificate
+      extraVolumeMounts:
+      - mountPath: "/config/cacerts"
+        name: cacert-volume
 
-#       # Create the CA certificate volume to be mounted in extraVolumeMounts
-#       extraVolumes:
-#       - name: cacert-volume
-#         secret:
-#           defaultMode: 420
-#           secretName: canfar-tls-secret
+      # Create the CA certificate volume to be mounted in extraVolumeMounts
+      extraVolumes:
+      - name: cacert-volume
+        secret:
+          defaultMode: 420
+          secretName: canfar-tls-secret
 
-#     storage:
-#       service:
-#         persistentVolumeClaim:
-#           claimName: skaha-pvc
-#     # delete this later
-#     # secrets:
-#     #   postgresql:
-#     #     auth:
-#     #       username: posixmapper
-#     #       password: posixmapperpwd
-#     #       database: mapping
-#     #       schema: mapping
-#     secrets:
-#       # secretName: posixmapper-db-secret
-#     base:
-#       install: false
+    storage:
+      service:
+        persistentVolumeClaim:
+          claimName: skaha-pvc
+    base:
+      install: false
