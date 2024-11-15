@@ -62,7 +62,7 @@ spec:
         ingressClassResource:
           name: gatekeeper-nginx
           controllerValue: skao.int/gatekeeper-nginx
-        ingressClass: gatekeeper-nginx          
+        ingressClass: gatekeeper-nginx
         allowSnippetAnnotations: true
         extraArgs:
           enable-ssl-passthrough: ""
