@@ -1,22 +1,22 @@
-# apiVersion: helm.toolkit.fluxcd.io/v2
-# kind: HelmRelease
-# metadata:
-#   name: base
-#   namespace: skaha-system
-# spec:
-#   interval: 5m
-#   chart:
-#     spec:
-#       chart: base
-#       version: "0.3.3"
-#       sourceRef:
-#         kind: HelmRepository
-#         name: science-platform
-#         namespace: skaha-system
-#   values:
-#     skaha:
-#       namespace: skaha-system
-#     skahaWorkload:
-#       namespace: skaha-workload
-#     ingress:
-#       controller: nginx
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: base
+  namespace: skaha-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: base
+      version: "0.3.3"
+      sourceRef:
+        kind: HelmRepository
+        name: science-platform
+        namespace: skaha-system
+  values:
+    skaha:
+      namespace: skaha-system
+    skahaWorkload:
+      namespace: skaha-workload
+    ingress:
+      controller: nginx

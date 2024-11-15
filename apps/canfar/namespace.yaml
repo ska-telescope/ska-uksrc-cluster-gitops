@@ -1,13 +1,13 @@
-# apiVersion: v1
-# kind: Namespace
-# metadata:
-#   name: skaha-system
-#   labels:
-#     app.kubernetes.io/managed-by: fluxcd
-# ---
-# apiVersion: v1
-# kind: Namespace
-# metadata:
-#   name: skaha-workload
-#   labels:
-#     app.kubernetes.io/managed-by: fluxcd
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: skaha-system
+  labels:
+    app.kubernetes.io/managed-by: fluxcd
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: skaha-workload
+  labels:
+    app.kubernetes.io/managed-by: fluxcd
