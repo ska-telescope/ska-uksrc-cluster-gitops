@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: posix-mapper-ingress
+  namespace: skaha-system
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: canfar.ral.uksrc.org
+    http:
+      paths:
+      - path: /posix-mapper
+        pathType: Prefix
+        backend:
+          service:
+            name: posix-mapper-tomcat-svc
+            port:
+              number: 8080

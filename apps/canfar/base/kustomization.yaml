@@ -7,3 +7,4 @@ resources:
   - pv.yaml
   - pvc.yaml
   - posix-mapper/helmrelease.yaml
+  - skaha/helmrelease.yaml
