@@ -12,8 +12,8 @@ resources:
   - ../../apps/soda/overlays/ral
   # - ../../apps/gatekeeper
   - ../../apps/jupyterhub/overlays/ral
-  # - ../../apps/canfar/overlays/ral
-  - ../../apps/canfar
+  - ../../apps/canfar/overlays/ral
+
 
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
