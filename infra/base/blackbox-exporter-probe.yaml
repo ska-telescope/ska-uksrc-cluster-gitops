@@ -20,24 +20,5 @@ spec:
         - https://google.com
         - http://soda.ral.uksrc.org
 
----
-apiVersion: monitoring.coreos.com/v1
-kind: Probe
-metadata:
-  labels:
-    app.kubernetes.io/component: exporter
-    app.kubernetes.io/name: blackbox-exporter
-    app.kubernetes.io/part-of: kube-prometheus
-    release: kube-prometheus-stack 
-  name: demo-probe-custom
-  namespace: monitoring-system
-spec:
-  module: http_custom
-  prober:
-    url: prometheus-blackbox-exporter.monitoring-system.svc:9115
-  targets:
-    staticConfig:
-      static:
-        - https://does-not-exist.com
-        - https://testsitewith404.com 
+
 
