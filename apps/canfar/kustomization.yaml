@@ -1,5 +1,5 @@
 resources:
-  - namespace.yaml
+  # - namespace.yaml
   - helmrepository.yaml
   - helmchart.yaml
   - helmrelease.yaml
