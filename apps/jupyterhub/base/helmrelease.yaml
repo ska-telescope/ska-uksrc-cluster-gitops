@@ -175,6 +175,7 @@ spec:
         extraVolumeMounts:
           - name: cephfs-share-static-pv
             mountPath: /home/jovyan/shared
+            readOnly: true
 
       defaultUrl: /lab
       # Defines the default image
