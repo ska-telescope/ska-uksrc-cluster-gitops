@@ -4,8 +4,8 @@ resources:
   - helmchart.yaml
   - helmrelease.yaml
   - canfa-ingress.yaml
-  - pv.yaml
-  - pvc.yaml
+  # - pv.yaml
+  # - pvc.yaml
   # - posix-mapper/helmrelease.yaml
   # - skaha/helmrelease.yaml
   # - science-portal/helmrelease.yaml  # note
