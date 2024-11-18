@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jupyterhub-cephfs-static-pv
+spec:
+  accessModes:
+  - ReadOnlyMany
+  capacity:
+    storage: 100Gi
+  csi:
+    driver: cephfs.csi.ceph.com
+    nodeStageSecretRef:
+      name: csi-cephfs-secret
+      namespace: csi-ceph-system
+    volumeAttributes:
+      "clusterID": "2660d5ed-e7ef-4950-a051-c84a0b4e78b0"
+      "staticVolume": "true"
+      "rootPath": "/ska"
+    volumeHandle: jupyterhub-cephfs-static-pv
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
