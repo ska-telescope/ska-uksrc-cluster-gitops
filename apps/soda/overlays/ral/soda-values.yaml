@@ -6,4 +6,10 @@ metadata:
 spec:
   values:
     ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod    
       host: soda.ral.uksrc.org
+      tls:
+        - hosts: 
+          - soda.ral.uksrc.org
+          secretName: soda-ingress-cert      
