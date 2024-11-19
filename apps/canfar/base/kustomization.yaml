@@ -7,9 +7,7 @@ resources:
   - persistent-volume-service.yaml
   - persistent-volume-sessions.yaml
   - persistent-volume-carven.yaml
-  # - pv.yaml
-  # - pvc.yaml
   - posix-mapper/helmrelease.yaml
   - skaha/helmrelease.yaml
-  # - science-portal/helmrelease.yaml  # note
+  - science-portal/helmrelease.yaml 
   - cavern/helmrelease.yaml
