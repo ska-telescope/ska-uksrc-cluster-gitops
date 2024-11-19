@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: csi-cephfs
+  name: ceph-csi
   namespace: csi-ceph-system
 spec:
   chart:
@@ -10,9 +10,9 @@ spec:
       chart: ceph-csi-cephfs
       sourceRef:
         kind: HelmRepository
-        name: csi-cephfs
+        name: ceph-csi
   interval: 1m
-  releaseName: csi-cephfs
+  releaseName: ceph-csi
   install:
     createNamespace: true
     remediation:
