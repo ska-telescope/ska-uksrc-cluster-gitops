@@ -6,10 +6,11 @@ resources:
   - ../../components/cluster-api
   - ../../components/cluster
 # After bootstrap add the apps and services here
-  # - ../../infra/ceph-share/overlays/ral-stage
+  - ../../infra/ceph-share/overlays/ral-stage
   - ../../infra/overlays/ral-stage
   - ../../apps/soda/overlays/ral-stage
-  # - ../../apps/jupyterhub/overlays/ral-stage
+  - ../../apps/gatekeeper  
+  - ../../apps/jupyterhub/overlays/ral-stage
   
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
