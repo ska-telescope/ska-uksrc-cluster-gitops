@@ -29,8 +29,7 @@ spec:
         imagePullPolicy: Always
 
         # How cavern identifies itself.
-        # resourceID: "ivo://cam.uksrc.hpc.cam.ac.uk/posix-mapper"
-        resourceID: "ivo://espsrc.iaa.csic.es/posix-mapper"
+        resourceID: "ivo://canfar.ral.uksrc.org/posix-mapper"
 
         # Set the Registry URL pointing to the desired registry (https:// URL)
         registryURL: https://spsrc27.iaa.csic.es/reg
