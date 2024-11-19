@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: ceph-share
+  name: csi-cephfs
   namespace: csi-ceph-system
 spec:
   chart:
@@ -32,3 +32,7 @@ spec:
       name: csi-cephfs-secret
       valuesKey: userKey
       targetPath: secret.userKey
+  values:
+    ceph-conf: |
+
+    csiConfig: |
