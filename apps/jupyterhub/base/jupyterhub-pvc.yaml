@@ -13,4 +13,5 @@ spec:
   storageClassName: ""
   volumeMode: Filesystem
   # volumeName should be same as PV name
-  volumeName: jupyterhub-cephfs-static-pv
+  volumeName: cephfs-share-static-pv
+  # volumeName: jupyterhub-cephfs-static-pv  
