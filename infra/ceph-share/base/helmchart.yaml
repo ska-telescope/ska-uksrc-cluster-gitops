@@ -1,0 +1,13 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmChart
+metadata:
+  name: csi-cephfs
+  namespace: csi-ceph-system
+spec:
+  chart: csi-cephfs
+  version: "3.11.0"
+  sourceRef:
+    kind: HelmRepository
+    name: csi-cephfs
+  interval: 1m0s
