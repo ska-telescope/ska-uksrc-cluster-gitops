@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cavern-pv
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  capacity:
+    storage: 10Gi
+  storageClassName: csi-cinder
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: cinder.csi.openstack.org
+    volumeHandle: b886bf61-464c-47e1-a726-ba9c83abfe40
+    fsType: ext4
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cavern-pvc
+  namespace: skaha-system
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  storageClassName: csi-cinder
+  resources:
+    requests:
+      storage: 10Gi
