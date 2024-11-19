@@ -5,7 +5,7 @@ resources:
   - helmrelease.yaml
   - canfa-ingress.yaml
   - persistent-volume-service.yaml
-  # - persistent-volume-sessions.yaml
+  - persistent-volume-sessions.yaml
   # - pv.yaml
   # - pvc.yaml
   - posix-mapper/helmrelease.yaml
