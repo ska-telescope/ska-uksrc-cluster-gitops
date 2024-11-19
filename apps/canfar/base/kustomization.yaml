@@ -9,6 +9,6 @@ resources:
   # - pv.yaml
   # - pvc.yaml
   - posix-mapper/helmrelease.yaml
-  # - skaha/helmrelease.yaml
+  - skaha/helmrelease.yaml
   # - science-portal/helmrelease.yaml  # note
   # - cavern/helmrelease.yaml
