@@ -2,10 +2,10 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmChart
 metadata:
-  name: csi-cephfs
+  name: ceph-csi
   namespace: csi-ceph-system
 spec:
-  chart: csi-cephfs
+  chart: ceph-csi-cephfs
   version: "3.11.0"
   sourceRef:
     kind: HelmRepository
