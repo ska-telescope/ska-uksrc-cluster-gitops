@@ -24,7 +24,7 @@ spec:
         repository: images.opencadc.org/platform/posix-mapper
         tag: 0.2.1
         pullPolicy: IfNotPresent
-      resourceID:  ivo://uksrc.org/posix-mapper
+      resourceID:  ivo://canfar.ral.uksrc.org/posix-mapper
       oidcURI: https://ska-iam.stfc.ac.uk/
       gmsID: ivo://skao.int/gms
       resources:
