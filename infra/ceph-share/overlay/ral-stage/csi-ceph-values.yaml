@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: csi-cephfs
+  namespace: csi-ceph-system
+spec:
+  values:
+    ceph-conf: |
+      [global]
+        auth supported = cephx
+        fsid=2660d5ed-e7ef-4950-a051-c84a0b4e78b0
+        auth_cluster_required = cephx
+        auth_service_required = cephx
+        auth_client_required = cephx
+        mon_host=deneb-dev-mon1.nubes.rl.ac.uk, deneb-dev-mon2.nubes.rl.ac.uk, deneb-dev-mon3.nubes.rl.ac.uk
+        mon_initial_members=deneb-dev-mon1,deneb-dev-mon2,deneb-dev-mon3
+        public_network=130.246.208.0/23,130.246.181.0/24
+    keyring: ""
+
+    csiConfig: |
+      config.json: |-
+        [
+          {
+            "clusterID": "2660d5ed-e7ef-4950-a051-c84a0b4e78b0",
+            "monitors": [
+              "deneb-dev-mon1.nubes.rl.ac.uk",
+              "deneb-dev-mon2.nubes.rl.ac.uk",
+              "deneb-dev-mon3.nubes.rl.ac.uk"
+            ]
+          }
+        ]

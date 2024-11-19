@@ -169,11 +169,11 @@ spec:
           storageClass: csi-cinder
         capacity: 1Gi
         extraVolumes:
-          - name: cephfs-share-static-pv
+          - name: jupyterhub-cephfs-static-pv
             persistentVolumeClaim:
               claimName: jupyterhub-ceph-volume
         extraVolumeMounts:
-          - name: cephfs-share-static-pv
+          - name: jupyterhub-cephfs-static-pv
             mountPath: /home/jovyan/shared
             readOnly: true
 

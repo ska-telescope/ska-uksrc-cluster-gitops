@@ -1,0 +1,38 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: csi-cephfs
+  namespace: csi-ceph-system
+spec:
+  chart:
+    spec:
+      chart: csi-cephfs
+      sourceRef:
+        kind: HelmRepository
+        name: csi-cephfs
+  interval: 1m
+  releaseName: csi-cephfs
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+    cleanupOnFail: true
+  driftDetection:
+    mode: enabled
+  valuesFrom:
+    - kind: Secret
+      name: csi-cephfs-secret
+      valuesKey: userID
+      targetPath: secret.userID
+    - kind: Secret
+      name: csi-cephfs-secret
+      valuesKey: userKey
+      targetPath: secret.userKey
+  values:
+    ceph-conf: |
+
+    csiConfig: |
