@@ -14,7 +14,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: cinder.csi.openstack.org
-    volumeHandle: 6d689c6a-9851-4e1b-a86a-1031ce3f1629
+    volumeHandle: 4b486634-b493-4468-9aac-22b8fd65e7af
     fsType: ext4
 
 ---
