@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - helmrelease.yaml
   - helmrepository.yaml
+  - helmchart.yaml
   - csi-cephfs-secret.yaml
   - namespace.yaml

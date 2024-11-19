@@ -5,7 +5,7 @@ metadata:
   name: csi-cephfs
   namespace: csi-ceph-system
 spec:
-  chart: csi-cephfs
+  chart: ceph-csi-cephfs
   version: "3.11.0"
   sourceRef:
     kind: HelmRepository
