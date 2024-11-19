@@ -160,5 +160,7 @@ spec:
           # Example is the persistentVolumeClaim below.  Do not uncomment this
           # or Helm will use it as the default, even if a different spec
           # is specified.
+          # persistentVolumeClaim:
+          #   claimName: skaha-pvc
           persistentVolumeClaim:
-            claimName: skaha-pvc
+            claimName: cavern-pvc
