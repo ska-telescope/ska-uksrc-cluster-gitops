@@ -5,7 +5,7 @@ metadata:
   namespace: csi-ceph-system
 spec:
   values:
-    ceph-conf: |
+    cephconf: |
       [global]
         auth supported = cephx
         fsid=2660d5ed-e7ef-4950-a051-c84a0b4e78b0
