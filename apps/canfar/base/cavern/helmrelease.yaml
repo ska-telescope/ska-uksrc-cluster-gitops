@@ -25,9 +25,6 @@ spec:
     deployment:
       hostname: canfar.ral.uksrc.org
       cavern:
-        image: images.opencadc.org/platform/cavern:0.7.14
-        imagePullPolicy: Always
-
         # How cavern identifies itself.
         resourceID: "ivo://canfar.ral.uksrc.org/posix-mapper"
 
@@ -70,11 +67,17 @@ spec:
 
           # The adminUsername is required to be set whomever has admin access over the
           # filesystem.dataDir above.
+          # rootOwner:
+          #   adminUsername: "bo307"
+          #   username: "bo307"
+          #   uid: 10002
+          #   gid: 10002
+
           rootOwner:
-            adminUsername: "bo307"
-            username: "bo307"
-            uid: 10002
-            gid: 10002
+            adminUsername: "root"
+            username: "root"
+            uid: 1000
+            gid: 1000
 
 
           # (optional) base directory exposed for sshfs mounts
