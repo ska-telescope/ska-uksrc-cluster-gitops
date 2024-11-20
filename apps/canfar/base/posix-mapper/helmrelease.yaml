@@ -35,7 +35,8 @@ spec:
           memory: "500M"
           cpu: "500m"
       minUID: 10000
-      minGID: 900000
+      # minGID: 900000
+      minGID: 10000
       registryURL: https://spsrc27.iaa.csic.es/reg
 
       # Optionally mount a custom CA certificate
