@@ -35,4 +35,4 @@ spec:
   values:
     cephconf: |
 
-    csiConfig: |
+    csiConfig:
