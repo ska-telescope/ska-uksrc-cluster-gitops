@@ -10,4 +10,4 @@ resources:
   - posix-mapper/helmrelease.yaml
   - skaha/helmrelease.yaml
   # - science-portal/helmrelease.yaml       # IMPORTANT! do not enable this
-  - cavern/helmrelease.yaml
+  # - cavern/helmrelease.yaml
