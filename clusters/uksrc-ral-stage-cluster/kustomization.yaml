@@ -10,7 +10,7 @@ resources:
   - ../../infra/overlays/ral-stage
   - ../../apps/soda/overlays/ral-stage
   - ../../apps/gatekeeper  
-  - ../../apps/jupyterhub/overlays/ral-stage
+  # - ../../apps/jupyterhub/overlays/ral-stage
   
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
