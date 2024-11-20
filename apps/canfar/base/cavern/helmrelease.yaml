@@ -67,18 +67,6 @@ spec:
 
           # The adminUsername is required to be set whomever has admin access over the
           # filesystem.dataDir above.
-          # rootOwner:
-          #   adminUsername: "bo307"
-          #   username: "bo307"
-          #   uid: 10002
-          #   gid: 10002
-
-          # rootOwner:
-          #   adminUsername: "root"
-          #   username: "root"
-          #   uid: 1000
-          #   gid: 1000
-
           rootOwner:
             adminUsername: "bo307"
             username: "bo307"
