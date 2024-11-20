@@ -34,7 +34,7 @@ spec:
         limits:
           memory: "500M"
           cpu: "500m"
-      minUID: 1000
+      minUID: 10000
       minGID: 900000
       registryURL: https://spsrc27.iaa.csic.es/reg
 
