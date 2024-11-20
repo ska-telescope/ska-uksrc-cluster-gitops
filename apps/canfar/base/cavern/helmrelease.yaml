@@ -73,11 +73,17 @@ spec:
           #   uid: 10002
           #   gid: 10002
 
+          # rootOwner:
+          #   adminUsername: "root"
+          #   username: "root"
+          #   uid: 1000
+          #   gid: 1000
+
           rootOwner:
-            adminUsername: "root"
-            username: "root"
-            uid: 1000
-            gid: 1000
+            adminUsername: "bo307"
+            username: "bo307"
+            uid: 10001
+            gid: 10001
 
 
           # (optional) base directory exposed for sshfs mounts
