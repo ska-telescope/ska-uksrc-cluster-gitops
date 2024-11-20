@@ -6,8 +6,9 @@ resources:
   - canfa-ingress.yaml
   - persistent-volume-service.yaml
   - persistent-volume-sessions.yaml
-  - persistent-volume-carven.yaml
+  # - persistent-volume-carven.yaml
   - posix-mapper/helmrelease.yaml
   - skaha/helmrelease.yaml
-  # - science-portal/helmrelease.yaml       # IMPORTANT! do not enable this
   - cavern/helmrelease.yaml
+
+     # IMPORTANT! do not enable this science-portal/helmrelease.yaml  
