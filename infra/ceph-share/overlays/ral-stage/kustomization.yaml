@@ -7,5 +7,5 @@ patches:
   - path: csi-ceph-values.yaml
     target:
       kind: HelmRelease
-      name: csi-cephfs
+      name: ceph-csi
   - path: csi-cephfs-secret.yaml

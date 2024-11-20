@@ -33,6 +33,6 @@ spec:
       valuesKey: userKey
       targetPath: secret.userKey
   values:
-    ceph-conf: |
+    cephconf: |
 
     csiConfig: |
