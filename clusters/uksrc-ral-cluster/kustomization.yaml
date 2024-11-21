@@ -10,10 +10,9 @@ resources:
   - ../../infra/ceph-share
   - ../../infra/overlays/ral
   - ../../apps/soda/overlays/ral
-  - ../../apps/gatekeeper
+  - ../../apps/gatekeeper/overlays/ral
   - ../../apps/jupyterhub/overlays/ral
   - ../../apps/canfar/overlays/ral
-
 
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
