@@ -26,6 +26,6 @@ spec:
         default:
           defaultCertificate:
               # Tell Traefik to use the mounted secrets above as the default server certificates
-            secretName: canfar-tls-secret
+            secretName: canfar-tls-new-secret
         service:
             loadBalancerIP: "130.246.80.185"
