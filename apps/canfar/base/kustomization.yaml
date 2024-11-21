@@ -3,7 +3,7 @@ resources:
   - helmrepository.yaml
   - helmchart.yaml
   - helmrelease.yaml
-  - canfa-ingress.yaml
+  # - canfa-ingress.yaml
   - pv-pvc-manila.yaml
   # - posix-mapper/helmrelease.yaml
   # - skaha/helmrelease.yaml
