@@ -4,9 +4,7 @@ resources:
   - helmchart.yaml
   - helmrelease.yaml
   - canfa-ingress.yaml
-  # - persistent-volume-service.yaml
-  # - persistent-volume-sessions.yaml
-  # - persistent-volume-carven.yaml
+  - pv-pvc-manila.yaml
   # - posix-mapper/helmrelease.yaml
   # - skaha/helmrelease.yaml
   # - cavern/helmrelease.yaml
