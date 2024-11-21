@@ -4,7 +4,7 @@ metadata:
   name: canfar-certificate
   namespace: skaha-system
 spec:
-  secretName: canfar-tls-secret
+  secretName: canfar-tls-new-secret
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
