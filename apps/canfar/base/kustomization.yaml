@@ -6,9 +6,9 @@ resources:
   # - canfar-certificate.yaml
   - pv-pvc-manila.yaml
   - canfar-ingress.yaml
-  - posix-mapper/helmrelease.yaml
-  - skaha/helmrelease.yaml
-  - cavern/helmrelease.yaml
+  # - posix-mapper/helmrelease.yaml
+  # - skaha/helmrelease.yaml
+  # - cavern/helmrelease.yaml
 
      # IMPORTANT! do not enable this science-portal/helmrelease.yaml  
    
