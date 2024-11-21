@@ -103,6 +103,9 @@ spec:
         extraVolumeMounts:
         - mountPath: "/config/cacerts"
           name: cacert-volume
+          #add to test
+        - mountPath: "/data"
+          name: skaha-workload-cavern-volume
 
         # Create the CA certificate volume to be mounted in extraVolumeMounts
         extraVolumes:
@@ -110,6 +113,10 @@ spec:
           secret:
             defaultMode: 420
             secretName: canfar-tls-secret
+          # add this to test
+        - name: skaha-workload-cavern-volume
+          persistentVolumeClaim:
+            claimName: skaha-workload-cavern-pvc
 
         # Resources provided to the Skaha service.
         resources:
