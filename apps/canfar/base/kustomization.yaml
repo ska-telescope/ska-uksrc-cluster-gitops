@@ -5,7 +5,7 @@ resources:
   - helmrelease.yaml
   - canfa-ingress.yaml
   - pv-pvc-manila.yaml
-  # - posix-mapper/helmrelease.yaml
+  - posix-mapper/helmrelease.yaml
   # - skaha/helmrelease.yaml
   # - cavern/helmrelease.yaml
 
