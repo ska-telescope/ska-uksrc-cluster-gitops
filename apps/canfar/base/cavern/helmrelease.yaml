@@ -37,8 +37,7 @@ spec:
         # nodeAffinity: {}
 
         # The Resource ID of the Service that contains the Posix Mapping information
-        # posixMapperResourceID: "https://cam.uksrc.hpc.cam.ac.uk/posix-mapper"
-        posixMapperResourceID: "ivo://espsrc.iaa.csic.es/posix-mapper"
+        posixMapperResourceID: "ivo://canfar.ral.uksrc.org/posix-mapper"
 
         # URI or URL of the OIDC (IAM) server.  Used to validate incoming tokens.  Required.
         oidcURI: https://ska-iam.stfc.ac.uk/
