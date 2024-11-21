@@ -100,13 +100,6 @@ spec:
         # Don't forget to update your registry entries!
         # endpoint: "/cavern"
 
-        # Optionally set the DEBUG port.
-        # extraEnv:
-        # - name: CATALINA_OPTS
-        #   value: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:5555"
-        # - name: JAVA_OPTS
-        #   value: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:5555"
-
         # Optionally mount a custom CA certificate
         extraVolumeMounts:
         - mountPath: "/config/cacerts"
@@ -127,36 +120,9 @@ spec:
           limits:
             memory: "1Gi"
             cpu: "500m"
-
-      # Specify extra hostnames that will be added to the Pod's /etc/hosts file.  Note that this is in the
-      # deployment object, not the skaha one.
-      # extraHosts:
-      #   - ip: 127.3.34.5
-      #     hostname: myhost.example.org
-      # extraHosts: []
-
-    # secrets:
-      # Uncomment to enable local or self-signed CA certificates for your domain to be trusted.
-      # cavern-cacert-secret:
-      #   ca.crt: <base64 encoded CA crt>
-
-    # Exposed extra ports.  Uncomment the java-debug port to expose and debug issues.
-    # service:
-    #   cavern:
-    #     extraPorts:
-      #   - port: 5555
-      #     protocol: TCP
-      #     name: java-debug
-
     # Set these appropriately to match your Persistent Volume Claim labels.
     storage:
       service:
         spec:
-          # YAML for service mounted storage.
-          # Example is the persistentVolumeClaim below.  Do not uncomment this
-          # or Helm will use it as the default, even if a different spec
-          # is specified.
-          # persistentVolumeClaim:
-          #   claimName: skaha-pvc
           persistentVolumeClaim:
-            claimName: cavern-pvc
+            claimName: skaha-pvc
