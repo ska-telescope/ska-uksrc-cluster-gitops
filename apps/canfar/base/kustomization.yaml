@@ -4,7 +4,7 @@ resources:
   - helmchart.yaml
   - helmrelease.yaml
   # - canfar-certificate.yaml
-  # - pv-pvc-manila.yaml
+  - pv-pvc-manila.yaml
   - canfar-ingress.yaml
   # - posix-mapper/helmrelease.yaml
   # - skaha/helmrelease.yaml
