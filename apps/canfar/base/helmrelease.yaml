@@ -18,5 +18,9 @@ spec:
       namespace: skaha-system
     skahaWorkload:
       namespace: skaha-workload
-    ingress:
-      controller: nginx
+    # ingress:
+    #   controller: nginx
+    traefik:
+        install: true
+        service:
+            loadBalancerIP: "130.246.80.185"
