@@ -66,12 +66,17 @@ spec:
 
           # The adminUsername is required to be set whomever has admin access over the
           # filesystem.dataDir above.
-          rootOwner:
-            adminUsername: "bo307"
-            username: "bo307"
-            uid: 10001
-            gid: 10001
+          # rootOwner:
+          #   adminUsername: "bo307"
+          #   username: "bo307"
+          #   uid: 10001
+          #   gid: 10001
 
+          rootOwner:
+            adminUsername: "root"
+            username: "root"
+            uid: 1000
+            gid: 1000
 
           # (optional) base directory exposed for sshfs mounts
           # sshfs:

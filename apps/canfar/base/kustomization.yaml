@@ -4,9 +4,9 @@ resources:
   - helmchart.yaml
   - helmrelease.yaml
   - canfa-ingress.yaml
-  # - pv-pvc-manila.yaml
-  # - posix-mapper/helmrelease.yaml
-  # - skaha/helmrelease.yaml
-  # - cavern/helmrelease.yaml
+  - pv-pvc-manila.yaml
+  - posix-mapper/helmrelease.yaml
+  - skaha/helmrelease.yaml
+  - cavern/helmrelease.yaml
 
      # IMPORTANT! do not enable this science-portal/helmrelease.yaml  
