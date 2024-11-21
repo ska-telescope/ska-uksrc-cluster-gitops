@@ -22,5 +22,10 @@ spec:
     #   controller: nginx
     traefik:
         install: true
+        tlsStore:
+        default:
+          defaultCertificate:
+              # Tell Traefik to use the mounted secrets above as the default server certificates
+            secretName: canfar-tls-secret
         service:
             loadBalancerIP: "130.246.80.185"
