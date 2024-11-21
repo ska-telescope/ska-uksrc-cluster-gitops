@@ -34,11 +34,10 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  selector:
-    matchExpressions:
-    - key: name
-      operator: In
-      values: ["cavern-cephfs"]
+  storageClassName: ""
+  volumeMode: Filesystem
+  # volumeName should be same as PV name
+  volumeName: cavern-cephfs
 
 ---
 apiVersion: v1
@@ -52,8 +51,9 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  selector:
-    matchExpressions:
-    - key: name
-      operator: In
-      values: ["cavern-cephfs"]
+  storageClassName: ""
+  volumeMode: Filesystem
+  # volumeName should be same as PV name
+  volumeName: cavern-cephfs
+
+
