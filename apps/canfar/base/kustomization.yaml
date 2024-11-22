@@ -8,7 +8,7 @@ resources:
   - posix-mapper/helmrelease.yaml
   - skaha/helmrelease.yaml
   - cavern/helmrelease.yaml
-  # - canfar-certificate.yaml
+  - canfar-certificate.yaml
   # - storage-ui/helmrelease.yaml # wrong chart name
 
      # IMPORTANT! do not enable this science-portal/helmrelease.yaml  
