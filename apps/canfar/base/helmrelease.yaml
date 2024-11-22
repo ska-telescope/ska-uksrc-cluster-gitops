@@ -1,37 +1,3 @@
-# apiVersion: helm.toolkit.fluxcd.io/v2
-# kind: HelmRelease
-# metadata:
-#   name: base
-#   namespace: skaha-system
-# spec:
-#   interval: 5m
-#   chart:
-#     spec:
-#       chart: base
-#       version: "0.3.3"
-#       sourceRef:
-#         kind: HelmRepository
-#         name: science-platform
-#         namespace: skaha-system
-#   values:
-#     skaha:
-#       namespace: skaha-system
-#     skahaWorkload:
-#       namespace: skaha-workload
-#     # ingress:
-#     #   controller: nginx
-#     traefik:
-#         install: true
-#         tlsStore:
-#         default:
-#           defaultCertificate:
-#               # Tell Traefik to use the mounted secrets above as the default server certificates
-#             secretName: canfar-tls-new-secret
-#         service:
-#             loadBalancerIP: "130.246.80.185"
-
-
-
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -52,5 +18,7 @@ spec:
       namespace: skaha-system
     skahaWorkload:
       namespace: skaha-workload
-    ingress:
-      controller: nginx
+    traefik:
+      install: true
+      service:
+        loadBalancerIP: 130.246.80.185  
