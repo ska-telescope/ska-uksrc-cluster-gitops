@@ -20,5 +20,8 @@ spec:
       namespace: skaha-workload
     traefik:
       install: true
-      service:
-        loadBalancerIP: 130.246.80.185  
+      ports:
+        service:
+          loadBalancerIP: 130.246.80.185  
+          
+        
