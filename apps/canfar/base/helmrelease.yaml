@@ -21,7 +21,8 @@ spec:
     traefik:
       install: true
       service:
-        spec: {loadBalancerIP: "130.246.80.185"}
+        spec: 
+          loadBalancerIP: "130.246.80.185"
 
             
           

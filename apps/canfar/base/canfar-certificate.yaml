@@ -4,9 +4,9 @@ metadata:
   name: canfar-certificate
   namespace: skaha-system
 spec:
-  secretName: canfar-tls-new-secret
+  secretName: canfar-tls-secret
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-  - "canfar.ral.130-246-80-185.sslip.io" 
+  - "canfar.ral.uksrc.org" 
