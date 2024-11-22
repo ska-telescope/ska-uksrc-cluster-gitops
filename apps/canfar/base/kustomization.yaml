@@ -5,11 +5,11 @@ resources:
   - helmrelease.yaml
   # - canfar-certificate.yaml
   - pv-pvc-manila.yaml
-  - canfar-ingress.yaml
-  - posix-mapper/helmrelease.yaml
-  - skaha/helmrelease.yaml
-  - cavern/helmrelease.yaml
-  # - storage-ui/helmrelease.yaml
+  # - canfar-ingress.yaml
+  # - posix-mapper/helmrelease.yaml
+  # - skaha/helmrelease.yaml
+  # - cavern/helmrelease.yaml
+  # - storage-ui/helmrelease.yaml # wrong chart name
 
      # IMPORTANT! do not enable this science-portal/helmrelease.yaml  
    
