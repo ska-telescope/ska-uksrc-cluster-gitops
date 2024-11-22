@@ -31,7 +31,7 @@ spec:
           port: 443
           containerPort: 80
           loadBalancerIP: 130.246.80.185
-           name: "https-websecure"
+          name: "https-websecure"
           exposedPort: 443
             
           
