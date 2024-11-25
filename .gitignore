@@ -8,6 +8,11 @@ secrets/*
 apps/canfar/base/science-portal/values.yaml
 apps/canfar/base/storage-ui/values.yaml
 apps/canfar/base/skaha/custom-skaha-ingress.yaml
+apps/canfar/base/posix-mapper/custom-posix-mapper-ingress.yaml
+apps/canfar/base/science-portal/custom-scienceportal-ingress.yaml
+apps/canfar/base/cavern/custom-cavern-ingress.yaml
+apps/canfar/base/storage-ui/custom-storage-ui-ingress.yaml
+
 apps/canfar/base/skaha/test.txt
 
 # Don't track unsealed credentials files
