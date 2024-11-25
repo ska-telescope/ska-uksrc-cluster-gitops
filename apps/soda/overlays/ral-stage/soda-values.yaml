@@ -7,3 +7,7 @@ spec:
   values:
     ingress:
       host: soda.ral-stage.uksrc.org
+      tls:
+        - hosts: 
+          - soda.ral-stage.uksrc.org
+          secretName: soda-ingress-cert      
