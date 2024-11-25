@@ -1,18 +1,15 @@
-{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
-{{- $pvc := lookup "v1" "PersistentVolumeClaim" .Release.Namespace "soda-pvc" }}
-{{- if not $pvc }}
-kind: PersistentVolumeClaim
+---
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: soda-pvc
-  annotations:
-    "helm.sh/resource-policy": keep  
+  namespace: ska-src-soda
 spec:
-  storageClassName: {{ .Values.persistence.storageClass }}
   accessModes:
-    - {{ .Values.persistence.accessMode | quote }}
+  - ReadOnlyMany
   resources:
     requests:
-      storage: {{ .Values.persistence.size | quote }}
-{{- end }}
-{{- end }}
+      storage: 100Gi
+  storageClassName: ""
+  volumeMode: Filesystem
+  volumeName: soda-cephfs-static-pv

@@ -4,3 +4,4 @@ resources:
   - helmRelease.yaml
   - gitRepository.yaml
   - namespace.yaml
+  - soda-pvc.yaml
