@@ -7,7 +7,7 @@ resources:
   - canfar-ingress.yaml
   - posix-mapper/helmrelease.yaml
   - skaha/helmrelease.yaml
-  # - cavern/helmrelease.yaml
+  - cavern/helmrelease.yaml
 
   # - canfar-certificate.yaml
   # - storage-ui/helmrelease.yaml # wrong chart name
