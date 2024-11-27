@@ -22,7 +22,8 @@ spec:
       pullPolicy: Always
     ingress:
       enabled: true
-      host: soda.ral.uksrc.org
+      hosts:
+        - soda.ral.uksrc.org
     persistence:
       storageClass: ""  
       existingClaim: ""
