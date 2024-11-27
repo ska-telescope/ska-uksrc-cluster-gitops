@@ -6,8 +6,11 @@ metadata:
 spec:
   values:
     ingress:
-      host: soda.ral-stage.uksrc.org
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - soda.ral-stage.uksrc.org
       tls:
-        - hosts: 
+        - hosts:
           - soda.ral-stage.uksrc.org
-          secretName: soda-ingress-cert      
+          secretName: soda-ingress-cert
