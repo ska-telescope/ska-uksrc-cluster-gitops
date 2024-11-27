@@ -6,7 +6,7 @@ resources:
   - pv-pvc-manila.yaml
   - canfar-ingress.yaml
   - posix-mapper/helmrelease.yaml
-  # - skaha/helmrelease.yaml
+  - skaha/helmrelease.yaml
   # - cavern/helmrelease.yaml
 
   # - storage-ui/helmrelease.yaml # wrong chart name
