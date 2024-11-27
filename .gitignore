@@ -13,7 +13,7 @@ apps/canfar/base/science-portal/custom-scienceportal-ingress.yaml
 apps/canfar/base/cavern/custom-cavern-ingress.yaml
 apps/canfar/base/storage-ui/custom-storage-ui-ingress.yaml
 
-apps/canfar/base/skaha/test.txt
+
 
 # Don't track unsealed credentials files
 clusters/*/credentials.yaml
