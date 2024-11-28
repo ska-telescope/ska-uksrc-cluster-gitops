@@ -4,7 +4,7 @@ resources:
   - namespace.yaml
   - gitrepository.yaml
   - helmrelease.yaml
-  # - gatekeeper-secret.yaml
+  - gatekeeper-certificate.yaml
 patches:
   - target:
       kind: HelmChart
