@@ -32,3 +32,6 @@ spec:
       - http01:
           ingress:
             ingressClassName: base-traefik
+      - http01:
+          ingress:
+            ingressClassName: gatekeeper-nginx            
