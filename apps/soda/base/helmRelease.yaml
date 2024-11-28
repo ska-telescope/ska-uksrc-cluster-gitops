@@ -21,9 +21,7 @@ spec:
       tag: 1.6.2
       pullPolicy: Always
     ingress:
-      enabled: true
-      hosts:
-        - soda.ral.uksrc.org
+      enabled: false
     persistence:
       storageClass: ""  
       existingClaim: ""
