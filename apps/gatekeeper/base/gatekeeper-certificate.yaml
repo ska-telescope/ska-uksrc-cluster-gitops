@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: gatekeeper-cert
+  namespace: ska-src-gatekeeper
+spec:
+  secretName: gatekeeper-cert
+  issuerRef:
+    name: letsencrypt-gatekeeper-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - ""

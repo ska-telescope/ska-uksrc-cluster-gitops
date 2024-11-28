@@ -3,3 +3,15 @@ kind: Kustomization
 resources:
   - ../../base
   - gatekeeper-secret.yaml
+patches:
+  - path: gatekeeper-values.yaml
+    target:
+      kind: HelmRelease
+      name: ska-src-service-gatekeeper
+  - target:
+      kind: Certificate
+      name: gatekeeper-cert
+    patch: |-
+      - op: replace
+        path: /spec/dnsNames/0
+        value: gatekeeper.ral-stage.uksrc.org
