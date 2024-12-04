@@ -23,7 +23,7 @@ spec:
           port: 8080
           uuid: "3b59c8b6-7717-4f58-9b63-8ee3c0e89276"
     
-    ingress-nginx:
-      controller:
-        extraArgs:
-          default-ssl-certificate: "ska-src-gatekeeper/gatekeeper-cert"
+    # ingress-nginx:
+    #   controller:
+    #     extraArgs:
+    #       default-ssl-certificate: "ska-src-gatekeeper/gatekeeper-cert"
