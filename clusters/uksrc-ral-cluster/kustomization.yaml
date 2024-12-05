@@ -10,7 +10,7 @@ resources:
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
   - ../../apps/soda/overlays/ral
-  # - ../../apps/gatekeeper/overlays/ral
+  - ../../apps/gatekeeper/overlays/ral
   - ../../apps/jupyterhub/overlays/ral
   - ../../apps/canfar/overlays/ral
 
