@@ -4,7 +4,8 @@ metadata:
   name: gatekeeper-ingress
   namespace: ska-src-gatekeeper
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-gatekeeper-prod
+    # cert-manager.io/cluster-issuer: letsencrypt-gatekeeper-prod
+    cert-manager.io/cluster-issuer: letsencrypt-gatekeeper-staging
 spec:
   ingressClassName: gatekeeper-nginx
   rules:
