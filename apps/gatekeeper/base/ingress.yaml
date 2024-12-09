@@ -4,12 +4,12 @@ metadata:
   name: gatekeeper-ingress
   namespace: ska-src-gatekeeper
   annotations:
-    # cert-manager.io/cluster-issuer: letsencrypt-gatekeeper-prod
-    cert-manager.io/cluster-issuer: letsencrypt-gatekeeper-staging
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
-  ingressClassName: gatekeeper-nginx
+  ingressClassName: nginx
   rules:
-  - host: ""  
+  - host: "" 
     http:
       paths:
       - path: /
@@ -18,8 +18,4 @@ spec:
           service: 
             name: ska-src-service-gatekeeper-ingress-nginx-controller
             port:
-              number: 8080
-  tls:
-  - hosts:
-    - "gatekeeper.ral.uksrc.org"
-    secretName: gatekeeper-cert
+              number: 80
