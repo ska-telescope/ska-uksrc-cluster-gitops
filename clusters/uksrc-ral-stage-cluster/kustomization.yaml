@@ -7,6 +7,7 @@ resources:
   - ../../components/cluster
   
 # After bootstrap add the apps and services here
+  - ../../components/nginx-ingress
   - ../../infra/ceph-share/overlays/ral-stage
   - ../../infra/overlays/monitoring/ral-stage
   - ../../apps/soda/overlays/ral-stage
