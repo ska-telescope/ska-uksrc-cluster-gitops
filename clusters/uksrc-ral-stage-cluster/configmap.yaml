@@ -9,8 +9,8 @@ data:
     # Must match the name of the (sealed) secret in credentials.yaml
     cloudCredentialsSecretName: uksrc-ral-stage-cluster-credentials
 
-    kubernetesVersion: 1.28.7
-    machineImageId: 7288e8a2-976a-4b53-8b10-0be864c94af8
+    kubernetesVersion: 1.30.6
+    machineImageId: 16a8b936-4fa7-41c7-a512-dfc6d8d2ea34
 
 
     clusterNetworking:
@@ -36,7 +36,7 @@ data:
       image:
         repository: registry.k8s.io/autoscaling/cluster-autoscaler
         pullPolicy: IfNotPresent
-        tag: v1.28.6
+        tag: v1.30.0
       imagePullSecrets: []
       # Any extra args for the autoscaler
       extraArgs:
