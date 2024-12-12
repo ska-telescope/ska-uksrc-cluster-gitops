@@ -1,12 +1,13 @@
 resources:
   - configmap.yaml
-  - credentials.yaml
+  - credentials-sealed.yaml
   - ../../components/flux
   - ../../components/sealed-secrets
   - ../../components/cluster-api
   - ../../components/cluster
   
 # After bootstrap add the apps and services here
+  # - ../../components/cert-manager/issuers.yaml
   # - ../../components/nginx-ingress
   # - ../../infra/ceph-share/overlays/ral-stage
   # - ../../infra/monitoring/overlays/ral-stage

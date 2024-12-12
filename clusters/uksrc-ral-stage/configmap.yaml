@@ -12,7 +12,6 @@ data:
     kubernetesVersion: 1.30.6
     machineImageId: 16a8b936-4fa7-41c7-a512-dfc6d8d2ea34
 
-
     clusterNetworking:
       externalNetworkId: 5283f642-8bd8-48b6-8608-fa3006ff4539
       internalNetwork:
@@ -20,15 +19,45 @@ data:
           name: UKSRC-Network
 
     controlPlane:
-      machineFlavor: l3.nano
+      machineFlavor: l3.micro
       machineCount: 3
 
     nodeGroups:
-      - name: workers
-        machineFlavor: l3.nano
+      - name: workers-micro
+        machineFlavor: l3.micro
         autoscale: true
         machineCountMin: 3
-        machineCountMax: 10    
+        machineCountMax: 6    
+
+      # - name: workers-small
+      #   machineFlavor: l3.small
+      #   autoscale: true
+      #   machineCountMin: 1
+      #   machineCountMax: 3
+
+      # - name: workers-le3-small
+      #   machineFlavor: le3.small
+      #   autoscale: true
+      #   machineCountMin: 1
+      #   machineCountMax: 3        
+
+      # - name: workers-l3-xsmall
+      #   machineFlavor: l3.xsmall
+      #   autoscale: true
+      #   machineCountMin: 1
+      #   machineCountMax: 3 
+
+      # - name: workers-l3-tiny
+      #   machineFlavor: l3.tiny
+      #   autoscale: true
+      #   machineCountMin: 1
+      #   machineCountMax: 3
+
+      # - name: workers-dep-l2-xsmall
+      #   machineFlavor: dep-l2.xsmall
+      #   autoscale: true
+      #   machineCountMin: 1
+      #   machineCountMax: 3
 
     # Configuration for the cluster autoscaler
     autoscaler:
@@ -101,6 +130,9 @@ data:
         csiCinder:
           defaultStorageClass:
             availabilityZone: ceph
+        csiManila:
+          enabled: true            
+
       ingress:
         enabled: true
         nginx:
@@ -110,8 +142,9 @@ data:
                 service:
                   loadBalancerIP: "130.246.80.45"
 
-
-
+      csi:
+        cephfs:
+          enabled: true
 
     kubeNetwork:
       # By default, use the private network range 10.0.0.0/12 for the cluster network
