@@ -399,7 +399,7 @@ async def bootstrap_flux(helm_client):
         wait = True
     )
 
-async def bootstrap_sealed_secrets(ek_client, path, kubeconfig_path):
+async def bootstrap_sealed_secrets(ek_client, path, kubeconfig_path, cluster):
     """
     Boostraps the sealed secrets controller onto the target cluster
     and adds the cloud credentials as a sealed secret.
@@ -407,7 +407,8 @@ async def bootstrap_sealed_secrets(ek_client, path, kubeconfig_path):
     await kustomize_install(ek_client, REPO_ROOT / "components" / "sealed-secrets")
     await wait_for_helm_releases(ek_client)
     # Seal the cluster credentials using kubeseal
-    credentials_path = path / "credentials.yaml"
+    credentials_path = path.parent.parent / "secrets" / cluster / "credentials.yaml"
+    print(credentials_path)
     sealed_credentials_path = path / "credentials-sealed.yaml"
     exec(
         "kubeseal",
@@ -589,7 +590,7 @@ async def bootstrap(cluster):
         # Bootstrap Flux on the kind cluster
         await bootstrap_flux(helm_kind)
         # Bootstrap the sealed secrets on the kind cluster
-        await bootstrap_sealed_secrets(ek_kind, path, kubeconfig_kind)
+        await bootstrap_sealed_secrets(ek_kind, path, kubeconfig_kind, cluster)
         # Install the Flux resources for the CAPI cluster on the kind cluster
         await kustomize_install(ek_kind, path)
         await wait_for_helm_releases(ek_kind)
@@ -612,7 +613,7 @@ async def bootstrap(cluster):
         await wait_for_cluster(ek_capi, "capi-self")
         # At this point, the cluster is self-managed
         # Bootstrap the sealed secrets on the CAPI cluster
-        await bootstrap_sealed_secrets(ek_capi, path, kubeconfig_capi)
+        await bootstrap_sealed_secrets(ek_capi, path, kubeconfig_capi, cluster)
         # Commit and push the changes to the remote
         exec("git", "add", path)
         exec("git", "commit", "-m", f"Bootstrap cluster - {cluster}")
