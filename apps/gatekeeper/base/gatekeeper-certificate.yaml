@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: gatekeeper-cert
   issuerRef:
-    name: letsencrypt-gatekeeper-prod
+    name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
     - ""
