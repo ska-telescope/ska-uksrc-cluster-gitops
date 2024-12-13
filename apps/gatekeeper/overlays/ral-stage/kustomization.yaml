@@ -17,4 +17,5 @@ patches:
         value: gatekeeper.ral-stage.uksrc.org
       - op: replace
         path: /spec/tls/0/hosts
-        value: gatekeeper.ral-stage.uksrc.org
+        value:
+          - gatekeeper.ral-stage.uksrc.org
