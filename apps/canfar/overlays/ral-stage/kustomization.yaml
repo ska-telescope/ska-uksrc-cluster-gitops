@@ -4,12 +4,16 @@ kind: Kustomization
 resources:
   - ../../base
   - helmrelease.yaml
-  - canfar-ingress.yaml
+  - ingress.yaml
 patches:
+  - path: traefik-values.yaml
+    target: 
+      kind: HelmRelease
+      name: science-platform
   - target:
       kind: Ingress
       name: canfar-ingress
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: canfar.ral.uksrc.org
+        value: canfar.ral-stage.uksrc.org
