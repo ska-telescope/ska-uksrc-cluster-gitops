@@ -11,6 +11,10 @@ patches:
       - op: replace
         path: /spec/rules/0/host
         value: grafana.ral.uksrc.org
+      - op: replace
+        path: /spec/tls/0/hosts
+        value: 
+          - grafana.ral.uksrc.org        
   - target:
       kind: Ingress
       name: prometheus-ingress
@@ -18,3 +22,7 @@ patches:
       - op: replace
         path: /spec/rules/0/host
         value: prometheus.ral.uksrc.org
+      - op: replace
+        path: /spec/tls/0/hosts
+        value: 
+          - prometheus.ral.uksrc.org        
