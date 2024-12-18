@@ -23,8 +23,5 @@ spec:
       additionalArguments:
           - "--providers.kubernetesingress.ingressendpoint.publishedservice=skaha-system/base-traefik"
       service:
-        spec:
-          loadBalancerIP: "130.246.215.245"                  
-          # type: NodePort
-          
-        
+        spec:           
+          type: NodePort
