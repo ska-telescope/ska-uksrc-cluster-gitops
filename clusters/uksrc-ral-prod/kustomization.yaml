@@ -24,7 +24,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/releaseName
-        value: uksrc-ral
+        value: uksrc-ral-prod
 
       - op: add
         path: /spec/valuesFrom/-
