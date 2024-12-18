@@ -6,10 +6,10 @@ resources:
   - helmrelease.yaml
   - ingress.yaml
 patches:
-  - path: traefik-values.yaml
-    target: 
-      kind: HelmRelease
-      name: science-platform
+  # - path: traefik-values.yaml
+  #   target: 
+  #     kind: HelmRelease
+  #     name: science-platform
   - target:
       kind: Ingress
       name: canfar-ingress
