@@ -1,39 +1,62 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: canfar-ingress
+#   namespace: skaha-system
+#   annotations:
+#     cert-manager.io/cluster-issuer: letsencrypt-prod
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - host: "place-holder-host"  
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: base-traefik
+#             port:
+#               number: 80
+#   tls:
+#   - hosts:
+#     - ""
+#     secretName: canfar-tls-secret
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: canfar-traefik-ingress
+#   namespace: skaha-system
+#   annotations:
+#     traefik.ingress.kubernetes.io/router.entrypoints: web
+# spec:
+#   ingressClassName: base-traefik
+#   rules:
+#   - host: "canfar.ral-stage.uksrc.org"  
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: science-portal-tomcat-svc
+#             port:
+#               number: 8080
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: canfar-ingress
   namespace: skaha-system
   annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: letsencrypt-prod
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: "place-holder-host"  
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: base-traefik
-            port:
-              number: 80
-  tls:
-  - hosts:
-    - ""
-    secretName: canfar-tls-secret
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: canfar-traefik-ingress
-  namespace: skaha-system
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: base-traefik
   rules:
-  - host: "canfar.ral-stage.uksrc.org"  
+  - host: "place-holder-host"  
     http:
       paths:
       - path: /
@@ -43,3 +66,7 @@ spec:
             name: science-portal-tomcat-svc
             port:
               number: 8080
+  tls:
+  - hosts:
+    - "canfar.ral.uksrc.org"
+    secretName: canfar-tls-secret
