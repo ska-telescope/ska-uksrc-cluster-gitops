@@ -15,10 +15,31 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: science-portal-tomcat-svc
+            name: base-traefik
             port:
-              number: 8080
+              number: 80
   tls:
   - hosts:
     - ""
     secretName: canfar-tls-secret
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: canfar-traefik-ingress
+  namespace: skaha-system
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  ingressClassName: base-traefik
+  rules:
+  - host: "canfar.ral-stage.uksrc.org"  
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: science-portal-tomcat-svc
+            port:
+              number: 8080
