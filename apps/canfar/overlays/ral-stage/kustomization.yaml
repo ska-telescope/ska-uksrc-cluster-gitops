@@ -22,7 +22,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/values/traefik/service/spec/loadBalancerIP
-        value: "130.246.215.245"
+        value: "130.246.80.70"
   - target:
       kind: HelmRelease
       name: cavern
