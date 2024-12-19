@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "" 
+  - host: "placeholder.grafana.com" 
     http:
       paths:
       - path: / 
@@ -21,7 +21,7 @@ spec:
               number: 80
   tls:
   - hosts:
-    - ""
+    - "placeholder.grafana.com"
     secretName: grafana-ingress-cert
 
 
