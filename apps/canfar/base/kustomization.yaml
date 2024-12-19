@@ -2,9 +2,9 @@ resources:
   - namespace.yaml
   - helmrepository.yaml
   - helmchart.yaml
-  # - helmrelease.yaml
+  - helmrelease.yaml
   - pv-pvc-manila.yaml
-  # - canfar-ingress.yaml
+  - canfar-ingress.yaml
   - posix-mapper/helmrelease.yaml
   - skaha/helmrelease.yaml
   - cavern/helmrelease.yaml

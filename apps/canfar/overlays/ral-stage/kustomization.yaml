@@ -3,12 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
-  - helmrelease.yaml
-  - ingress.yaml
+  # - ingress.yaml
 patches:
   - target:
       kind: Ingress
-      name: base-traefik #canfar-ingress
+      name: canfar-ingress
     patch: |-
       - op: replace
         path: /spec/rules/0/host
@@ -17,6 +16,13 @@ patches:
         path: /spec/tls/0/hosts
         value:
           - gatekeeper.ral-stage.uksrc.org
+  - target:
+      kind: HelmRelease
+      name: base
+    patch: |-
+      - op: replace
+        path: /spec/values/traefik/service/spec/loadBalancerIP
+        value: "130.246.215.245"
   - target:
       kind: HelmRelease
       name: cavern
