@@ -10,7 +10,7 @@ patches:
       name: ska-src-service-gatekeeper
   - target:
       kind: Ingress
-      name: base-traefik
+      name: gatekeeper-ingress
     patch: |-
       - op: replace
         path: /spec/rules/0/host
