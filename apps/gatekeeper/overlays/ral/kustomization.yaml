@@ -9,9 +9,13 @@ patches:
       kind: HelmRelease
       name: ska-src-service-gatekeeper
   - target:
-      kind: Certificate
-      name: gatekeeper-cert
+      kind: Ingress
+      name: gatekeeper-ingress
     patch: |-
       - op: replace
-        path: /spec/dnsNames/0
+        path: /spec/rules/0/host
         value: gatekeeper.ral.uksrc.org
+      - op: replace
+        path: /spec/tls/0/hosts
+        value:
+          - gatekeeper.ral.uksrc.org
