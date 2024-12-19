@@ -19,7 +19,7 @@ spec:
     skahaWorkload:
       namespace: skaha-workload
     traefik:
-      install: true
+      install: false
       additionalArguments:
           - "--providers.kubernetesingress.ingressendpoint.publishedservice=skaha-system/base-traefik"
       service:
