@@ -15,7 +15,7 @@ patches:
       - op: replace
         path: /spec/tls/0/hosts
         value:
-          - gatekeeper.ral-stage.uksrc.org
+          - canfar.ral-stage.uksrc.org
   - target:
       kind: HelmRelease
       name: base
