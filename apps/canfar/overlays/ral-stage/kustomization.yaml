@@ -8,7 +8,7 @@ resources:
 patches:
   - target:
       kind: Ingress
-      name: canfar-ingress
+      name: base-traefik #canfar-ingress
     patch: |-
       - op: replace
         path: /spec/rules/0/host
