@@ -12,7 +12,7 @@ resources:
   - ../../components/cert-manager/issuers.yaml
   # - ../../apps/soda/overlays/ral
   # # - ../../apps/gatekeeper/overlays/ral
-  - ../../apps/jupyterhub/overlays/ral
+  # - ../../apps/jupyterhub/overlays/ral
   # - ../../apps/canfar/overlays/ral
 
 # Patch the Helm release for the cluster to update the release name
