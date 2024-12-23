@@ -19,3 +19,7 @@ apps/canfar/base/storage-ui/custom-storage-ui-ingress.yaml
 # Don't track unsealed credentials files
 clusters/*/credentials.yaml
 !clusters/example/credentials.yaml
+
+
+# this is for testing
+ apps/old-canfar/*
