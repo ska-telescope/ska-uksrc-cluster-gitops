@@ -90,6 +90,14 @@ git clone git@gitlab.com:ska-telescope/src/deployments/uksrc/ska-src-uksrc-clust
 cd ska-src-uksrc-cluster-gitops
 ```
 
+Create a branch as per the SKAO guidelines, this example uses a ficticious ticket DAAC-100.
+
+```sh
+git checkout main
+git pull
+git checkout -b daac-100-ral-cluster-deployment
+```
+
 ## Cluster Configuration
 
 Before we can start the bootstrapping process we need to configure our cluster, an example is provided for ease of use.
@@ -104,17 +112,17 @@ Before we can start the bootstrapping process we need to configure our cluster, 
 
 Naming convention for our clusters are based on SRC Node naming as follows, using one of the 3 letter codes for Node : 
 
-* ukrsc-ral
+* ukrsc-ral-prod
 * uksrc-ral-stage
-* ukrsc-cam
+* ukrsc-cam-prod
 * uksrc-cam-stage
-* ukrsc-jbo
+* ukrsc-jbo-prod
 * uksrc-jbo-stage
 
-Copy the example cluster to your new cluster, note we add `-cluster` to the folder name.
+Copy the example cluster to your new cluster.
 
 ```sh
-cp -R clusters/example clusters/ukrsc-ral-cluster
+cp -R clusters/example clusters/ukrsc-ral-prod
 ```
 
 You'll need to make changes to each of the example files and these may vary depending on the site you are deploying too. 
@@ -266,9 +274,13 @@ resources:
   - credentials.yaml
 
   # After bootstrap add the apps and services here
-  # - ../../components/nginx-ingress
-  # - ../../infra/
-  # - ../../sites/ral
+  # - ../../components/cert-manager/issuers.yaml
+  # - ../../infra/ceph-share/overlays/ral
+  # - ../../infra/monitoring/overlays/ral
+  # - ../../apps/soda/overlays/ral
+  # - ../../apps/gatekeeper/overlays/ral
+  # - ../../apps/jupyterhub/overlays/ral
+  # - ../../apps/canfar/overlays/ral
 
 
 # Patch the Helm release for the cluster to update the release name
