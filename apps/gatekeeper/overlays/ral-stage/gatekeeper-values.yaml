@@ -22,3 +22,9 @@ spec:
           ingress_host: "gatekeeper.ral-stage.uksrc.org"
           port: 8080
           uuid: "3b59c8b6-7717-4f58-9b63-8ee3c0e89276"
+    ingress-nginx:
+      controller:
+        replicaCount: 1
+        service:
+          type: NodePort
+          loadBalancerIP: ""
