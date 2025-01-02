@@ -1,4 +1,4 @@
-![Local Image](images/SKAO_ukSRC_logofiles/SKAO_ukSRC_logo/SKAO_ukSRC_logo_colour_rgb.png)
+![Local Image](images/SKAO_ukSRC_logo_nostrapline_colour_rgb.png)
 # UKSRC Apps and Services Deployment
 
 This guide will demonstrate how to deploy each of the applications & services required for srcNet0.1 and subsequent versions.

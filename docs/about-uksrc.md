@@ -1,4 +1,4 @@
-![Local Image](images/SKAO_ukSRC_logofiles/SKAO_ukSRC_logo/SKAO_ukSRC_logo_colour_rgb.png)
+![Local Image](images/SKAO_ukSRC_logo_nostrapline_colour_rgb.png)
 
 # About UKSRC
 
