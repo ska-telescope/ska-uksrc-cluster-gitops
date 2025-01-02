@@ -1,4 +1,7 @@
-# UKSRC GitOps Deployment Guide
+![Local Image](images/SKAO_ukSRC_logofiles/SKAO_ukSRC_logo/SKAO_ukSRC_logo_colour_rgb.png)
+
+
+# UKSRC GitOps Cluster Deployment
 
 This guide demonstrates the methods and tools for deploying a [Kubernetes](https://kubernetes.io/)  Cluster on [OpenStack](https://www.openstack.org/)OpenStack and the required services and applications for SRCNET0.1 using a [GitOps](https://about.gitlab.com/topics/gitops/) workflow under the control of  [capi-helm-fluxcd-config](https://github.com/stackhpc/capi-helm-fluxcd-config) tooling created by StackHPC (c).
 
