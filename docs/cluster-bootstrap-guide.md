@@ -134,7 +134,7 @@ This documentation will focus on the RAL site specfific needs, the other sites w
 
 ### configmap.yaml
 
-```sh
+```yaml
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -266,7 +266,7 @@ data:
 
 ### kustomization.yaml
 
-```sh
+```yaml
 resources:
   - ../../components/flux
   - ../../components/sealed-secrets
@@ -310,7 +310,7 @@ patches:
 
 These credentials MUST NOT BE COMMITED to Gitlab, they will be sealed using [kubeseal]`
 
-```sh
+```yaml
 ---
 apiVersion: v1
 kind: Secret
