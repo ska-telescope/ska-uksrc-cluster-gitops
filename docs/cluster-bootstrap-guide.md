@@ -139,21 +139,21 @@ This documentation will focus on the RAL site specfific needs, the other sites w
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: uksrc-ral-cluster-config    <--- Use this naming convention
+  name: uksrc-ral-cluster-config   # <--- Use this naming convention
   namespace: capi-self
 data:
   values.yaml: |
     # Must match the name of the (sealed) secret in credentials.yaml
-    cloudCredentialsSecretName: uksrc-ral-cluster-credentials   <--- Use this naming convention
+    cloudCredentialsSecretName: uksrc-ral-cluster-credentials  # <--- Use this naming convention
 
-    kubernetesVersion: 1.28.7  <--- Select the release that is supported by the image
-    machineImageId: 7288e8a2-976a-4b53-8b10-0be864c94af8  <--- Select the image ID
+    kubernetesVersion: 1.28.7 # <--- Select the release that is supported by the image
+    machineImageId: 7288e8a2-976a-4b53-8b10-0be864c94af8 # <--- Select the image ID
     clusterNetworking:
-      externalNetworkId: 5283f642-8bd8-48b6-8608-fa3006ff4539  <--- Select the external network ID
+      externalNetworkId: 5283f642-8bd8-48b6-8608-fa3006ff4539 # <--- Select the external network ID
       internalNetwork:
         networkFilter:
-          id: e04ec697-e979-487c-929d-3c92893f15df <--- Select the internal image ID
-          name: UKSRC-Network  <--- Select the Network name
+          id: e04ec697-e979-487c-929d-3c92893f15df# <--- Select the internal image ID
+          name: UKSRC-Network # <--- Select the Network name
 
     controlPlane:
       machineFlavor: l3.nano
@@ -172,7 +172,7 @@ data:
       image:
         repository: registry.k8s.io/autoscaling/cluster-autoscaler
         pullPolicy: IfNotPresent
-        tag: v1.28.6  <--- Select the autoscaler by major release, minor is not critical
+        tag: v1.28.6 # <--- Select the autoscaler by major release, minor is not critical
       imagePullSecrets: []
       # Any extra args for the autoscaler
       extraArgs:
@@ -194,7 +194,7 @@ data:
 
     apiServer:
       # Indicates whether to deploy a load balancer for the API server
-      enableLoadBalancer: true  <--- Enable the load-balancer
+      enableLoadBalancer: true # <--- Enable the load-balancer
       # Indicates what loadbalancer provider to use. Default is amphora
       loadBalancerProvider:
       # Restrict loadbalancer access to select IPs
@@ -206,7 +206,7 @@ data:
       associateFloatingIP: true
       # The specific floating IP to associate with the API server
       # If not given, a new IP will be allocated if required
-      floatingIP: 130.246.215.245 <--- Select an appropriate floating IP
+      floatingIP: 130.246.215.245# <--- Select an appropriate floating IP
       # The specific fixed IP to associate with the API server
       # If enableLoadBalancer is true, this will become the VIP of the load balancer
       # If enableLoadBalancer and associateFloatingIP are both false, this should be
@@ -236,7 +236,7 @@ data:
       openstack:
         csiCinder:
           defaultStorageClass:
-            availabilityZone: ceph  <--- Select the correct AZ, this may vary by site
+            availabilityZone: ceph # <--- Select the correct AZ, this may vary by site
 
       ingress:
         enabled: true
@@ -296,13 +296,13 @@ patches:
     patch: |-
       - op: replace
         path: /spec/releaseName
-        value: uksrc-ral   <--- This value must match naming convention
+        value: uksrc-ral  # <--- This value must match naming convention
 
       - op: add
         path: /spec/valuesFrom/-
         value:
           kind: ConfigMap
-          name: uksrc-ral-cluster-config  <--- This must match the metadata name of the configmap
+          name: uksrc-ral-cluster-config # <--- This must match the metadata name of the configmap
           valuesKey: values.yaml
 ```
 
@@ -315,7 +315,7 @@ These credentials MUST NOT BE COMMITED to Gitlab, they will be sealed using [kub
 apiVersion: v1
 kind: Secret
 metadata:
-  name: uksrc-ral-cluster-credentials  <--- Must match cloudCredentialsSecretName: in configmap
+  name: uksrc-ral-cluster-credentials # <--- Must match cloudCredentialsSecretName: in configmap
   namespace: capi-self
   annotations:
     # Allow the sealed secret controller to take over this secret after bootstrapping
@@ -343,7 +343,7 @@ Edit your `.bashrc` file and add the following.
 
 ```sh
 function bootstrap() {
-        cd ~/ska-uksrc-cluster-gitops/  <--- Must match the path of the cloned Git repo
+        cd ~/ska-uksrc-cluster-gitops/ # <--- Must match the path of the cloned Git repo
         python3 -m venv ./.venv
         source .venv/bin/activate
         pip install -U pip
@@ -361,7 +361,7 @@ bootstrap
 Alternatively you can run the commands manually.
 
 ```sh
-        cd ~/ska-uksrc-cluster-gitops/  <--- Must match the path of the cloned Git repo
+        cd ~/ska-uksrc-cluster-gitops/ # <--- Must match the path of the cloned Git repo
         python3 -m venv ./.venv
         source .venv/bin/activate
         pip install -U pip
