@@ -3,7 +3,7 @@
 
 # UKSRC GitOps Cluster Deployment
 
-This guide demonstrates the methods and tools for deploying a [Kubernetes](https://kubernetes.io/)  Cluster on [OpenStack](https://www.openstack.org/)OpenStack and the required services and applications for SRCNET0.1 using a [GitOps](https://about.gitlab.com/topics/gitops/) workflow under the control of  [capi-helm-fluxcd-config](https://github.com/stackhpc/capi-helm-fluxcd-config) tooling created by StackHPC (c).
+This guide demonstrates the methods and tools for deploying a [Kubernetes](https://kubernetes.io/)  Cluster on [OpenStack](https://www.openstack.org/) and the required services and applications for SRCNET0.1 using a [GitOps](https://about.gitlab.com/topics/gitops/) workflow under the control of  [capi-helm-fluxcd-config](https://github.com/stackhpc/capi-helm-fluxcd-config) tooling created by StackHPC (c).
 
 The specific tools used to accomplish this are [Kind](https://kind.sigs.k8s.io/) & [Cluster API](https://cluster-api.sigs.k8s.io/) for
 the Kubernetes provisioning, [Flux CD](https://fluxcd.io/) for automation and
@@ -59,7 +59,7 @@ You will can deploy from a Linux Bastion host or locally from your Macbook or a 
 
 ### Cloud Credentials
 
-You will need to either request OpenSTack API Credentials or create them using your OpenStack account.
+You will need to either request OpenStack API Credentials or create them using your OpenStack account.
 
     auth_url:
     application_credential_id: ""

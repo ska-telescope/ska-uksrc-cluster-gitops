@@ -18,16 +18,16 @@ All secrets are sealed using kubeseal which uses the cluster certificate to encr
 ## Preparing for the Deployment
 
 We will be deploying the following Apps and Services.
-```
-    - Infrastructure Services
-        - Ceph CSI Driver
-        - Monitoring
-    - Apps
-        - GateKeeper
-        - SODA
-        - Jupyterhub
-        - CANFAR
-```
+
+- Infrastructure Services
+    - Ceph CSI Driver
+    - Monitoring
+- Apps
+    - GateKeeper
+    - SODA
+    - Jupyterhub
+    - CANFAR
+
 
 For the purposes of this deployment we've deployed the cluster at RAL, so references and file structure will reflect that. Make the necessary changes for your site / cluster. 
 
