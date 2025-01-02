@@ -17,23 +17,24 @@ All secrets are sealed using kubeseal which uses the cluster certificate to encr
 ## Preparing for the Deployment
 
 We will be deploying the following Apps and Services.
-    * All Infra Services
-        * Ceph CSI Driver
-        * Monitoring
-    * Apps
-        * GateKeeper
-        * SODA
-        * Jupyterhub
-        * CANFAR
-
+```
+    - Infrastructure Services
+        - Ceph CSI Driver
+        - Monitoring
+    - Apps
+        - GateKeeper
+        - SODA
+        - Jupyterhub
+        - CANFAR
+```
 
 For the purposes of this deployment we've deployed the cluster at RAL, so references and file structure will reflect that. Make the necessary changes for your site / cluster. 
 
 ### Secrets
 
-In order to keep our unsealed secrets secure and not have them accidentally commited to the Git repo, create the secret file under the secrets directory, this is protected by `.gitignore` rules.
+In order to keep our unsealed secrets secure and not have them accidentally commited to the Git repo, create a secrets directory and create the unencrypted secret files under the cluster secrets directory, this is protected by `.gitignore` rules.
 
-Use the structure as below.
+Using the structure as per example below.
 
 ```sh
 secrets/
@@ -48,7 +49,7 @@ secrets/
 
 ### Configure the ceph-csi-cephfs Driver
 
-Create a new overlay `ral` directory for your site in the `infra/ceph-share` directory.
+Create a new overlay `ral` directory for your site in the `infra/ceph-share/overlays` directory.
 
 ```sh
 infra/
@@ -70,7 +71,8 @@ infra/
 
 Create a `csi-ceph-values.yaml` file as per below.
 
-The values are unique to your CephFS deployment, `fsid` , `mon_host` , `mon_initial_members` , `public_network` , `clusterID` , `monitors` and should be updated accordingly. 
+The values are unique to your CephFS deployment, `fsid` , `mon_host` , `mon_initial_members` , `public_network` , `clusterID` , `monitors` and should be updated accordingly.
+
 ```
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -99,7 +101,7 @@ spec:
            - "deneb-dev-mon3.nubes.rl.ac.uk"
 ```
 
-Create the `csi-cephfs-secret.yaml` sealed secret in the secrets folder as above, as per the example.
+Create the `csi-cephfs-secret.yaml` secret in the secrets folder as above, as per the example.
 
 ```sh
 ---
@@ -122,10 +124,11 @@ Seal the secret using the command below.
 kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-prod/csi-cephfs-secret.yaml --sealed-secret-file infra/ceph-share/overlays/ral/csi-cephfs-secret.yaml
 ```
 
-
 Edit the `clusters/uksrc-ral-prod/kustomization.yaml` for the cluster.
 
-Add the new `ceph-share`resource to the `kustomization.yaml` after the comment `# After bootstrap add the apps and services here`, note the `issuers.yaml` is common to all clusters but not deployed with bootstrap so added now. Note we point our resources to `overlays` for the apps and services that need site or cluster specific values.
+Add the new `ceph-share`resource to the `kustomization.yaml` after the comment `# After bootstrap add the apps and services here`, note the `issuers.yaml` is common to all clusters but not deployed with bootstrap so added now. 
+
+Note we point our resources to `overlays` for the apps and services that need site or cluster specific values.
 
 ```yaml
 ---
@@ -149,16 +152,14 @@ resources:
   # - ../../apps/canfar/overlays/ral
 ```
 
-
-
-Now commit & push your changes to Gitlab. You should be able to see that the Ceph CSI driver has been deployed.
+Commit & push your changes to Gitlab. You should be able to see that the Ceph CSI driver has been deployed.
 
 
 ### Monitoring
 
 Create a new overlay `ral` directory for your cluster in the `monitoring/overlays` directory.
 
-Now create a `kustomization.yaml` as per the example, updating the values to match your CName / hostname.
+Create a `kustomization.yaml` as per the example, updating the values to match your CName / hostname.
 
 ```yaml
 ---
@@ -222,12 +223,12 @@ Check your build using the `kustomize build` command.
 kustomize build infra/monitoring/overlays/ral | less
 ```
 
-Now commit & push your changes to Gitlab. You should be able to see that the monitoring has been deployed.
+Commit & push your changes to Gitlab. You should be able to see that the monitoring has been deployed.
 
 
 ### SODA Service
 
-Create a new overlay `ral` directory for your site in the `apps/soda` directory.
+Create a new overlay `ral` directory for your site in the `apps/soda/overlays` directory.
 
 Now create a `kustomization.yaml` as per the example,  updating the `clusterID` value.
 
@@ -245,7 +246,7 @@ patches:
       name: soda-release
 ```
 
-Now create a `soda-values.yaml` as per the example, updating the values to match your hosts.
+Create a `soda-values.yaml` as per the example, updating the values to match your hosts.
 
 ```yaml
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -296,13 +297,13 @@ Check your build using the `kustomize build` command.
 kustomize build apps/soda/overlays/ral | less
 ```
 
-Now commit & push your changes to Gitlab. You should be able to see that the SODA Service has been deployed.
+Commit & push your changes to Gitlab. You should be able to see that the SODA Service has been deployed.
 
 ### GateKeeper Service
 
 Create a new overlay `ral` directory for your site in the `apps/gatekeeper` directory.
 
-Now create a `kustomization.yaml` as per the example,  updating the `clusterID` value.
+Create a `kustomization.yaml` as per the example,  updating the `clusterID` value.
 
 ```yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -328,7 +329,7 @@ patches:
           - gatekeeper.ral-stage.uksrc.org
 ```
 
-Now create a `gatekeeper-values.yaml` as per the example, updating the values to match your hosts.
+Create a `gatekeeper-values.yaml` as per the example, updating the values to match your hosts.
 
 ```yaml
 ---
@@ -357,7 +358,7 @@ spec:
           uuid: "3b59c8b6-7717-4f58-9b63-8ee3c0e89276"
 ```
 
-Create the `gatekeeper-secret.yaml` sealed secret in the secrets folder as above, as per the example.
+Create the `gatekeeper-secret.yaml` secret in the secrets folder as above, as per the example.
 
 ```sh
 ---
@@ -400,7 +401,7 @@ resources:
   - ../../infra/monitoring/overlays/ral
   - ../../apps/soda/overlays/ral
   - ../../apps/gatekeeper/overlays/ral
-  - ../../apps/jupyterhub/overlays/ral
+  # - ../../apps/jupyterhub/overlays/ral
   # - ../../apps/canfar/overlays/ral
 ```
 
@@ -410,14 +411,14 @@ Check your build using the `kustomize build` command.
 kustomize build apps/jupyterhub/overlays/ral | less
 ```
 
-Now commit & push your changes to Gitlab. You should be able to see that Jupyterhub has been deployed.
+Commit & push your changes to Gitlab. You should be able to see that Jupyterhub has been deployed.
 
 
 ### Jupyterhub
 
-Create a new overlay `ral` directory for your site in the `apps/jupyterhub` directory.
+Create a new overlay `ral` directory for your site in the `apps/jupyterhub/overlays` directory.
 
-Now create a `kustomization.yaml` as per the example,  updating the `clusterID` value.
+Create a `kustomization.yaml` as per the example,  updating the `clusterID` value.
 
 ```yaml
 ---
@@ -440,7 +441,7 @@ patches:
   - path: secret.yaml
   ```
 
-Now create a `jupyterhub-values.yaml` as per the example, updating the values to match your CName / hostname.
+Create a `jupyterhub-values.yaml` as per the example, updating the values to match your CName / hostname.
 
 ```yaml
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -468,7 +469,7 @@ spec:
         baseURL: https://jupyterhub.ral.uksrc.org/
 ```
 
-Create the `secrets/uksrc-ral-prod/jupyterhub-secret.yaml` sealed secret in the secrets folder as above, as per the example.
+Create the `secrets/uksrc-ral-prod/jupyterhub-secret.yaml` secret in the secrets folder, as per the example.
 
 ```yaml
 ---
@@ -487,7 +488,7 @@ stringData:
 Seal the secret using the command below.
 
 ```sh
-kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-prod/jupyterhub-secret.yaml --sealed-secret-file iapps/jupyterhub/overlays/ral/secret.yaml
+kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-prod/jupyterhub-secret.yaml --sealed-secret-file apps/jupyterhub/overlays/ral/secret.yaml
 ```
 
 Edit the `clusters/uksrc-ral-prod/kustomization.yaml` for the cluster.
@@ -510,8 +511,8 @@ resources:
   - ../../components/cert-manager/issuers.yaml
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
-  # - ../../apps/soda/overlays/ral
-  # - ../../apps/gatekeeper/overlays/ral
+  - ../../apps/soda/overlays/ral
+  - ../../apps/gatekeeper/overlays/ral
   - ../../apps/jupyterhub/overlays/ral
   # - ../../apps/canfar/overlays/ral
 ```
@@ -523,8 +524,163 @@ Check your build using the `kustomize build` command.
 kustomize build apps/jupyterhub/overlays/ral | less
 ```
 
-Now commit & push your changes to Gitlab. You should be able to see that Jupyterhub has been deployed.
+Commit & push your changes to Gitlab. You should be able to see that Jupyterhub has been deployed.
 
 
+### CANFAR
+
+Create a new overlay `ral` directory for your site in the `apps/canfar/overlays` directory.
+
+Create a `kustomization.yaml` as per the example,  updating the values for your cluster.
+
+```yaml
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - sealed-oidc-secret.yaml
+patches:
+  - target:
+      kind: Ingress
+      name: canfar-ingress
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: canfar.ral.uksrc.org
+      - op: replace
+        path: /spec/tls/0/hosts
+        value:
+          - canfar.ral.uksrc.org
+  - target:
+      kind: HelmRelease
+      name: base
+    patch: |-
+      - op: replace
+        path: /spec/values/traefik/service/spec/loadBalancerIP
+        value: "130.246.80.70"
+  - target:
+      kind: HelmRelease
+      name: cavern
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname    
+        value: "canfar.ral.uksrc.org"
+      - op: replace
+        path: /spec/values/deployment/cavern/resourceID
+        value: ivo://canfar.ral.uksrc.org/posix-mapper
+      - op: replace
+        path: /spec/values/deployment/cavern/posixMapperResourceID
+        value: ivo://canfar.ral.uksrc.org/posix-mapper
+  - target:
+      kind: HelmRelease
+      name: posix-mapper
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: "canfar.ral.uksrc.org"
+      - op: replace
+        path: /spec/values/posixMapper/resourceID
+        value: ivo://canfar.ral.uksrc.org/posix-mapper
+  - target:
+      kind: HelmRelease
+      name: scienceportal
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: "canfar.ral.uksrc.org"
+      - op: replace
+        path: /spec/values/deployment/sciencePortal/oidc/redirectURI
+        value: "https://canfar.ral.uksrc.org/science-portal/oidc-callback"
+      - op: replace
+        path: /spec/values/deployment/sciencePortal/oidc/callbackURI
+        value: "https://canfar.ral.uksrc.org/science-portal/"
+  - target:
+      kind: HelmRelease
+      name: skaha
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: "canfar.ral.uksrc.org"
+      - op: replace
+        path: /spec/values/deployment/skaha/posixMapperResourceID
+        value: ivo://canfar.ral.uksrc.org/posix-mapper
+  - target:
+      kind: HelmRelease
+      name: storage-ui
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: "canfar.ral.uksrc.org"
+      - op: replace
+        path: /spec/values/deployment/storageUI/oidc/redirectURI
+        value: "https://canfar.ral.uksrc.org/storage/oidc-callback"
+      - op: replace
+        path: /spec/values/deployment/storageUI/oidc/callbackURI
+        value: "https://canfar.ral.uksrc.org/storage/list"
+      - op: replace
+        path: /spec/values/deployment/storageUI/backend/service/cavern/resourceID
+        value: ivo://canfar.ral.uksrc.org/cavern
+      - op: replace
+        path: /spec/values/deployment/storageUI/backend/service/cavern/nodeURIPrefix
+        value: "vos://canfar.ral.uksrc.org~cavern"
+```
+
+Create the `secrets/uksrc-ral-stage/secret-oidc.yaml` secret in the secrets folder, as per the example.
+
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: oidc-credentials
+  namespace: skaha-system
+  annotations:
+    # Allow the sealed secret controller to take over this secret after bootstrapping
+    sealedsecrets.bitnami.com/managed: "true"
+stringData:
+  clientID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Seal the secret using the command below.
+
+```sh
+kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-stage/secret-oidc.yaml --sealed-secret-file apps/canfar/overlays/ral-stage/sealed-oidc-secret.yaml
+```
+
+Edit the `clusters/uksrc-ral-prod/kustomization.yaml` for the cluster.
+
+Add the new `jupyterhub`resource to the `kustomization.yaml` after the comment `# After bootstrap add the apps and services here`, note the `issuers.yaml` is common to all clusters but not deployed with bootstrap so added now. Note we point our resources to `overlays` for the apps and services that need site or cluster specific values.
+
+```yaml
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../components/flux
+  - ../../components/sealed-secrets
+  - ../../components/cluster-api
+  - ../../components/cluster
+  - configmap.yaml
+  - credentials-sealed.yaml
+
+  # After bootstrap add the apps and services here
+  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/ceph-share/overlays/ral
+  - ../../infra/monitoring/overlays/ral
+  - ../../apps/soda/overlays/ral
+  - ../../apps/gatekeeper/overlays/ral
+  - ../../apps/jupyterhub/overlays/ral
+  - ../../apps/canfar/overlays/ral
+```
 
 
+Check your build using the `kustomize build` command. 
+
+```sh
+kustomize build apps/canfar/overlays/ral | less
+```
+
+Commit & push your changes to Gitlab. You should be able to see that CANFAR has been deployed.
