@@ -54,7 +54,7 @@ spec:
         baseURL: https://jupyterhub.ral.uksrc.org/
 ```
 
-Create the `secrets/uksrc-ral-prod/jupyterhub-secret.yaml` secret in the secrets folder, as per the example.
+Create the `secrets/uksrc-ral-prod/jupyterhub-secret.yaml` secret in the secrets folder, as per the example using the Client ID & Client Secret from the SKA-IAM client.
 
 ```yaml
 ---
@@ -99,7 +99,7 @@ resources:
   - ../../apps/soda/overlays/ral
   - ../../apps/gatekeeper/overlays/ral
   - ../../apps/jupyterhub/overlays/ral
-  # - ../../apps/canfar/overlays/ral
+  - ../../apps/canfar/overlays/ral
 ```
 
 

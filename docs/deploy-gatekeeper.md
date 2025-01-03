@@ -31,7 +31,9 @@ patches:
           - gatekeeper.ral-stage.uksrc.org
 ```
 
-Create a `gatekeeper-values.yaml` as per the example, updating the values to match your hosts.
+Create a `gatekeeper-values.yaml` as per the example, updating the values to match your hosts. 
+
+The UUID values are obtained from [Site Capabilities](https://site-capabilities.srcdev.skao.int/) under the **Associated Local Services** for **echo** & **soda_sync** IDs.
 
 ```yaml
 ---
@@ -50,14 +52,14 @@ spec:
           service_name: "ska-src-gatekeeper-echo"
           ingress_host: "gatekeeper.ral-stage.uksrc.org"
           port: 8080
-          uuid: "e98b8c67-7f06-47e6-9618-5cf471483fd5"
+          uuid: "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         - route: "/soda"
           namespace: ska-src-soda
           prefix: "http://"
           service_name: "ska-src-soda"
           ingress_host: "gatekeeper.ral-stage.uksrc.org"
           port: 8080
-          uuid: "3b59c8b6-7717-4f58-9b63-8ee3c0e89276"
+          uuid: "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     ingress-nginx:
       controller:
         replicaCount: 1
@@ -66,7 +68,7 @@ spec:
           loadBalancerIP: ""          
 ```
 
-Create the `gatekeeper-secret.yaml` secret in the secrets folder as above, as per the example.
+Create the `gatekeeper-secret.yaml` secret in the secrets folder as above, as per the example using the Client ID & Client Secret from the SKA-IAM client.
 
 ```sh
 ---
@@ -79,7 +81,7 @@ metadata:
     sealedsecrets.bitnami.com/managed: "true"
 type: Opaque
 stringData:
-  site_capabilities_gatekeeper_client_id: e98b8c67-7f06-47e6-9618-5cf471483fd5
+  site_capabilities_gatekeeper_client_id: xxxxxxxxxxxxxxxxxxxxxxxxxxxx
   site_capabilities_gatekeeper_client_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
@@ -109,8 +111,6 @@ resources:
   - ../../infra/monitoring/overlays/ral
   - ../../apps/soda/overlays/ral
   - ../../apps/gatekeeper/overlays/ral
-  # - ../../apps/jupyterhub/overlays/ral
-  # - ../../apps/canfar/overlays/ral
 ```
 
 Check your build using the `kustomize build` command. 

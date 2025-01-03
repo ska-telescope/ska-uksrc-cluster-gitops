@@ -98,7 +98,7 @@ patches:
         value: "vos://canfar.ral.uksrc.org~cavern"
 ```
 
-Create the `secrets/uksrc-ral-stage/secret-oidc.yaml` secret in the secrets folder, as per the example.
+Create the `secrets/uksrc-ral-stage/canfar-oidc-secret.yaml` secret in the secrets folder, as per the example using the Client ID & Client Secret from the SKA-IAM client.
 
 ```yaml
 ---
@@ -113,13 +113,37 @@ metadata:
     sealedsecrets.bitnami.com/managed: "true"
 stringData:
   clientID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-Seal the secret using the command below.
+Seal the secrets using the command below.
 
 ```sh
-kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-stage/secret-oidc.yaml --sealed-secret-file apps/canfar/overlays/ral-stage/sealed-oidc-secret.yaml
+kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-stage/canfar-oidc-secret.yaml --sealed-secret-file apps/canfar/overlays/ral-stage/sealed-oidc-secret.yaml
+```
+
+Another secret must be created, create the `secrets/uksrc-ral-stage/canfar-oidc-secret.yaml` secret in the secrets folder, as per the example using the Client ID & Client Secret from the SKA-IAM client.
+
+```
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: storage-ui-credentials
+  namespace: skaha-system
+  annotations:
+    # Allow the sealed secret controller to take over this secret after bootstrapping
+    sealedsecrets.bitnami.com/managed: "true" 
+stringData:
+  clientID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Seal the secrets using the command below.
+
+```sh
+kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-stage/canfar-storage-ui-secret.yaml --sealed-secret-file apps/canfar/overlays/ral-stage/sealed-storage-ui-secret.yaml
 ```
 
 Edit the `clusters/uksrc-ral-prod/kustomization.yaml` for the cluster.
