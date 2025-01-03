@@ -7,8 +7,10 @@ resources:
   - canfar-ingress.yaml
   - posix-mapper/helmrelease.yaml
   - skaha/helmrelease.yaml
+  - science-portal/sealed-secret.yaml
+  - science-portal/configmap.yaml
   # - cavern/helmrelease.yaml
-  # - science-portal/helmrelease.yaml
+  - science-portal/helmrelease.yaml
 
   # - storage-ui/helmrelease.yaml # wrong chart name
 
