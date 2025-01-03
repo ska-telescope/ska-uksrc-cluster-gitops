@@ -9,7 +9,7 @@ data:
     skaha:
       namespace: skaha-system
     deployment:
-      hostname: canfar.ral.uksrc.org 
+      hostname: canfar.ral.uksrc.org
       storageUI:
         resources:
           requests:
@@ -38,19 +38,15 @@ data:
           redirectURI: https://canfar.ral.uksrc.org/storage/oidc-callback
           callbackURI: https://canfar.ral.uksrc.org/storage/list/
           scope: "openid profile offline_access"
-
         registryURL: https://spsrc27.iaa.csic.es/reg
         identityManagerClass: org.opencadc.auth.StandardIdentityManager
-
         extraVolumeMounts:
           - mountPath: "/config/cacerts"
             name: cacert-volume
-
         extraVolumes:
           - name: cacert-volume
             secret:
               defaultMode: 420
               secretName: canfar-tls-secret
-
-          # Default theme is the SRC one.
-          themeName: src
+        # Default theme is the SRC one.
+        themeName: src
