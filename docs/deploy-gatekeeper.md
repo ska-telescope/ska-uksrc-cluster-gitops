@@ -1,6 +1,8 @@
 ![Local Image](images/SKAO_ukSRC_logo_nostrapline_colour_rgb.png)
 ### GateKeeper Service
 
+The SRCNet Operations Documentation for Gatekeeper defaults to deploying Gatekeeper as a LoadBalancer service. To reduce the number of floating IPs used for deployment, UKSRC has deployed the service as a Nodeport, we make this changes in our `overlays/ral/values.yaml` file.
+
 Create a new overlay `ral` directory for your site in the `apps/gatekeeper` directory.
 
 Create a `kustomization.yaml` as per the example,  updating the `clusterID` value.
@@ -56,6 +58,12 @@ spec:
           ingress_host: "gatekeeper.ral-stage.uksrc.org"
           port: 8080
           uuid: "3b59c8b6-7717-4f58-9b63-8ee3c0e89276"
+    ingress-nginx:
+      controller:
+        replicaCount: 1
+        service:
+          type: NodePort
+          loadBalancerIP: ""          
 ```
 
 Create the `gatekeeper-secret.yaml` secret in the secrets folder as above, as per the example.
