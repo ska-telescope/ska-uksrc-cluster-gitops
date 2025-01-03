@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../base
   - sealed-oidc-secret.yaml
+  - sealed-storage-ui-secret.yaml
 patches:
   - target:
       kind: Ingress
