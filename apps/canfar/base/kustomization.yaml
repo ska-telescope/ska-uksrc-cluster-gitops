@@ -10,9 +10,9 @@ resources:
   - science-portal/sealed-secret.yaml
   - storage-ui/sealed-secret.yaml
   - science-portal/configmap.yaml
-  # - storage-ui/configmap.yaml
+  - storage-ui/configmap.yaml
   - cavern/helmrelease.yaml
   - science-portal/helmrelease.yaml
-  # - storage-ui/helmrelease.yaml
+  - storage-ui/helmrelease.yaml
 
    
