@@ -9,7 +9,7 @@ resources:
   - skaha/helmrelease.yaml
   - science-portal/sealed-secret.yaml
   - science-portal/configmap.yaml
-  # - cavern/helmrelease.yaml
+  - cavern/helmrelease.yaml
   - science-portal/helmrelease.yaml
 
   # - storage-ui/helmrelease.yaml # wrong chart name
