@@ -4,4 +4,5 @@ resources:
   - helmRelease.yaml
   - gitRepository.yaml
   - namespace.yaml
+  - ceph-volume.yaml
   - soda-pvc.yaml
