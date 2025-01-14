@@ -103,3 +103,6 @@ spec:
           - name: site-capabilities-lua
             configMap:
               name: site-capabilities-lua-config
+          - name: client-credentials
+            secret:
+              secretName: ska-src-gatekeeper-secret
