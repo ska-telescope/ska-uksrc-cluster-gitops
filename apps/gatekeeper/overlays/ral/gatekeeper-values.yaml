@@ -14,14 +14,14 @@ spec:
           service_name: "ska-src-gatekeeper-echo"
           ingress_host: "gatekeeper.ral.uksrc.org"
           port: 8080
-          uuid: "e98b8c67-7f06-47e6-9618-5cf471483fd5"
+          uuid: "d921efbf-71a9-47cc-8527-69d1a0a50d8b"
         - route: "/soda"
           namespace: ska-src-soda
           prefix: "http://"
           service_name: "ska-src-soda"
           ingress_host: "gatekeeper.ral.uksrc.org"
           port: 8080
-          uuid: "3b59c8b6-7717-4f58-9b63-8ee3c0e89276"
+          uuid: "51d69ecd-e47a-44ca-9b5a-59c90a6dd631"
     ingress-nginx:
       controller:
         replicaCount: 1
