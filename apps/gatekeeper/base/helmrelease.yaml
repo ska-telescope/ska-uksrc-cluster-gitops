@@ -87,6 +87,9 @@ spec:
             mountPath: /etc/nginx/lua/conf/site_capabilities.lua
             subPath: site-capabilities.lua
             readOnly: true
+          - name: client-credentials
+            mountPath: /etc/credentials
+            readOnly: true
         extraVolumes:
           - name: response-lua
             configMap:
