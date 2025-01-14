@@ -15,12 +15,12 @@ spec:
   valuesFrom:
   - kind: Secret
     name: ska-src-gatekeeper-secret
-    valuesKey: client_id
-    targetPath: gatekeeper.client_id
+    valuesKey: site_capabilities_gatekeeper_client_id
+    targetPath: gatekeeper.site_capabilities_gatekeeper_client_id
   - kind: Secret
     name: ska-src-gatekeeper-secret
-    valuesKey: client_secret
-    targetPath: gatekeeper.client_secret 
+    valuesKey: site_capabilities_gatekeeper_client_secret
+    targetPath: gatekeeper.site_capabilities_gatekeeper_client_secret 
   values:
     deployment_echo:
       namespace: ska-src-gatekeeper-echo
@@ -41,6 +41,7 @@ spec:
       site_capabilities_api_get_service_by_id_endpoint: https://site-capabilities.srcdev.skao.int/api/v1/services/
       site_capabilities_gatekeeper_client_scopes: site-capabilities-api-service
       site_capabilities_gatekeeper_client_audience: site-capabilities-api
+      existingSecret: true
       services_cache_ttl: 3600
       services:
         - route: "/echo"                          # request route
@@ -87,9 +88,9 @@ spec:
             mountPath: /etc/nginx/lua/conf/site_capabilities.lua
             subPath: site-capabilities.lua
             readOnly: true
-          - name: client-credentials
-            mountPath: /etc/credentials
-            readOnly: true
+        - name: client-credentials
+          mountPath: /etc/credentials
+          readOnly: true
         extraVolumes:
           - name: response-lua
             configMap:
