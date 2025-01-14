@@ -15,11 +15,11 @@ spec:
   valuesFrom:
   - kind: Secret
     name: ska-src-gatekeeper-secret
-    valuesKey: site_capabilities_gatekeeper_client_id
+    valuesKey: client_id
     targetPath: gatekeeper.site_capabilities_gatekeeper_client_id
   - kind: Secret
     name: ska-src-gatekeeper-secret
-    valuesKey: site_capabilities_gatekeeper_client_secret
+    valuesKey: client_secret
     targetPath: gatekeeper.site_capabilities_gatekeeper_client_secret 
   values:
     deployment_echo:
