@@ -88,7 +88,7 @@ stringData:
 Seal the secret using the command below.
 
 ```sh
-kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-prod/gatekeeper-secret.yaml --sealed-secret-file apps/gatekeeper/overlays/ral-stage/gatekeeper-secret.yaml
+kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-prod/gatekeeper-secret.yaml --sealed-secret-file apps/gatekeeper/overlays/ral-prod/gatekeeper-secret.yaml
 ```
 
 Add the new `gatekeeper`resource to the `kustomization.yaml` after the comment `# After bootstrap add the apps and services here`.

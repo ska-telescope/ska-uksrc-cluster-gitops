@@ -130,3 +130,5 @@ secrets/
     ├── jupyterhub-secret-config.yaml   
     └── secret-oidc.yaml
 ```
+
+[Next Page](./cluster-bootstrap-guide.md)

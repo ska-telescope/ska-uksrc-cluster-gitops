@@ -1,6 +1,6 @@
 # Delete a Cluster Manually
 
-Due to resttictions at RAL the `manage teardown clustname` does not work correctly and it is necessary to delete the cluster manually.
+Due to resttictions at RAL the `manage teardown clustername` does not work correctly and it is necessary to delete the cluster manually.
 
 **WARNING : You must ensure that you select the correct cluster if you are following these instructions.**
 

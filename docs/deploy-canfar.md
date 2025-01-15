@@ -98,7 +98,7 @@ patches:
         value: "vos://canfar.ral.uksrc.org~cavern"
 ```
 
-Create the `secrets/uksrc-ral-stage/canfar-oidc-secret.yaml` secret in the secrets folder, as per the example using the Client ID & Client Secret from the SKA-IAM client.
+Create the `secrets/uksrc-ral-prod/canfar-oidc-secret.yaml` secret in the secrets folder, as per the example using the Client ID & Client Secret from the SKA-IAM client.
 
 ```yaml
 ---
@@ -119,10 +119,10 @@ stringData:
 Seal the secrets using the command below.
 
 ```sh
-kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-stage/canfar-oidc-secret.yaml --sealed-secret-file apps/canfar/overlays/ral-stage/sealed-oidc-secret.yaml
+kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-prod/canfar-oidc-secret.yaml --sealed-secret-file apps/canfar/overlays/ral-prod/sealed-oidc-secret.yaml
 ```
 
-Another secret must be created, create the `secrets/uksrc-ral-stage/canfar-oidc-secret.yaml` secret in the secrets folder, as per the example using the Client ID & Client Secret from the SKA-IAM client.
+Another secret must be created, create the `secrets/uksrc-ral-prod/canfar-oidc-secret.yaml` secret in the secrets folder, as per the example using the Client ID & Client Secret from the SKA-IAM client.
 
 ```
 ---
@@ -143,7 +143,7 @@ stringData:
 Seal the secrets using the command below.
 
 ```sh
-kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-stage/canfar-storage-ui-secret.yaml --sealed-secret-file apps/canfar/overlays/ral-stage/sealed-storage-ui-secret.yaml
+kubeseal --kubeconfig clusters/uksrc-ral-prod/kubeconfig --format yaml --controller-name sealed-secrets --controller-namespace sealed-secrets-system --secret-file secrets/uksrc-ral-prod/canfar-storage-ui-secret.yaml --sealed-secret-file apps/canfar/overlays/ral-prod/sealed-storage-ui-secret.yaml
 ```
 
 Edit the `clusters/uksrc-ral-prod/kustomization.yaml` for the cluster.
