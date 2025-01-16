@@ -3,10 +3,17 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
-  - ceph-volume.yaml
 patches:
   - path: jupyterhub-values.yaml
     target:
       kind: HelmRelease
       name: jupyterhub
+  - path: secret.yaml
+  - target:
+      kind: PersistentVolume
+      name: jupyterhub-cephfs-static-pv
+    patch: |-
+      - op: replace
+        path: /spec/csi/volumeAttributes/clusterID
+        value: 2660d5ed-e7ef-4950-a051-c84a0b4e78b0
   - path: secret.yaml
