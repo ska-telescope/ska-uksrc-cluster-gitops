@@ -8,9 +8,9 @@ resources:
   
 # After bootstrap add the apps and services here
   - ../../components/cert-manager/issuers.yaml
-  # - ../../infra/ceph-share/overlays/ral-stage
+  - ../../infra/ceph-share/overlays/ral-stage
   - ../../infra/monitoring/overlays/ral-stage
-  # - ../../apps/soda/overlays/ral-stage
+  - ../../apps/soda/overlays/ral-stage
   - ../../apps/gatekeeper/overlays/ral-stage
   - ../../apps/jupyterhub/overlays/ral-stage
   - ../../apps/canfar/overlays/ral-stage
