@@ -10,14 +10,14 @@ spec:
       services:
         - route: "/echo"
           namespace: ska-src-gatekeeper-echo
-          prefix: "http://"
+          prefix: "https://"
           service_name: "ska-src-gatekeeper-echo"
           ingress_host: "gatekeeper.ral-stage.uksrc.org"
           port: 8080
           uuid: "ac558c13-5d1d-4a99-ba98-0ecb6bb6cb1d"
         - route: "/soda"
           namespace: ska-src-soda
-          prefix: "http://"
+          prefix: "https://"
           service_name: "ska-src-soda"
           ingress_host: "gatekeeper.ral-stage.uksrc.org"
           port: 8080
