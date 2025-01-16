@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "prometheus.ral.uksrc.org" 
+  - host: "" 
     http:
       paths:
       - path: /
@@ -21,5 +21,5 @@ spec:
               number: 9090
   tls:
   - hosts:
-    - "prometheus.ral.uksrc.org"
+    - ""
     secretName: prometheus-ingress-cert
