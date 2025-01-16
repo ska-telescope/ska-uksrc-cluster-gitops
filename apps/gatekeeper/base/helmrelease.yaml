@@ -12,15 +12,15 @@ spec:
         name:  ska-src-service-gatekeeper
         namespace: ska-src-gatekeeper
   interval: 1m
-  valuesFrom:
-  - kind: Secret
-    name: ska-src-gatekeeper-secret
-    valuesKey: site_capabilities_gatekeeper_client_id
-    targetPath: gatekeeper.site_capabilities_gatekeeper_client_id
-  - kind: Secret
-    name: ska-src-gatekeeper-secret
-    valuesKey: site_capabilities_gatekeeper_client_secret
-    targetPath: gatekeeper.site_capabilities_gatekeeper_client_secret 
+  # valuesFrom:
+  # - kind: Secret
+  #   name: ska-src-gatekeeper-secret
+  #   valuesKey: site_capabilities_gatekeeper_client_id
+  #   targetPath: gatekeeper.site_capabilities_gatekeeper_client_id
+  # - kind: Secret
+  #   name: ska-src-gatekeeper-secret
+  #   valuesKey: site_capabilities_gatekeeper_client_secret
+  #   targetPath: gatekeeper.site_capabilities_gatekeeper_client_secret 
   values:
     deployment_echo:
       namespace: ska-src-gatekeeper-echo
@@ -43,6 +43,7 @@ spec:
       site_capabilities_gatekeeper_client_audience: site-capabilities-api
       existingSecret: true
       services_cache_ttl: 3600
+      existingSecret: true
       services:
         - route: "/echo"                          # request route
           namespace: ska-src-gatekeeper           # namespace the service will run in, can be different to gatekeeper ns

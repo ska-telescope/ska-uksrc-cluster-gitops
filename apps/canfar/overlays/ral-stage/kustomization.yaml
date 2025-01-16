@@ -3,13 +3,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
-  - helmrelease.yaml
-  - ingress.yaml
+  - sealed-oidc-secret.yaml
+  - sealed-storage-ui-secret.yaml
 patches:
-  # - path: traefik-values.yaml
-  #   target: 
-  #     kind: HelmRelease
-  #     name: science-platform
   - target:
       kind: Ingress
       name: canfar-ingress
@@ -20,4 +16,76 @@ patches:
       - op: replace
         path: /spec/tls/0/hosts
         value:
-          - gatekeeper.ral-stage.uksrc.org        
+          - canfar.ral-stage.uksrc.org
+  - target:
+      kind: HelmRelease
+      name: base
+    patch: |-
+      - op: replace
+        path: /spec/values/traefik/service/spec/loadBalancerIP
+        value: "130.246.80.70"
+  - target:
+      kind: HelmRelease
+      name: cavern
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname    
+        value: "canfar.ral-stage.uksrc.org"
+      - op: replace
+        path: /spec/values/deployment/cavern/resourceID
+        value: ivo://canfar.ral-stage.uksrc.org/posix-mapper
+      - op: replace
+        path: /spec/values/deployment/cavern/posixMapperResourceID
+        value: ivo://canfar.ral-stage.uksrc.org/posix-mapper
+  - target:
+      kind: HelmRelease
+      name: posix-mapper
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: "canfar.ral-stage.uksrc.org"
+      - op: replace
+        path: /spec/values/posixMapper/resourceID
+        value: ivo://canfar.ral-stage.uksrc.org/posix-mapper
+  - target:
+      kind: HelmRelease
+      name: scienceportal
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: "canfar.ral-stage.uksrc.org"
+      - op: replace
+        path: /spec/values/deployment/sciencePortal/oidc/redirectURI
+        value: "https://canfar.ral-stage.uksrc.org/science-portal/oidc-callback"
+      - op: replace
+        path: /spec/values/deployment/sciencePortal/oidc/callbackURI
+        value: "https://canfar.ral-stage.uksrc.org/science-portal/"
+  - target:
+      kind: HelmRelease
+      name: skaha
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: "canfar.ral-stage.uksrc.org"
+      - op: replace
+        path: /spec/values/deployment/skaha/posixMapperResourceID
+        value: ivo://canfar.ral-stage.uksrc.org/posix-mapper
+  - target:
+      kind: HelmRelease
+      name: storage-ui
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: "canfar.ral-stage.uksrc.org"
+      - op: replace
+        path: /spec/values/deployment/storageUI/oidc/redirectURI
+        value: "https://canfar.ral-stage.uksrc.org/storage/oidc-callback"
+      - op: replace
+        path: /spec/values/deployment/storageUI/oidc/callbackURI
+        value: "https://canfar.ral-stage.uksrc.org/storage/list"
+      - op: replace
+        path: /spec/values/deployment/storageUI/backend/service/cavern/resourceID
+        value: ivo://canfar.ral-stage.uksrc.org/cavern
+      - op: replace
+        path: /spec/values/deployment/storageUI/backend/service/cavern/nodeURIPrefix
+        value: "vos://canfar.ral-stage.uksrc.org~cavern"
