@@ -60,6 +60,9 @@ patches:
       - op: replace
         path: /spec/values/deployment/sciencePortal/oidc/callbackURI
         value: "https://canfar.ral-stage.uksrc.org/science-portal/"
+      - op: replace
+        path: /spec/values/deployment/skahaResourceID
+        value: ivo://canfar.ral-stage.uksrc.org/skaha
   - target:
       kind: HelmRelease
       name: skaha
