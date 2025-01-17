@@ -1,6 +1,8 @@
 ![Local Image](images/SKAO_ukSRC_logo_nostrapline_colour_rgb.png)
 ### Monitoring
 
+
+
 Create a new overlay `ral` directory for your cluster in the `monitoring/overlays` directory.
 
 Create a `kustomization.yaml` as per the example, updating the values to match your CName / hostname.
@@ -36,7 +38,7 @@ patches:
           - prometheus.ral.uksrc.org
 ```
 
-Add the new `monitoring`resources to the `kustomization.yaml` after the comment `# After bootstrap add the apps and services here`.
+Add the new `monitoring`resources to the `clusters/uksrc/ral-prod/kustomization.yaml` after the comment `# After bootstrap add the apps and services here`.
 
 ```yaml
 ---
@@ -51,7 +53,7 @@ resources:
   - credentials-sealed.yaml
 
   # After bootstrap add the apps and services here
-  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
 ```
