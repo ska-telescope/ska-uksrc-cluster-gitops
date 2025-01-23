@@ -51,10 +51,12 @@ spec:
           loadBalancerIP: ""
         metrics:
           enabled: true
+        ingressClass: gatekeeper-nginx
         ingressClassResource:
           name: gatekeeper-nginx
-          controllerValue: skao.int/gatekeeper-nginx
-        ingressClass: gatekeeper-nginx
+          enabled: true
+          default: false
+          controllerValue: "skao.int/gatekeeper-nginx"
         allowSnippetAnnotations: true
         extraArgs:
           enable-ssl-passthrough: ""
