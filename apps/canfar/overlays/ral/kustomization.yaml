@@ -14,4 +14,48 @@ patches:
       - op: replace
         path: /spec/tls/0/hosts
         value:
-          - gatekeeper.ral.uksrc.org        
+          - canfar.ral.uksrc.org
+  - target: 
+      kind: HelmRelease
+      name: scienceportal
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: canfar.ral.uksrc.org
+  - target: 
+      kind: HelmRelease
+      name: base
+    patch: |-
+      - op: replace
+        path: /spec/values/traefik/service/spec/loadBalancerIP
+        value: "130.246.80.185"
+  - target: 
+      kind: HelmRelease
+      name: cavern
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: canfar.ral.uksrc.org
+      - op: replace
+        path: /spec/values/deployment/cavern/resourceID
+        value: ivo://canfar.ral.uksrc.org/posix-mapper
+      - op: replace
+        path: /spec/values/deployment/cavern/posixMapperResourceID
+        value: ivo://canfar.ral.uksrc.org/posix-mapper
+  - target: 
+      kind: HelmRelease
+      name: posix-mapper
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: canfar.ral.uksrc.org
+      - op: replace
+        path: /spec/values/posixMapper/resourceID
+        value: ivo://canfar.ral.uksrc.org/posix-mapper
+  - target: 
+      kind: HelmRelease
+      name: storageui
+    patch: |-
+      - op: replace
+        path: /spec/values/deployment/hostname
+        value: canfar.ral.uksrc.org
