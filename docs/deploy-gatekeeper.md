@@ -124,3 +124,5 @@ Commit & push your changes to Gitlab. You should be able to see that Jupyterhub 
 Once you have confirmed the GateKeeper Service has been deployed correctly, move onto the next stage.
 
 [Next Page](./deploy-jupyterhub.md)
+
+[Document Home](./readme.md)

@@ -33,3 +33,5 @@ Commit & push your changes to Gitlab. You should be able to see that the Cluster
 Once you have confirmed the Cluster Issuer has been deployed correctly, move onto the next stage.
 
 [Next Page](./deploy-csi-cephfs.md)
+
+[Document Home](./readme.md)
