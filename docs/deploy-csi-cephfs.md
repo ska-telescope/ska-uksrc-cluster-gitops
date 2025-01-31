@@ -111,3 +111,5 @@ Commit & push your changes to Gitlab. You should be able to see that the Ceph CS
 Once you have confirmed the CEPH CSI driver has been deployed correctly, move onto the next stage.
 
 [Next Page](./deploy-monitoring.md)
+
+[Document Home](./readme.md)

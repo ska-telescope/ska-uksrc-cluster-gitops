@@ -77,6 +77,7 @@ The following tools are required to execute the bootstrap script:
   * [kustomize](https://kustomize.io/) ** Kustomize is built in to kubectl **
   * [kubeseal](https://github.com/bitnami-labs/sealed-secrets?tab=readme-ov-file#kubeseal)
   * [flux CLI](https://fluxcd.io/flux/cmd/)
+  * [Helm](https://helm.sh/docs/intro/install/)
 
   Additionally you can install the following tools to for ease of use when navigating the Kubernetes clusters.
 
@@ -131,4 +132,43 @@ secrets/
     └── secret-oidc.yaml
 ```
 
+## OpenStack Pre-requsites
+
+You will need the following info from OpenStack to populate the Cluster Configmap for the deployment.
+
+### Image ID
+
+An image ID for that contains the Kubernetes biniaries for the release you are deploying.
+
+```sh
+openstack image list | grep kube-v1.31
+```
+
+### Network ID's
+
+The Openstack Network ID's for external & internal networks.
+
+```sh
+openstack network list
+
+```
+
+### Virtual Machine Flavors
+
+From the generated list, select appropriate flavors by Name, for your controllers & workers.
+
+```sh
+openstack flavor list
+```
+
+### Floating IP Address for Load-Balancer
+
+Select an associated free Floating IP address.
+
+```sh
+openstack floating ip  list
+```
+
 [Next Page](./cluster-bootstrap-guide.md)
+
+[Document Home](./readme.md)

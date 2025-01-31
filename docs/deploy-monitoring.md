@@ -70,3 +70,5 @@ Commit & push your changes to Gitlab. You should be able to see that the monitor
 Once you have confirmed the Monitoring has been deployed correctly, move onto the next stage.
 
 [Next Page](./deploy-soda.md)
+
+[Document Home](./readme.md)

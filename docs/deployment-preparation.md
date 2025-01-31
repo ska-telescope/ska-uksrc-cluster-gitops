@@ -44,4 +44,6 @@ During deployment you should be logged into [SKA-IAM](https://ska-iam.stfc.ac.uk
 
 If you did not create create the IAM credentials, you must ensure that you have access to them through a SECURE method, such as using an applications like 1Password or similar Vault based tools, DO NOT SHARE them via email or instant messaging.
 
-[Next page](./deploy-csi-cephfs.md)
+[Next page](./deploy-cluster-issuer.md)
+
+[Document Home](./readme.md)
