@@ -1,14 +1,11 @@
 resources:
   - configmap.yaml
-  - credentials.yaml
+  - credentials-sealed.yaml
   - ../../components/flux
   - ../../components/sealed-secrets
   - ../../components/cluster-api
   - ../../components/cluster
 # After bootstrap add the apps and services here
-  - ../../infra/monitoring/overlays/cam
-  - ../../apps/soda
-  - ../../apps/jupyterhub/overlays/cam
 
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
@@ -20,7 +17,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/releaseName
-        value: uksrc-cam
+        value: uksrc-cam-prod
 
       - op: add
         path: /spec/valuesFrom/-

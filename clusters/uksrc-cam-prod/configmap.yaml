@@ -1,0 +1,146 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: uksrc-cam-cluster-config
+  namespace: capi-self
+data:
+  values.yaml: |
+    # Must match the name of the (sealed) secret in credentials.yaml
+    cloudCredentialsSecretName: uksrc-cam-cloud-credentials
+
+    kubernetesVersion: 1.31.2
+    machineImageId: 65dd6b54-c417-4c54-bd5b-d56010a9e97c
+
+    clusterNetworking:
+      externalNetworkId: 57add367-d205-4030-a929-d75617a7c63e
+      internalNetwork:
+        networkFilter:
+          id: 356dde88-725e-4809-9200-35abf5a2baf1
+          name: uksrc-ska-network
+
+    controlPlane:
+      machineFlavor: vm.ska.cpu.general.eighth
+      machineCount: 3
+
+    nodeGroups:
+      - name: workers-himem-quarter
+        machineFlavor: vm.ska.cpu.himem.quarter
+        autoscale: true
+        machineCountMin: 3
+        machineCountMax: 9      
+      
+      - name: workers-general-half
+        machineFlavor: vm.ska.cpu.general.half
+        autoscale: true
+        machineCountMin: 3
+        machineCountMax: 9    
+
+      - name: workers-general-quarter
+        machineFlavor: vm.ska.cpu.general.quarter
+        autoscale: true
+        machineCountMin: 3
+        machineCountMax: 9    
+
+    # Configuration for the cluster autoscaler
+    autoscaler:
+      # The image to use for the autoscaler component
+      image:
+        repository: registry.k8s.io/autoscaling/cluster-autoscaler
+        pullPolicy: IfNotPresent
+        tag: v1.31.1
+      imagePullSecrets: []
+      # Any extra args for the autoscaler
+      extraArgs:
+        # Make sure logs go to stderr
+        logtostderr: true
+        stderrthreshold: info
+        # Output at a decent log level
+        v: 4
+        # Cordon nodes before terminating them so new pods are not scheduled there
+        cordon-node-before-terminating: "true"
+        # When scaling up, choose the node group that will result in the least idle CPU after
+        expander: least-waste,random
+        # Allow pods in kube-system to prevent a node from being deleted
+        skip-nodes-with-system-pods: "true"
+        # Allow pods with emptyDirs to be evicted
+        skip-nodes-with-local-storage: "false"
+        # Allow pods with custom controllers to be evicted
+        skip-nodes-with-custom-controller-pods: "false"
+
+    apiServer:
+      # Indicates whether to deploy a load balancer for the API server
+      enableLoadBalancer: true
+      # Indicates what loadbalancer provider to use. Default is amphora
+      loadBalancerProvider:
+      # Restrict loadbalancer access to select IPs
+      # allowedCidrs
+      #  - 192.168.0.0/16  # needed for cluster to init
+      #  - 10.10.0.0/16  # IPv4 Internal Network
+      #  - 123.123.123.123 # some other IPs
+      # Indicates whether to associate a floating IP with the API server
+      associateFloatingIP: false
+      # The specific floating IP to associate with the API server
+      # If not given, a new IP will be allocated if required
+      floatingIP: 
+      # The specific fixed IP to associate with the API server
+      # If enableLoadBalancer is true, this will become the VIP of the load balancer
+      # If enableLoadBalancer and associateFloatingIP are both false, this should be
+      # the IP of a pre-allocated port to be used as the VIP
+      fixedIP:
+      # The port to use for the API server
+      port: 6443
+
+    addons:
+      # Use the cilium CNI
+      cni:
+        type: cilium
+
+      # Enable the monitoring stack
+      monitoring:
+        enabled: true
+
+      # Disable NFD and the NVIDIA/Mellanox operators
+      nodeFeatureDiscovery:
+        enabled: false
+      nvidiaGPUOperator:
+        enabled: false
+      mellanoxNetworkOperator:
+        enabled: false
+
+    # set availabilty zone as upstream uses nova by default
+      openstack:
+        csiCinder:
+          defaultStorageClass:
+            availabilityZone: ceph
+        csiManila:
+          enabled: true
+
+      ingress:
+        enabled: true
+        nginx:
+          release:
+            values:
+              controller:
+                service:
+                  loadBalancerIP: "128.232.226.44"
+
+      csi:
+        cephfs:
+          enabled: true
+
+    kubeNetwork:
+      # By default, use the private network range 10.0.0.0/12 for the cluster network
+      # We split it into two equally-sized blocks for pods and services
+      # This gives ~500,000 addresses in each block and distinguishes it from
+      # internal net on 172.16.x.y
+      pods:
+        cidrBlocks:
+          - 10.0.0.0/13
+      services:
+        cidrBlocks:
+          - 10.8.0.0/13
+      serviceDomain: cluster.local
+
+    # Settings for registry mirrors
+    # registryMirrors: { docker.io: ["https://dockerhub.stfc.ac.uk"] }
