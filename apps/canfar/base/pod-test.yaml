@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: helper-pod
+  labels:
+    purpose: create-dir
+spec:
+  containers:
+  - name: helper
+    image: busybox
+    command: ['sh', '-c', 'sleep 3600']
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - name: host-volume
+      mountPath: /host
+  volumes:
+  - name: host-volume
+    hostPath:
+      path: /
+  nodeSelector:
+    kubernetes.io/hostname: uksrc-ral-prod-workers-micro-bcwqj-w88qv
