@@ -22,13 +22,13 @@ spec:
     - kind: Secret
       name: oidc-credentials
       valuesKey: clientSecret
-      targetPath: deployment.sciencePortal.oidc.clientSecret
+      targetPath: deployment.sciencePortal.oidc.clientSecret        
   values:
     replicaCount: 1
     skaha:
       namespace: skaha-system
     deployment:
-      hostname: canfar.ral.uksrc.org 
+      hostname: canfar.ral.uksrc.org
       sciencePortal:
         themeName: src
         tabLabels:
@@ -41,7 +41,6 @@ spec:
           limits:
             memory: "500M"
             cpu: "500m"
-
         oidc:
           uri: https://ska-iam.stfc.ac.uk/
           redirectURI: https://canfar.ral.uksrc.org/science-portal/oidc-callback

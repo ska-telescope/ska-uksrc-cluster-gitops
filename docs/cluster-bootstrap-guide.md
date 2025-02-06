@@ -43,7 +43,7 @@ metadata:
 data:
   values.yaml: |
     # Must match the name of the (sealed) secret in credentials.yaml
-    cloudCredentialsSecretName: uksrc-ral-cluster-credentials  # <--- Use this naming convention
+    cloudCredentialsSecretName: uksrc-ral-cloud-credentials  # <--- Use this naming convention
 
     kubernetesVersion: 1.28.7 # <--- Select the release that is supported by the image
     machineImageId: 7288e8a2-976a-4b53-8b10-0be864c94af8 # <--- Select the image ID
@@ -51,7 +51,7 @@ data:
       externalNetworkId: 5283f642-8bd8-48b6-8608-fa3006ff4539 # <--- Select the external network ID
       internalNetwork:
         networkFilter:
-          id: e04ec697-e979-487c-929d-3c92893f15df# <--- Select the internal image ID
+          id: e04ec697-e979-487c-929d-3c92893f15df# <--- Select the internal network ID
           name: UKSRC-Network # <--- Select the Network name
 
     controlPlane:
@@ -102,10 +102,10 @@ data:
       #  - 10.10.0.0/16  # IPv4 Internal Network
       #  - 123.123.123.123 # some other IPs
       # Indicates whether to associate a floating IP with the API server
-      associateFloatingIP: true
+      associateFloatingIP: false
       # The specific floating IP to associate with the API server
       # If not given, a new IP will be allocated if required
-      floatingIP: 130.246.215.245# <--- Select an appropriate floating IP
+      floatingIP: 
       # The specific fixed IP to associate with the API server
       # If enableLoadBalancer is true, this will become the VIP of the load balancer
       # If enableLoadBalancer and associateFloatingIP are both false, this should be
@@ -293,5 +293,7 @@ kubectl get cluster-api
 ```
 
 [Next Page](./deployment-preparation.md)
+
+[Document Home](./readme.md)
 
 Troubleshooting link here.

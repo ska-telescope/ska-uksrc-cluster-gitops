@@ -55,7 +55,7 @@ resources:
   - credentials-sealed.yaml
 
   # After bootstrap add the apps and services here
-  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
   - ../../apps/soda/overlays/ral
@@ -72,3 +72,5 @@ Commit & push your changes to Gitlab. You should be able to see that the SODA Se
 Once you have confirmed the Soda Service has been deployed correctly, move onto the next stage.
 
 [Next Page](./deploy-gatekeeper.md)
+
+[Document Home](./readme.md)

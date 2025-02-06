@@ -22,7 +22,7 @@ spec:
     - kind: Secret
       name: storage-ui-credentials
       valuesKey: clientSecret
-      targetPath: deployment.storageUI.oidc.clientSecret
+      targetPath: deployment.storageUI.oidc.clientSecret        
   values:
     replicaCount: 1
     skaha:
