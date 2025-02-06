@@ -3,9 +3,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
+  - csi-cephfs-secret.yaml
 patches:
   - path: csi-ceph-values.yaml
     target:
       kind: HelmRelease
       name: ceph-csi
-  - path: csi-cephfs-secret.yaml
+  # - path: csi-cephfs-secret.yaml

@@ -60,7 +60,7 @@ metadata:
   namespace: skaha-system
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-traefik-prod
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: base-traefik

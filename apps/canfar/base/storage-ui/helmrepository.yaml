@@ -4,5 +4,5 @@ metadata:
   name: science-platform-client
   namespace: skaha-system
 spec:
-  url: https://images.opencadc.org/chartrepo/platform
+  url: https://images.opencadc.org/chartrepo/client
   interval: 1h
