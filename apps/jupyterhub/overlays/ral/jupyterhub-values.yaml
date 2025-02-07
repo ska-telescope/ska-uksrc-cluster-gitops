@@ -21,3 +21,18 @@ spec:
           token_url: https://ska-iam.stfc.ac.uk/token
           userdata_url: https://ska-iam.stfc.ac.uk/userinfo
         baseURL: https://jupyterhub.ral.uksrc.org/
+
+###################### Update the following section to use the Coral PVC mounts######################
+
+      storage:
+        dynamic:
+          storageClass: csi-cinder
+        capacity: 1Gi
+        extraVolumes:
+          - name: jupyterhub-cephfs-static-pv
+            persistentVolumeClaim:
+              claimName: jupyterhub-ceph-volume
+        extraVolumeMounts:
+          - name: jupyterhub-cephfs-static-pv
+            mountPath: /home/jovyan/shared
+            readOnly: true        

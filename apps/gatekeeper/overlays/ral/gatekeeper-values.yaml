@@ -10,15 +10,22 @@ spec:
       services:
         - route: "/echo"
           namespace: ska-src-gatekeeper-echo
-          prefix: "http://"
+          prefix: "https://"
           service_name: "ska-src-gatekeeper-echo"
           ingress_host: "gatekeeper.ral.uksrc.org"
           port: 8080
           uuid: "d921efbf-71a9-47cc-8527-69d1a0a50d8b"
         - route: "/soda"
           namespace: ska-src-soda
-          prefix: "http://"
+          prefix: "https://"
           service_name: "ska-src-soda"
           ingress_host: "gatekeeper.ral.uksrc.org"
           port: 8080
           uuid: "51d69ecd-e47a-44ca-9b5a-59c90a6dd631"
+        - route: "/preparedata"
+          namespace: preparedata
+          prefix: "https://"
+          service_name: "preparedata-api"
+          ingress_host: "gatekeeper.ral.uksrc.org"
+          port: 8000
+          uuid: "3b8db6e8-a2d3-4611-afe7-3c7b8f14658a"

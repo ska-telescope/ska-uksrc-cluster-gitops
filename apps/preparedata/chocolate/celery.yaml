@@ -1,0 +1,40 @@
+
+        - name: celery
+          image: registry.gitlab.com/ska-telescope/src/src-dm/ska-src-dm-local-data-preparer/ska-src-local-data-preparer-celery-worker:async-job-submission-2
+          imagePullPolicy: IfNotPresent
+          workingDir: /opt/ska-src-local-data-preparer
+          env:
+            - name: CELERY_BROKER_URL
+              value: "amqp://user:user@rabbitmq.preparedata.svc.cluster.local//"
+            - name: ABS_PATH_CELERY_RESULTS
+              value: "/var/celery/results"
+          # command:
+          #   - "celery"
+          #   - "-A"
+          #   - "prepare_data.worker"
+          #   - "worker"
+          #   - "--loglevel=info"
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+          volumeMounts:
+            - name: userspace-volume
+              mountPath: /users
+            - name: rse-volume
+              mountPath: /rse
+              readOnly: true
+            - name: celery-results
+              mountPath: /var/celery/results
+      volumes:
+        - name: userspace-volume
+          persistentVolumeClaim:
+            claimName: userspace-pvc
+        - name: rse-volume
+          persistentVolumeClaim:
+            claimName: preparedata-rse-pvc
+        - name: celery-results
+          emptyDir: {}
