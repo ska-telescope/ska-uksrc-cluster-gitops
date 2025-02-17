@@ -9,7 +9,8 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
       hosts:
-        - soda.ral.uksrc.org
+        # - soda.ral.uksrc.org
+        - soda.130-246-81-193.sslip.io
       tls:
         - hosts:
           - soda.ral.uksrc.org
