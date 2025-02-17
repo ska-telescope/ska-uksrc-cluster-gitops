@@ -14,7 +14,7 @@ spec:
       name: csi-cephfs-secret
       namespace: csi-ceph-system
     volumeAttributes:
-      "clusterID": ""
+      "clusterID": "2660d5ed-e7ef-4950-a051-c84a0b4e78b0"
       "staticVolume": "true"
       "rootPath": "/ska/testbed"
     volumeHandle: rse-share
@@ -34,4 +34,4 @@ spec:
       storage: 100Gi
   storageClassName: ""
   volumeMode: Filesystem
-  volumeName: preparedata-rse-pvc
+  volumeName: rse-share

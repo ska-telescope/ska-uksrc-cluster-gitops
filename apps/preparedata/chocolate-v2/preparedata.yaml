@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: preparedata-app
+  name: preparedata-app
+  namespace: preparedata
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: preparedata-app
+  template:
+    metadata:
+      labels:
+        app: preparedata-app
+    spec:
+      containers:
+        # - image: registry.gitlab.com/ska-telescope/src/src-dm/ska-src-dm-local-data-preparer/ska-src-local-data-preparer-core:async-job-submission-2
+        - image: thinkc/ska-data-preparer-v1:latest
+          imagePullPolicy: Always
+          name: preparedata
+          ports:
+            - containerPort: 8000
+              name: fastapi
+              protocol: TCP
+          env:
+            - name: PREPARE_DATA_APPROACH
+              value: "copy_to_user_area"
+            - name: ABS_PATH_USER_AREA_ROOT
+              value: "/users/cavern/home"
+            - name: ABS_PATH_RSE_ROOT
+              value: /rse
+          volumeMounts:
+            - name: userspace-volume
+              mountPath: /users
+            - name: rse-volume
+              mountPath: /rse
+              readOnly: true
+          readinessProbe:
+            tcpSocket:
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+      volumes:
+        - name: userspace-volume
+          persistentVolumeClaim:
+            claimName: cavern-userspace-pvc
+        - name: rse-volume
+          persistentVolumeClaim:
+            claimName: preparedata-rse-pvc

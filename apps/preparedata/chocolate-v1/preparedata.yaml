@@ -16,7 +16,8 @@ spec:
         app: preparedata-app
     spec:
       containers:
-        - image: registry.gitlab.com/ska-telescope/src/src-dm/ska-src-dm-local-data-preparer/ska-src-local-data-preparer-core:async-job-submission-2
+        # - image: registry.gitlab.com/ska-telescope/src/src-dm/ska-src-dm-local-data-preparer/ska-src-local-data-preparer-core:async-job-submission-2
+        - image: thinkc/ska-data-preparer-v1:latest
           imagePullPolicy: Always
           name: preparedata
           ports:
@@ -49,7 +50,7 @@ spec:
       volumes:
         - name: userspace-volume
           persistentVolumeClaim:
-            claimName: userspace-pvc
+            claimName: cavern-userspace-pvc
         - name: rse-volume
           persistentVolumeClaim:
             claimName: preparedata-rse-pvc
