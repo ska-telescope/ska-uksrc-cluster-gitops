@@ -31,7 +31,7 @@ spec:
       size: 10Gi
     config:
       datasets: |-
-        fits_path_surveys=/srv/soda/datasets
-        fits_path_cutouts=/srv/surveys
+        fits_path_surveys=/srv/surveys
+        fits_path_cutouts=/srv/soda/cutouts
         ivoid_authority=test.skao
         ivoid_resource_key=datasets/fits
