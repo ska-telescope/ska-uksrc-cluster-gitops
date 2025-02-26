@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gatekeeper-ingress
+  namespace: gatekeeper-dev
+  annotations:
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-gatekeeper-staging
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "gatekeeper-dev.130-246-80-45.sslip.io"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: ska-src-service-gatekeeper-ingress-nginx-controller
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - "gatekeeper-dev.130-246-80-45.sslip.io"
+    secretName: gatekeeper-cert-dev
