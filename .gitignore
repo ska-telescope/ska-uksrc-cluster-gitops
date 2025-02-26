@@ -23,3 +23,4 @@ clusters/*/credentials.yaml
 
 
 apps/old-canfar/
+service-gatekeeper-secret.yaml
