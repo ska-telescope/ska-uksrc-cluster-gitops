@@ -1,0 +1,30 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: service-gatekeeper
+  namespace: gatekeeper-dev
+spec:
+  values:
+    service-gatekeeper:
+      services:
+        - route: "/echo"
+          namespace: service-gatekeeper-echo-dev
+          prefix: "https://"
+          service_name: "ska-src-gatekeeper-echo"
+          ingress_host: "gatekeeper-dev.130-246-80-45.sslip.io"
+          port: 8080
+          uuid: "a909efc1-1add-4a41-9cc7-52d3c26cec43"
+        - route: "/soda"
+          namespace: ska-src-soda
+          prefix: "https://"
+          service_name: "ska-src-soda"
+          ingress_host: "gatekeeper-dev.130-246-80-45.sslip.io"
+          port: 8080
+          uuid: "7cb2525e-a707-4d70-b209-c7a9e6f1cabd"
+    ingress-nginx:
+      controller:
+        replicaCount: 1
+        service:
+          type: NodePort
+          loadBalancerIP: ""
