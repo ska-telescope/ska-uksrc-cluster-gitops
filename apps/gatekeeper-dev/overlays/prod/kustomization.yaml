@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+patches:
+  - path: gatekeeper-values-dev.yaml
+    target:
+      kind: HelmRelease
+      name: service-gatekeeper
+  - target:
+      kind: Ingress
+      name: gatekeeper-ingress
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: gatekeeper-dev-prod.130-246-80-45.sslip.io
+      - op: replace
+        path: /spec/tls/0/hosts
+        value:
+          - gatekeeper-dev-prod.130-246-80-45.sslip.io
