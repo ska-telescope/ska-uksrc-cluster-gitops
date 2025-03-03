@@ -7,4 +7,4 @@ spec:
   interval: 5m
   url: https://gitlab.com/ska-telescope/src/src-dm/ska-src-dm-da-service-gatekeeper
   ref:
-    branch: main
+    branch: gatekeeper-0-0-2
