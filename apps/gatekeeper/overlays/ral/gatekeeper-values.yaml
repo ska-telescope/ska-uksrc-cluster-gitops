@@ -22,6 +22,13 @@ spec:
           ingress_host: "gatekeeper.ral.uksrc.org"
           port: 8080
           uuid: "51d69ecd-e47a-44ca-9b5a-59c90a6dd631"
+        - route: "/preparedata"
+          namespace: preparedata
+          prefix: "https://"
+          service_name: "preparedata-api"
+          ingress_host: "gatekeeper.ral.uksrc.org"
+          port: 8000
+          uuid: "3b8db6e8-a2d3-4611-afe7-3c7b8f14658a"
     ingress-nginx:
       controller:
         replicaCount: 1
