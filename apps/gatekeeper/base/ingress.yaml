@@ -19,27 +19,6 @@ spec:
             name: ska-src-service-gatekeeper-ingress-nginx-controller
             port:
               number: 80
-      - path: /echo
-        pathType: Prefix
-        backend:
-          service:
-            name: ska-src-gatekeeper-echo
-            port:
-              number: 8080
-      - path: /preparedata
-        pathType: Prefix
-        backend:
-          service:
-            name: preparedata-api
-            port:
-              number: 8000
-      - path: /soda
-        pathType: Prefix
-        backend:
-          service:
-            name: ska-src-soda
-            port:
-              number: 8080
   tls:
   - hosts:
     - ""
