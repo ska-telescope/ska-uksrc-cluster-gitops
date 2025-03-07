@@ -21,3 +21,5 @@ clusters/*/credentials.yaml
 !clusters/example/credentials.yaml
 
 apps/preparedata/coral/preparedata-pv-pvc.yaml
+
+apps/preparedata/chocolate-v1
