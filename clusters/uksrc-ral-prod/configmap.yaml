@@ -27,8 +27,8 @@ data:
       - name: workers
         machineFlavor: l3.nano
         autoscale: true
-        machineCountMin: 3
-        machineCountMax: 6   
+        machineCountMin: 8
+        machineCountMax: 10
 
       # - name: workers-small
       #   machineFlavor: l3.small
@@ -39,8 +39,8 @@ data:
       - name: workers-micro
         machineFlavor: l3.micro
         autoscale: true
-        machineCountMin: 3
-        machineCountMax: 6    
+        machineCountMin: 8
+        machineCountMax: 10
 
       # - name: workers-le3-small
       #   machineFlavor: le3.small
