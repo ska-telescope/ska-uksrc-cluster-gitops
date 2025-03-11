@@ -9,4 +9,4 @@ patches:
     target:
       kind: HelmRelease
       name: ceph-csi
-  # - path: csi-cephfs-secret.yaml
+
