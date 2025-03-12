@@ -4,8 +4,8 @@ namespace: preparedata
 
 resources:
   - ../../base
-  - cavern-user-space.yaml
-  - preparedata-rse-storage.yaml
+  - preparedata-userspace-volume.yaml
+  - preparedata-rse-volume.yaml
 
 # Helm chart definition with values overlay
 helmCharts:
