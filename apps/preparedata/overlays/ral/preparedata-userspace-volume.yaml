@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    name: cavern-userspace-pv
+  name: cavern-userspace-pv
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 10Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: cavern-userspace-pvc
+    namespace: preparedata
+    resourceVersion: "47547082"
+    uid: db107633-379c-441e-8806-a57048a64d1b
+  csi:
+    driver: cephfs.manila.csi.openstack.org
+    nodePublishSecretRef:
+      name: csi-manila-credentials
+      namespace: openstack-system
+    nodeStageSecretRef:
+      name: csi-manila-credentials
+      namespace: openstack-system
+    volumeAttributes:
+      shareAccessID: e58edeab-8b81-41ae-8946-3da3e471cdf9
+      shareID: d8395514-8896-4817-9193-4e550e9ac483
+    volumeHandle: cavern-userspace-pv
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cavern-userspace-pvc
+  namespace: preparedata
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ""
+  volumeMode: Filesystem
+  volumeName: cavern-userspace-pv

@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    name: preparedata-v2-celery-results-pv
+  name: preparedata-v2-celery-results-pv
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 10Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: preparedata-v2-celery-results-pvc
+    namespace: preparedata
+    resourceVersion: "53817666"
+    uid: 7ff7a2ad-5bf4-4069-8bd7-631bc9f38fd6
+  hostPath:
+    path: /var/celery/results
+    type: ""
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: preparedata-v2-celery-results-pvc
+  namespace: preparedata
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ""
+  volumeMode: Filesystem
+  volumeName: preparedata-v2-celery-results-pv
