@@ -3,5 +3,9 @@ kind: Kustomization
 namespace: preparedata
 
 resources:
+  - namespace.yaml
   - deployment.yaml
   - service.yaml
+  - rmq-helmrelease.yaml
+  - rmq-helmchart.yaml
+  - rmq-helmrepository.yaml
