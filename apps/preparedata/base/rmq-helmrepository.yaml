@@ -6,4 +6,5 @@ metadata:
   namespace: rabbitmq
 spec:
   url: oci://registry-1.docker.io/bitnamicharts
+  type: oci
   interval: 1h

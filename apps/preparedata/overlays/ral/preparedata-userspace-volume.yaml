@@ -2,8 +2,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   labels:
-    name: cavern-userspace-pv
-  name: cavern-userspace-pv
+    name: preparedata-userspace-pv
+  name: preparedata-userspace-pv
 spec:
   accessModes:
     - ReadWriteMany
@@ -12,7 +12,7 @@ spec:
   claimRef:
     apiVersion: v1
     kind: PersistentVolumeClaim
-    name: cavern-userspace-pvc
+    name: preparedata-userspace-pvc
     namespace: preparedata
     resourceVersion: "47547082"
     uid: db107633-379c-441e-8806-a57048a64d1b
@@ -27,14 +27,14 @@ spec:
     volumeAttributes:
       shareAccessID: e58edeab-8b81-41ae-8946-3da3e471cdf9
       shareID: d8395514-8896-4817-9193-4e550e9ac483
-    volumeHandle: cavern-userspace-pv
+    volumeHandle: preparedata-userspace-pv
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cavern-userspace-pvc
+  name: preparedata-userspace-pvc
   namespace: preparedata
 spec:
   accessModes:
@@ -44,4 +44,4 @@ spec:
       storage: 10Gi
   storageClassName: ""
   volumeMode: Filesystem
-  volumeName: cavern-userspace-pv
+  volumeName: preparedata-userspace-pv

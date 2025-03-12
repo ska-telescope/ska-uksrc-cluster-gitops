@@ -87,7 +87,7 @@ spec:
       volumes:
         - name: userspace-volume
           persistentVolumeClaim:
-            claimName: userspace-pvc
+            claimName: preparedata-userspace-pvc
         - name: rse-volume
           persistentVolumeClaim:
             claimName: preparedata-rse-pvc
