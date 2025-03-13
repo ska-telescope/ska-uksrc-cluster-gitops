@@ -14,16 +14,16 @@ spec:
     metadata:
       labels:
         app: preparedata-app
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: service
-            operator: In
-            values:
-            - preparedata  
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: service
+                operator: In
+                values:
+                - preparedata      
       securityContext:
         fsGroup: 1000
       containers:
