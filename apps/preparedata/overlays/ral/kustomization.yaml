@@ -6,15 +6,8 @@ resources:
   - ../../base
   - preparedata-userspace-volume.yaml
   - preparedata-rse-volume.yaml
-
-# # Helm chart definition with values overlay
-# helmCharts:
-#   - name: rabbitmq
-#     repo: oci://registry-1.docker.io/bitnamicharts
-#     namespace: preparedata
-#     releaseName: rabbitmq
-#     # base values file
-#     valuesFile: ../../base/values-rabbitmq.yaml
-#     # overlay values file that will override the base
-#     #additionalValuesFiles:
-#     #  - values-rabbitmq.yaml
+patches:
+  - path: rmq-values.yaml
+    target:
+      kind: HelmRelease
+      name: rabbitmq
