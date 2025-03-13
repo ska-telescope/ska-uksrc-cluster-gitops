@@ -1,4 +1,5 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: rabbitmq
@@ -7,20 +8,15 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: base
-      version: "15.3.3"
+      chart: rabbitmq
       sourceRef:
         kind: HelmRepository
         name: rabbitmq
         namespace: preparedata
+  releaseName: rabbitmq
   upgrade:
-    # Remediaton configuration for when an Helm upgrade action fails
     remediation:
-      # Amount of retries to attempt after a failure,
-      # setting this to 0 means no remedation will be
-      # attempted
       retries: 3
-  # Configuration options for the Helm rollback action
   rollback:
     timeout: 5m
     disableWait: false
