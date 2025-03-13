@@ -47,29 +47,29 @@
 #   volumeName: preparedata-userspace-pv
 
 
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: preparedata-userspace-pv
-spec:
-  accessModes:
-  - ReadWriteMany
-  capacity:
-    storage: 100Gi
-  csi:
-    driver: cinder.csi.openstack.org
-    volumeHandle: preparedata-userspace-pv
-  persistentVolumeReclaimPolicy: Retain
-  volumeMode: Filesystem
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: service
-              operator: In
-              values:
-                - preparedata
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: preparedata-userspace-pv
+# spec:
+#   accessModes:
+#   - ReadWriteMany
+#   capacity:
+#     storage: 100Gi
+#   csi:
+#     driver: cinder.csi.openstack.org
+#     volumeHandle: preparedata-userspace-pv
+#   persistentVolumeReclaimPolicy: Retain
+#   volumeMode: Filesystem
+#   nodeAffinity:
+#     required:
+#       nodeSelectorTerms:
+#         - matchExpressions:
+#             - key: service
+#               operator: In
+#               values:
+#                 - preparedata
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
