@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: preparedata-rmq-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 100Gi
+  csi:
+    driver: cinder.csi.openstack.org
+    volumeHandle: preparedata-rmq-pv
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: preparedata-rmq-pvc
+  namespace: preparedata
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: ""
+  volumeMode: Filesystem
+  volumeName: preparedata-rmq-pv
