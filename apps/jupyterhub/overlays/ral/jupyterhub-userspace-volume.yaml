@@ -23,14 +23,14 @@ spec:
     volumeHandle: jupyterhub-userspace-pv
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: service
-              operator: In
-              values:
-                - jupyterhub
+  # nodeAffinity:
+  #   required:
+  #     nodeSelectorTerms:
+  #       - matchExpressions:
+  #           - key: service
+  #             operator: In
+  #             values:
+  #               - jupyterhub
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
