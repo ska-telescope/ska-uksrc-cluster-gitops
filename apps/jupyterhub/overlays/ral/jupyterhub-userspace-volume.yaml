@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    name: jupyterhub-userspace-pv
+  name: jupyterhub-userspace-pv
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 10Gi
+  csi:
+    driver: cephfs.manila.csi.openstack.org
+    nodePublishSecretRef:
+      name: csi-manila-credentials
+      namespace: openstack-system
+    nodeStageSecretRef:
+      name: csi-manila-credentials
+      namespace: openstack-system
+    volumeAttributes:
+      shareAccessID: e58edeab-8b81-41ae-8946-3da3e471cdf9
+      shareID: d8395514-8896-4817-9193-4e550e9ac483
+    volumeHandle: jupyterhub-userspace-pv
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: service
+              operator: In
+              values:
+                - jupyterhub
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jupyterhub-userspace-pvc
+  namespace: jupyterhub
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ""
+  volumeMode: Filesystem
+  volumeName: jupyterhub-userspace-pv
