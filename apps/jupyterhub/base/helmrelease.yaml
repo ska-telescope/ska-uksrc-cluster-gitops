@@ -172,9 +172,9 @@ spec:
           - name: jupyterhub-cephfs-static-pv
             persistentVolumeClaim:
               claimName: jupyterhub-ceph-volume
-          - name: jupyterhub-userspace-pv
-            persistentVolumeClaim:
-              claimName: jupyterhub-userspace-pvc             
+          # - name: jupyterhub-userspace-pv
+          #   persistentVolumeClaim:
+          #     claimName: jupyterhub-userspace-pvc             
         extraVolumeMounts:
           - name: jupyterhub-cephfs-static-pv
             mountPath: /home/jovyan/shared
