@@ -179,7 +179,7 @@ spec:
           - name: jupyterhub-cephfs-static-pv
             mountPath: /home/jovyan/shared
             readOnly: true
-          - name: jupyterhub-userspace-pvc
+          - name: jupyterhub-userspace-pv
             mountPath: /home/shared-users
             readOnly: false
             mountPropagation: HostToContainer      
