@@ -37,7 +37,7 @@ spec:
             - key: service
               operator: In
               values:
-                - cavern
+                - preparedata
 
 ---
 apiVersion: v1
