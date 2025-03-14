@@ -179,10 +179,10 @@ spec:
           - name: jupyterhub-cephfs-static-pv
             mountPath: /home/jovyan/shared
             readOnly: true
-          - name: jupyterhub-userspace-pv
-            mountPath: /home/shared-users
-            readOnly: false
-            mountPropagation: HostToContainer      
+          # - name: jupyterhub-userspace-pv
+          #   mountPath: /home/shared-users
+          #   readOnly: false
+          #   mountPropagation: HostToContainer      
 
       defaultUrl: /lab
       # Defines the default image
