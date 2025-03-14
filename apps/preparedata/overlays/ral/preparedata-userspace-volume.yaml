@@ -9,13 +9,6 @@ spec:
     - ReadWriteMany
   capacity:
     storage: 10Gi
-  claimRef:
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    name: preparedata-userspace-pvc
-    namespace: preparedata
-    resourceVersion: "47547082"
-    uid: db107633-379c-441e-8806-a57048a64d1b
   csi:
     driver: cephfs.manila.csi.openstack.org
     nodePublishSecretRef:
@@ -38,7 +31,6 @@ spec:
               operator: In
               values:
                 - preparedata
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -55,42 +47,3 @@ spec:
   volumeMode: Filesystem
   volumeName: preparedata-userspace-pv
 
-
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: preparedata-userspace-pv
-# spec:
-#   accessModes:
-#   - ReadWriteMany
-#   capacity:
-#     storage: 100Gi
-#   csi:
-#     driver: cinder.csi.openstack.org
-#     volumeHandle: preparedata-userspace-pv
-#   persistentVolumeReclaimPolicy: Retain
-#   volumeMode: Filesystem
-#   nodeAffinity:
-#     required:
-#       nodeSelectorTerms:
-#         - matchExpressions:
-#             - key: service
-#               operator: In
-#               values:
-#                 - preparedata
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: preparedata-userspace-pvc
-#   namespace: preparedata
-# spec:
-#   accessModes:
-#   - ReadWriteMany
-#   resources:
-#     requests:
-#       storage: 100Gi
-#   storageClassName: ""
-#   volumeMode: Filesystem
-#   volumeName: preparedata-userspace-pv
