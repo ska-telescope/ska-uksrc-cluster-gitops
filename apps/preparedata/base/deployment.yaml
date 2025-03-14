@@ -42,7 +42,7 @@ spec:
             - name: ABS_PATH_CELERY_RESULTS
               value: "/var/celery/results"
             - name: ABS_PATH_RSE_ROOT
-              value: "/ska"
+              value: "/testbed"
             - name: CELERY_BROKER_URL
               value: "amqp://user:user@rabbitmq.preparedata.svc.cluster.local//"
           volumeMounts:
