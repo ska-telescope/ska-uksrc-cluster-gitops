@@ -23,7 +23,7 @@ spec:
               - key: service
                 operator: In
                 values:
-                - preparedata      
+                - preparedata
       securityContext:
         fsGroup: 1000
       containers:
