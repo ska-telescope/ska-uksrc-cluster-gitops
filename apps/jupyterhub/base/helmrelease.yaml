@@ -172,10 +172,17 @@ spec:
           - name: jupyterhub-cephfs-static-pv
             persistentVolumeClaim:
               claimName: jupyterhub-ceph-volume
+          - name: jupyterhub-userspace-pv
+            persistentVolumeClaim:
+              claimName: jupyterhub-userspace-pvc             
         extraVolumeMounts:
           - name: jupyterhub-cephfs-static-pv
             mountPath: /home/jovyan/shared
             readOnly: true
+          - name: jupyterhub-userspace-pvc
+            mountPath: /home/shared-users
+            readOnly: false
+            mountPropagation: HostToContainer      
 
       defaultUrl: /lab
       # Defines the default image
