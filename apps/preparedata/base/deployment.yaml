@@ -65,7 +65,7 @@ spec:
             periodSeconds: 10
         - name: celery
           image: registry.gitlab.com/ska-telescope/src/src-dm/ska-src-dm-local-data-preparer/ska-src-local-data-preparer-celery-worker:v0.1.0-b.1
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           workingDir: /opt/ska-src-local-data-preparer
           env:
             - name: CELERY_BROKER_URL
