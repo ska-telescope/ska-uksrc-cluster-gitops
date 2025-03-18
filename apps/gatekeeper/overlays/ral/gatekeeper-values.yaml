@@ -33,5 +33,5 @@ spec:
       controller:
         replicaCount: 1
         service:
-          type: NodePort
+          type: ClusterIP
           loadBalancerIP: ""
