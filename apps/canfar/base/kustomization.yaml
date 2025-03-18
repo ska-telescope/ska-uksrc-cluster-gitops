@@ -9,6 +9,6 @@ resources:
   - skaha/helmrelease.yaml
   - cavern/helmrelease.yaml
   - science-portal/helmrelease.yaml
-  - storage-ui/helmrelease.yaml
+  # - storage-ui/helmrelease.yaml
   # - pod-test.yaml
    
