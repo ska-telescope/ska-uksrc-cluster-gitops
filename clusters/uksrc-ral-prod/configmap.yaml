@@ -40,19 +40,19 @@ data:
         machineFlavor: l3.micro
         autoscale: true
         machineCountMin: 8
-        machineCountMax: 10
+        machineCountMax: 12
 
-      # - name: workers-le3-small
-      #   machineFlavor: le3.small
-      #   autoscale: true
-      #   machineCountMin: 1
-      #   machineCountMax: 3        
+      - name: workers-l3-medium
+        machineFlavor: l3.medium
+        autoscale: true
+        machineCountMin: 8
+        machineCountMax: 12        
 
-      # - name: workers-l3.xsmall
-      #   machineFlavor: l3.xsmall
-      #   autoscale: true
-      #   machineCountMin: 1
-      #   machineCountMax: 3 
+      - name: workers-l3.large
+        machineFlavor: l3.large
+        autoscale: true
+        machineCountMin: 8
+        machineCountMax: 12 
 
       # - name: workers-l3-tiny
       #   machineFlavor: l3.tiny
