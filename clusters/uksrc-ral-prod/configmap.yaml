@@ -42,17 +42,17 @@ data:
         machineCountMin: 8
         machineCountMax: 12
 
-      - name: workers-l3-medium
-        machineFlavor: l3.medium
-        autoscale: true
-        machineCountMin: 1
-        machineCountMax: 12        
+      # - name: workers-l3-medium
+      #   machineFlavor: l3.medium
+      #   autoscale: true
+      #   machineCountMin: 1
+      #   machineCountMax: 12        
 
-      - name: workers-l3.large
-        machineFlavor: l3.large
-        autoscale: true
-        machineCountMin: 1
-        machineCountMax: 12 
+      # - name: workers-l3.large
+      #   machineFlavor: l3.large
+      #   autoscale: true
+      #   machineCountMin: 1
+      #   machineCountMax: 12 
 
       # - name: workers-l3-tiny
       #   machineFlavor: l3.tiny
