@@ -1,0 +1,28 @@
+resources:
+  - configmap.yaml
+  - credentials-sealed.yaml
+  - ../../components/flux
+  - ../../components/sealed-secrets
+  - ../../components/cluster-api
+  - ../../components/cluster
+# After bootstrap add the apps and services here
+  - ../../infra/issuers
+
+# Patch the Helm release for the cluster to update the release name
+#   This ensures we get nicely named resources in OpenStack
+# We also add our configmap to the values sources for the release
+patches:
+  - target:
+      kind: HelmRelease
+      name: cluster
+    patch: |-
+      - op: replace
+        path: /spec/releaseName
+        value: uksrc-cam-stage
+
+      - op: add
+        path: /spec/valuesFrom/-
+        value:
+          kind: ConfigMap
+          name: uksrc-cam-stage-cluster-config
+          valuesKey: values.yaml
