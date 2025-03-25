@@ -33,3 +33,10 @@ patches:
           kind: ConfigMap
           name: uksrc-ral-stage-cluster-config
           valuesKey: values.yaml
+  - target:
+      kind: HelmChart
+      name: openstack-cluster
+    patch: |-
+      - op: replace
+        path: /spec/version
+        value: 0.14.1
