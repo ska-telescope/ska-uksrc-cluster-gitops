@@ -29,11 +29,11 @@ data:
         machineCountMin: 3
         machineCountMax: 6    
 
-      # - name: workers-small
-      #   machineFlavor: l3.small
-      #   autoscale: true
-      #   machineCountMin: 1
-      #   machineCountMax: 3
+      - name: workers-small
+        machineFlavor: l3.small
+        autoscale: true
+        machineCountMin: 4
+        machineCountMax: 6
 
       # - name: workers-le3-small
       #   machineFlavor: le3.small
