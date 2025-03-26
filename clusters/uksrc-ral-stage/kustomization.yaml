@@ -14,6 +14,7 @@ resources:
   - ../../apps/gatekeeper/overlays/ral-stage
   - ../../apps/jupyterhub/overlays/ral-stage
   - ../../apps/canfar/overlays/ral-stage
+  - ../../apps/preparedata/overlays/ral-stage
   
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
