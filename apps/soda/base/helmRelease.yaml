@@ -28,7 +28,7 @@ spec:
       existingClaim: ""
       enabled: true
       accessMode: ReadOnlyMany
-      size: 10Gi
+      size: 100Gi
     config:
       datasets: |-
         fits_path_surveys=/srv/surveys
