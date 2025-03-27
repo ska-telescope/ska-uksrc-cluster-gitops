@@ -42,23 +42,29 @@ data:
         machineCountMin: 8
         machineCountMax: 12
 
-      # - name: workers-l3-medium
-      #   machineFlavor: l3.medium
-      #   autoscale: true
-      #   machineCountMin: 1
-      #   machineCountMax: 12        
+      - name: workers-l6.c32
+        machineFlavor: l6.c32
+        autoscale: true
+        machineCountMin: 10
+        machineCountMax: 20       
 
-      # - name: workers-l3.large
-      #   machineFlavor: l3.large
-      #   autoscale: true
-      #   machineCountMin: 1
-      #   machineCountMax: 12 
+      - name: workers-l6.c64
+        machineFlavor: l6.c64
+        autoscale: true
+        machineCountMin: 10
+        machineCountMax: 20 
 
-      # - name: workers-l3-tiny
-      #   machineFlavor: l3.tiny
-      #   autoscale: true
-      #   machineCountMin: 1
-      #   machineCountMax: 3
+      - name: workers-l6.c124
+        machineFlavor: l6.c124
+        autoscale: true
+        machineCountMin: 10
+        machineCountMax: 20
+
+      - name: workers-l6.c252
+        machineFlavor: l6.c252
+        autoscale: true
+        machineCountMin: 10
+        machineCountMax: 20
 
     # Configuration for the cluster autoscaler
     autoscaler:
