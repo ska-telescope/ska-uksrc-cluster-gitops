@@ -51,7 +51,7 @@ data:
       - name: workers-l6.c64
         machineFlavor: l6.c64
         autoscale: true
-        machineCountMin: 2
+        machineCountMin: 4
         machineCountMax: 20 
 
       - name: workers-l6.c124
@@ -72,7 +72,8 @@ data:
       image:
         repository: registry.k8s.io/autoscaling/cluster-autoscaler
         pullPolicy: IfNotPresent
-        tag: v1.30.0
+        # tag: v1.30.0
+        tag: v1.29.0
       imagePullSecrets: []
       # Any extra args for the autoscaler
       extraArgs:
