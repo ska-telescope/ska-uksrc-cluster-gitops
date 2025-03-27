@@ -72,8 +72,7 @@ data:
       image:
         repository: registry.k8s.io/autoscaling/cluster-autoscaler
         pullPolicy: IfNotPresent
-        # tag: v1.30.0
-        tag: v1.29.0
+        tag: v1.30.0
       imagePullSecrets: []
       # Any extra args for the autoscaler
       extraArgs:
