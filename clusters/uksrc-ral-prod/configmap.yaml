@@ -54,17 +54,17 @@ data:
         machineCountMin: 2
         machineCountMax: 20 
 
-      - name: workers-l6.c124
-        machineFlavor: l6.c124
-        autoscale: true
-        machineCountMin: 2
-        machineCountMax: 20
+      # - name: workers-l6.c124
+      #   machineFlavor: l6.c124
+      #   autoscale: true
+      #   machineCountMin: 2
+      #   machineCountMax: 20
 
-      - name: workers-l6.c252
-        machineFlavor: l6.c252
-        autoscale: true
-        machineCountMin: 2
-        machineCountMax: 20
+      # - name: workers-l6.c252
+      #   machineFlavor: l6.c252
+      #   autoscale: true
+      #   machineCountMin: 2
+      #   machineCountMax: 20
 
     # Configuration for the cluster autoscaler
     autoscaler:
