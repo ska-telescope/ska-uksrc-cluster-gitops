@@ -23,12 +23,12 @@ data:
       machineFlavor: vm.ska.cpu.general.eighth
       machineCount: 3
 
-    # nodeGroups:
-    #   - name: workers-himem-quarter
-    #     machineFlavor: vm.ska.cpu.himem.quarter
-    #     autoscale: true
-    #     machineCountMin: 3
-    #     machineCountMax: 9      
+    nodeGroups:
+      - name: workers-himem-quarter
+        machineFlavor: vm.ska.cpu.himem.quarter
+        autoscale: true
+        machineCountMin: 3
+        machineCountMax: 9      
       
       - name: workers-general-half
         machineFlavor: vm.ska.cpu.general.half
@@ -36,11 +36,11 @@ data:
         machineCountMin: 3
         machineCountMax: 9    
 
-      # - name: workers-general-quarter
-      #   machineFlavor: vm.ska.cpu.general.quarter
-      #   autoscale: true
-      #   machineCountMin: 3
-      #   machineCountMax: 9    
+      - name: workers-general-quarter
+        machineFlavor: vm.ska.cpu.general.quarter
+        autoscale: true
+        machineCountMin: 3
+        machineCountMax: 9    
 
     # Configuration for the cluster autoscaler
     autoscaler:
