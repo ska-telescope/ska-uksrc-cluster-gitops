@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: science-portal-config
+  namespace: skaha-system
+data:
+  values.yaml: |
+    replicaCount: 1
+    skaha:
+      namespace: skaha-system
+    deployment:
+      hostname: canfar.ral.uksrc.org 
+      sciencePortal:
+        themeName: src
+        tabLabels:
+          - Standard
+          - Advanced
+        resources:
+          requests:
+            memory: "500M"
+            cpu: "500m"
+          limits:
+            memory: "500M"
+            cpu: "500m"
+
+        oidc:
+          uri: https://ska-iam.stfc.ac.uk/
+          clientID: PLACEHOLDER_CLIENT_ID
+          clientSecret: PLACEHOLDER_CLIENT_SECRET
+          redirectURI: https://canfar.ral.uksrc.org/science-portal/oidc-callback
+          callbackURI: https://canfar.ral.uksrc.org/science-portal/
+          scope: "openid profile offline_access"
+
+        skahaResourceID: ivo://canfar.ral.uksrc.org/skaha
+        gmsID: ivo://skao.int/gms
+        registryURL: https://spsrc27.iaa.csic.es/reg
+        identityManagerClass: org.opencadc.auth.StandardIdentityManager
+
+        extraVolumeMounts:
+          - mountPath: "/config/cacerts"
+            name: cacert-volume
+
+        extraVolumes:
+          - name: cacert-volume
+            secret:
+              defaultMode: 420
+              secretName: canfar-tls-secret

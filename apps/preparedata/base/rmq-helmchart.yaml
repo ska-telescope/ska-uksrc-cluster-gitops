@@ -1,0 +1,13 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmChart
+metadata:
+  name: rabbitmq
+  namespace: rabbitmq
+spec:
+  chart: rabbitmq
+  version: "15.3.3"
+  sourceRef:
+    kind: HelmRepository
+    name: rabbitmq
+  interval: 10m0s

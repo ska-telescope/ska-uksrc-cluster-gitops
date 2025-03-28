@@ -8,9 +8,7 @@ resources:
   - posix-mapper/helmrelease.yaml
   - skaha/helmrelease.yaml
   - cavern/helmrelease.yaml
-  - science-portal/helmrelease.yaml  
-
-  # - storage-ui/helmrelease.yaml # wrong chart name
-
-     # IMPORTANT! do not enable this science-portal/helmrelease.yaml  
+  - science-portal/helmrelease.yaml
+  - storage-ui/helmrelease.yaml
+  # - pod-test.yaml
    

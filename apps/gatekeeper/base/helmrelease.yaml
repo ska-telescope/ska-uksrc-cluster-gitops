@@ -12,15 +12,6 @@ spec:
         name:  ska-src-service-gatekeeper
         namespace: ska-src-gatekeeper
   interval: 1m
-  # valuesFrom:
-  # - kind: Secret
-  #   name: ska-src-gatekeeper-secret
-  #   valuesKey: site_capabilities_gatekeeper_client_id
-  #   targetPath: gatekeeper.site_capabilities_gatekeeper_client_id
-  # - kind: Secret
-  #   name: ska-src-gatekeeper-secret
-  #   valuesKey: site_capabilities_gatekeeper_client_secret
-  #   targetPath: gatekeeper.site_capabilities_gatekeeper_client_secret 
   values:
     deployment_echo:
       namespace: ska-src-gatekeeper-echo
@@ -37,7 +28,7 @@ spec:
       ingress_proxyBuffering: "off"
       ingress_proxyRequestBuffering: "off"
       iam_token_endpoint: https://ska-iam.stfc.ac.uk/token
-      permissions_api_authz_endpoint: https://permissions.srcdev.skao.int/api/v1/authorise/plugin/
+      permissions_api_plugin_authz_endpoint: https://permissions.srcdev.skao.int/api/v1/authorise/plugin/
       site_capabilities_api_get_service_by_id_endpoint: https://site-capabilities.srcdev.skao.int/api/v1/services/
       site_capabilities_gatekeeper_client_scopes: site-capabilities-api-service
       site_capabilities_gatekeeper_client_audience: site-capabilities-api
@@ -57,13 +48,15 @@ spec:
         replicaCount: 1
         service:
           type: LoadBalancer
-          loadBalancerIP: "130.246.80.70"
+          loadBalancerIP: ""
         metrics:
           enabled: true
+        ingressClass: gatekeeper-nginx
         ingressClassResource:
           name: gatekeeper-nginx
-          controllerValue: skao.int/gatekeeper-nginx
-        ingressClass: gatekeeper-nginx
+          enabled: true
+          default: false
+          controllerValue: "skao.int/gatekeeper-nginx"
         allowSnippetAnnotations: true
         extraArgs:
           enable-ssl-passthrough: ""

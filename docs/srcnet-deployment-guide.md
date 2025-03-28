@@ -144,7 +144,7 @@ resources:
   - credentials-sealed.yaml
 
   # After bootstrap add the apps and services here
-  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral
   # - ../../infra/monitoring/overlays/ral
   # - ../../apps/soda/overlays/ral
@@ -208,7 +208,7 @@ resources:
   - credentials-sealed.yaml
 
   # After bootstrap add the apps and services here
-  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
   # - ../../apps/soda/overlays/ral
@@ -283,7 +283,7 @@ resources:
   - credentials-sealed.yaml
 
   # After bootstrap add the apps and services here
-  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
   - ../../apps/soda/overlays/ral
@@ -397,7 +397,7 @@ resources:
   - credentials-sealed.yaml
 
   # After bootstrap add the apps and services here
-  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
   - ../../apps/soda/overlays/ral
@@ -509,7 +509,7 @@ resources:
   - credentials-sealed.yaml
 
   # After bootstrap add the apps and services here
-  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
   - ../../apps/soda/overlays/ral
@@ -668,7 +668,7 @@ resources:
   - credentials-sealed.yaml
 
   # After bootstrap add the apps and services here
-  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
   - ../../apps/soda/overlays/ral

@@ -7,13 +7,14 @@ resources:
   - ../../components/cluster
   
 # After bootstrap add the apps and services here
-  - ../../components/cert-manager/issuers.yaml
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral-stage
   - ../../infra/monitoring/overlays/ral-stage
   - ../../apps/soda/overlays/ral-stage
   - ../../apps/gatekeeper/overlays/ral-stage
   - ../../apps/jupyterhub/overlays/ral-stage
   - ../../apps/canfar/overlays/ral-stage
+  - ../../apps/preparedata/overlays/ral-stage
   
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
@@ -33,3 +34,10 @@ patches:
           kind: ConfigMap
           name: uksrc-ral-stage-cluster-config
           valuesKey: values.yaml
+  - target:
+      kind: HelmChart
+      name: openstack-cluster
+    patch: |-
+      - op: replace
+        path: /spec/version
+        value: 0.14.1

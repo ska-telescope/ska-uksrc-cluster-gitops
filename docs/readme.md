@@ -8,6 +8,7 @@ These guides are designed to walk you through the full deployment of SRCNet v0.1
 - [Bootstrap Prerequsuites & Methodology](docs/deploy-prereqs.md)
 - [Bootstrap Kubernetes Cluster](docs/cluster-bootstrap-guide.md)
 - [UKSRC Apps and Services Deployment Intro](docs/deployment-preparation.md)
+- [Cluster Issuer](docs/deploy-cluster-issuer.yaml)
 - [Ceph CSI Deployment](docs/deploy-csi-cephfs.md)
 - [K8s Monitoring Deployment](docs/deploy-monitoring.md)
 - [SODA Service Deployment](docs/deploy-soda.md)

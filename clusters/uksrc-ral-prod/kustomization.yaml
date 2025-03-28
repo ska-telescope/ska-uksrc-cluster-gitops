@@ -6,13 +6,15 @@ resources:
   - configmap.yaml
   - credentials-sealed.yaml
 
-  # After bootstrap add the apps and services here
+  # # After bootstrap add the apps and services here
+  - ../../infra/issuers
   - ../../infra/ceph-share/overlays/ral
   - ../../infra/monitoring/overlays/ral
   - ../../apps/soda/overlays/ral
-  # - ../../apps/gatekeeper/overlays/ral
+  - ../../apps/gatekeeper/overlays/ral
   - ../../apps/jupyterhub/overlays/ral
   - ../../apps/canfar/overlays/ral
+  - ../../apps/preparedata/overlays/ral
 
 # Patch the Helm release for the cluster to update the release name
 #   This ensures we get nicely named resources in OpenStack
@@ -24,7 +26,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/releaseName
-        value: uksrc-ral
+        value: uksrc-ral-prod
 
       - op: add
         path: /spec/valuesFrom/-
@@ -32,3 +34,10 @@ patches:
           kind: ConfigMap
           name: uksrc-ral-cluster-config
           valuesKey: values.yaml
+  - target:
+      kind: HelmChart
+      name: openstack-cluster
+    patch: |-
+      - op: replace
+        path: /spec/version
+        value: 0.14.1

@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: preparedata-app
+  name: preparedata-app
+  namespace: preparedata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: preparedata-app
+  template:
+    metadata:
+      labels:
+        app: preparedata-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: service
+                operator: In
+                values:
+                - preparedata
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - image: registry.gitlab.com/ska-telescope/src/src-dm/ska-src-dm-local-data-preparer/ska-src-local-data-preparer-core:v0.1.0-b.1
+          imagePullPolicy: IfNotPresent
+          name: preparedata
+          ports:
+            - containerPort: 8000
+              name: fastapi
+              protocol: TCP
+          env:
+            - name: PREPARE_DATA_APPROACH
+              value: "copy_to_user_area"
+            - name: ABS_PATH_USER_AREA_ROOT
+              value: "/users/cavern/home"
+            - name: ABS_PATH_CELERY_RESULTS
+              value: "/var/celery/results"
+            - name: ABS_PATH_RSE_ROOT
+              value: "/rse"
+            - name: CELERY_BROKER_URL
+              value: "amqp://user:user@rabbitmq.preparedata.svc.cluster.local//"
+          volumeMounts:
+            - name: userspace-volume
+              mountPath: /users
+            - name: rse-volume
+              mountPath: /rse
+              readOnly: true
+            - name: celery-results
+              mountPath: /var/celery/results
+          readinessProbe:
+            tcpSocket:
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+        - name: celery
+          image: registry.gitlab.com/ska-telescope/src/src-dm/ska-src-dm-local-data-preparer/ska-src-local-data-preparer-celery-worker:v0.1.0-b.1
+          imagePullPolicy: IfNotPresent
+          workingDir: /opt/ska-src-local-data-preparer
+          env:
+            - name: CELERY_BROKER_URL
+              value: "amqp://user:user@rabbitmq.preparedata.svc.cluster.local//"
+            - name: ABS_PATH_CELERY_RESULTS
+              value: "/var/celery/results"
+          # command:
+          #   - "celery"
+          #   - "-A"
+          #   - "prepare_data.worker"
+          #   - "worker"
+          #   - "--loglevel=info"
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+          volumeMounts:
+            - name: userspace-volume
+              mountPath: /users
+            - name: rse-volume
+              mountPath: /rse
+              readOnly: true
+            - name: celery-results
+              mountPath: /var/celery/results
+      volumes:
+        - name: userspace-volume
+          persistentVolumeClaim:
+            claimName: preparedata-userspace-pvc
+        - name: rse-volume
+          persistentVolumeClaim:
+            claimName: preparedata-rse-pvc
+        - name: celery-results
+          emptyDir: {}
