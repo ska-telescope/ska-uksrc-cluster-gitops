@@ -108,13 +108,13 @@ data:
       mellanoxNetworkOperator:
         enabled: false
 
-    # set availabilty zone as upstream uses nova by default
-      openstack:
-        csiCinder:
-          defaultStorageClass:
-            availabilityZone: ceph
-        csiManila:
-          enabled: true
+    # # set availabilty zone as upstream uses nova by default
+    #   openstack:
+    #     csiCinder:
+    #       defaultStorageClass:
+    #         availabilityZone: ceph
+    #     csiManila:
+    #       enabled: true
 
       ingress:
         enabled: true
@@ -125,9 +125,9 @@ data:
                 service:
                   loadBalancerIP: "128.232.226.44"
 
-      csi:
-        cephfs:
-          enabled: true
+      # csi:
+      #   cephfs:
+      #     enabled: true
 
     kubeNetwork:
       # By default, use the private network range 10.0.0.0/12 for the cluster network
