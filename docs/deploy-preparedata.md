@@ -107,7 +107,7 @@ resources:
 Check your build using the `kustomize build` command. 
 
 ```sh
-kustomize build apps/jupyterhub/overlays/ral | less
+kustomize build apps/preparedata/overlays/ral | less
 ```
 
 Commit & push your changes to Gitlab. You should be able to see that prepareData has been deployed.
