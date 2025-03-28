@@ -4,10 +4,28 @@ namespace: preparedata
 
 resources:
   - ../../base
-  - preparedata-userspace-volume.yaml
-  - preparedata-rse-volume.yaml
 patches:
   - path: rmq-values.yaml
     target:
       kind: HelmRelease
       name: rabbitmq
+  - target:
+      kind: PersistentVolume
+      name: preparedata-rse-pv
+    patch: |-
+      - op: replace
+        path: /spec/csi/volumeAttributes/clusterID
+        value: 2660d5ed-e7ef-4950-a051-c84a0b4e78b0
+      - op: replace
+        path: /spec/csi/volumeAttributes/rootPath
+        value: /ska/testbed
+  - target:
+      kind: PersistentVolume
+      name: preparedata-userspace-pv
+    patch: |-
+      - op: replace
+        path: /spec/csi/volumeAttributes/shareAccessID
+        value: e58edeab-8b81-41ae-8946-3da3e471cdf9
+      - op: replace
+        path: /spec/csi/volumeAttributes/shareID
+        value: d8395514-8896-4817-9193-4e550e9ac483

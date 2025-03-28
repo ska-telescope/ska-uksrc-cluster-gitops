@@ -18,8 +18,8 @@ spec:
       name: csi-manila-credentials
       namespace: openstack-system
     volumeAttributes:
-      shareAccessID: e58edeab-8b81-41ae-8946-3da3e471cdf9
-      shareID: d8395514-8896-4817-9193-4e550e9ac483
+      shareAccessID: shareacessid
+      shareID: shareid
     volumeHandle: preparedata-userspace-pv
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem

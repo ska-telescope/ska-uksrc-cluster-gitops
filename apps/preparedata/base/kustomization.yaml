@@ -5,6 +5,8 @@ resources:
   - namespace.yaml
   - deployment.yaml
   - service.yaml
+  - preparedata-userspace-volume.yaml
+  - preparedata-rse-volume.yaml  
   - rmq-helmrelease.yaml
   - rmq-helmchart.yaml
   - rmq-helmrepository.yaml
