@@ -10,13 +10,17 @@ patches:
     patch: |-
       - op: replace
         path: /spec/rules/0/host
+        value: grafana.128-232-226-44.sslip.io
+      - op: replace
+        path: /spec/tls/0/hosts
         value: 
           - grafana.128-232-226-44.sslip.io
-  - target:
-      kind: Ingress
-      name: prometheus-ingress
-    patch: |-
-      - op: replace
-        path: /spec/rules/0/host
-        value:
-          - prometheus.128-232-226-44.sslip.io
+
+  # - target:
+  #     kind: Ingress
+  #     name: prometheus-ingress
+  #   patch: |-
+  #     - op: replace
+  #       path: /spec/rules/0/host
+  #       value:
+  #         - prometheus.128-232-226-44.sslip.io
