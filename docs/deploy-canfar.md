@@ -181,4 +181,6 @@ kustomize build apps/canfar/overlays/ral | less
 
 Commit & push your changes to Gitlab. You should be able to see that CANFAR has been deployed.
 
+[Deploy prepareData](./deploy-preparedata.md)
+
 [Document Home](./readme.md)

@@ -15,4 +15,5 @@ These guides are designed to walk you through the full deployment of SRCNet v0.1
 - [GateKeeper Service Deployment](docs/deploy-gatekeeper.md)
 - [Jupyterhub Deployment](docs/deploy-jupyterhub.md)
 - [CANFAR Deployment](docs/deploy-canfar.md)
+- [preparaData Deployment](docs/deploy-preparedata.md)
 - [Delete Cluster Manually](docs/delete-cluster-manually.md)

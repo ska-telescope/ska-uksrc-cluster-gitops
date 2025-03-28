@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: jupyterhub
-  namespace: jupyterhub
+  name: rabbitmq
+  namespace: rabbitmq
 spec:
   values:
     auth:
