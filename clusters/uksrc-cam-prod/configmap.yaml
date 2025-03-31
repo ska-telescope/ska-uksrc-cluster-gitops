@@ -116,14 +116,14 @@ data:
     #     csiManila:
     #       enabled: true
 
-      ingress:
-        enabled: true
-        nginx:
-          release:
-            values:
-              controller:
-                service:
-                  loadBalancerIP: "128.232.226.44"
+      # ingress:
+      #   enabled: true
+      #   nginx:
+      #     release:
+      #       values:
+      #         controller:
+      #           service:
+      #             loadBalancerIP: "128.232.226.44"
 
       # csi:
       #   cephfs:
