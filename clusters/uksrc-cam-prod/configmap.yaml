@@ -38,7 +38,7 @@ data:
       - name: workers
         machineFlavor: reservation:6823c8de-3007-40c2-82b6-69718f2761b4
         autoscale: true
-        machineCountMin: 3
+        machineCountMin: 1
         machineCountMax: 9  
       
       # - name: workers-general-half
