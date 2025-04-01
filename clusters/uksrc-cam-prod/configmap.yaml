@@ -19,28 +19,39 @@ data:
           id: 356dde88-725e-4809-9200-35abf5a2baf1
           name: uksrc-ska-network
 
+    # controlPlane:
+    #   machineFlavor: vm.ska.cpu.general.eighth
+    #   machineCount: 3
+
     controlPlane:
-      machineFlavor: vm.ska.cpu.general.eighth
+      machineFlavor: reservation:6823c8de-3007-40c2-82b6-69718f2761b4
       machineCount: 3
 
-    nodeGroups:
-      - name: workers-himem-quarter
-        machineFlavor: vm.ska.cpu.himem.quarter
-        autoscale: true
-        machineCountMin: 3
-        machineCountMax: 9      
-      
-      - name: workers-general-half
-        machineFlavor: vm.ska.cpu.general.half
-        autoscale: true
-        machineCountMin: 3
-        machineCountMax: 9    
+    # nodeGroups:
+    #   - name: workers-himem-quarter
+    #     machineFlavor: vm.ska.cpu.himem.quarter
+    #     autoscale: true
+    #     machineCountMin: 3
+    #     machineCountMax: 9
 
-      - name: workers-general-quarter
-        machineFlavor: vm.ska.cpu.general.quarter
+    nodeGroups:
+      - name: workers
+        machineFlavor: reservation:6823c8de-3007-40c2-82b6-69718f2761b4
         autoscale: true
         machineCountMin: 3
-        machineCountMax: 9    
+        machineCountMax: 9  
+      
+      # - name: workers-general-half
+      #   machineFlavor: vm.ska.cpu.general.half
+      #   autoscale: true
+      #   machineCountMin: 3
+      #   machineCountMax: 9    
+
+      # - name: workers-general-quarter
+      #   machineFlavor: vm.ska.cpu.general.quarter
+      #   autoscale: true
+      #   machineCountMin: 3
+      #   machineCountMax: 9    
 
     # Configuration for the cluster autoscaler
     autoscaler:
@@ -108,13 +119,6 @@ data:
       mellanoxNetworkOperator:
         enabled: false
 
-    # # set availabilty zone as upstream uses nova by default
-    #   openstack:
-    #     csiCinder:
-    #       defaultStorageClass:
-    #         availabilityZone: ceph
-    #     csiManila:
-    #       enabled: true
 
       # ingress:
       #   enabled: true
@@ -125,9 +129,6 @@ data:
       #           service:
       #             loadBalancerIP: "128.232.226.44"
 
-      # csi:
-      #   cephfs:
-      #     enabled: true
 
     kubeNetwork:
       # By default, use the private network range 10.0.0.0/12 for the cluster network
