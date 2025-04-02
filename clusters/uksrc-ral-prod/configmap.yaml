@@ -42,11 +42,11 @@ data:
         machineCountMin: 8
         machineCountMax: 12
 
-      - name: workers-l6.c32
-        machineFlavor: l6.c32
-        autoscale: true
-        machineCountMin: 10
-        machineCountMax: 10      
+      # - name: workers-l6c32
+      #   machineFlavor: l6.c32
+      #   autoscale: true
+      #   machineCountMin: 10
+      #   machineCountMax: 10      
 
       # - name: workers-l6.c64
       #   machineFlavor: l6.c64
