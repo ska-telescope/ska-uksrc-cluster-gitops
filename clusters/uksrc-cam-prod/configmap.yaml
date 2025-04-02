@@ -24,7 +24,7 @@ data:
     #   machineCount: 3
 
     controlPlane:
-      machineFlavor: reservation:16493eaf-f57f-475d-8388-23d8bf172024
+      machineFlavor: reservation:1e1167ff-eba5-436f-9749-7c7b77e8b08a
       machineCount: 3
 
     # nodeGroups:
@@ -36,9 +36,9 @@ data:
 
     nodeGroups:
       - name: workers
-        machineFlavor: reservation:16493eaf-f57f-475d-8388-23d8bf172024
+        machineFlavor: reservation:fd64cd8f-f27e-4587-bb2d-6f9b3509d024
         autoscale: true
-        machineCountMin: 1
+        machineCountMin: 3
         machineCountMax: 9  
       
       # - name: workers-general-half
