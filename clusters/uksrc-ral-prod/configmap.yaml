@@ -9,7 +9,7 @@ data:
     # Must match the name of the (sealed) secret in credentials.yaml
     cloudCredentialsSecretName: uksrc-ral-cluster-credentials
 
-    kubernetesVersion: 1.30.7
+    kubernetesVersion: 1.30.6
     machineImageId: 16a8b936-4fa7-41c7-a512-dfc6d8d2ea34
 
     clusterNetworking:
@@ -42,17 +42,17 @@ data:
         machineCountMin: 8
         machineCountMax: 12
 
-      - name: workers-l6.c32
-        machineFlavor: l6.c32
-        autoscale: true
-        machineCountMin: 10
-        machineCountMax: 20       
+      # - name: workers-l6.c32
+      #   machineFlavor: l6.c32
+      #   autoscale: true
+      #   machineCountMin: 10
+      #   machineCountMax: 20       
 
-      - name: workers-l6.c64
-        machineFlavor: l6.c64
-        autoscale: true
-        machineCountMin: 2
-        machineCountMax: 20 
+      # - name: workers-l6.c64
+      #   machineFlavor: l6.c64
+      #   autoscale: true
+      #   machineCountMin: 2
+      #   machineCountMax: 20 
 
       # - name: workers-l6.c124
       #   machineFlavor: l6.c124
