@@ -149,9 +149,9 @@ data:
                 service:
                   loadBalancerIP: "130.246.81.193"
 
-      # csi:
-      #   cephfs:
-      #     enabled: true
+      csi:
+        cephfs:
+          enabled: true
 
 
 
