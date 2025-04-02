@@ -43,7 +43,7 @@ data:
         machineCountMax: 12
 
       # - name: workers-l6.c32
-      #   machineFlavor: l6.c32
+      #   machineFlavor:     c
       #   autoscale: true
       #   machineCountMin: 10
       #   machineCountMax: 20       
@@ -149,9 +149,9 @@ data:
                 service:
                   loadBalancerIP: "130.246.81.193"
 
-      csi:
-        cephfs:
-          enabled: true
+      # csi:
+      #   cephfs:
+      #     enabled: true
 
 
 
