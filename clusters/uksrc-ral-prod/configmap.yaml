@@ -51,7 +51,7 @@ data:
       - name: workers-l6-c64
         machineFlavor: l6.c64
         autoscale: true
-        machineCountMin: 10
+        machineCountMin: 4
         machineCountMax: 10 
 
       # - name: workers-l6-c124
