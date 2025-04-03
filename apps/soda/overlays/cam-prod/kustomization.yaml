@@ -33,7 +33,8 @@ patches:
     patch: |-
       - op: replace
         path: /spec/accessModes
-        value: ReadWriteOnce
+        value: 
+          - ReadWriteOnce
       - op: replace
         path: /spec/resources/requests/storage
         value: 5Gi
