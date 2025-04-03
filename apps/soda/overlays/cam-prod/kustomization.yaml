@@ -13,9 +13,7 @@ patches:
     target:
       kind: HelmRelease
       name: soda-release
-  - target:
-      kind: PersistentVolume
-      name: soda-cephfs-static-pv
+
 
 
 # patches:
