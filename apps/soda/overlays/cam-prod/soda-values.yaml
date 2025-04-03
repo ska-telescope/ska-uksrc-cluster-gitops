@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: soda-release
+  namespace: ska-src-soda
+spec:
+  values:
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-staging
+      hosts:
+        - soda.128-232-227-2.sslip.io
+      tls:
+        - hosts:
+          - soda.128-232-227-2.sslip.io
+          secretName: soda-ingress-cert
