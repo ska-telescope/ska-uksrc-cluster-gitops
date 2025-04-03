@@ -5,12 +5,8 @@ resources:
   - ../../base/helmRelease.yaml
   - ../../base/gitRepository.yaml
   - ../../base/namespace.yaml
-  - ../../base/soda-pvc.yaml
-# patches:
-#   - path: soda-pvc.yaml
-#     target:
-#       kind: PersistentVolumeClaim
-#       name: soda-pvc
+
+  - soda-pvc.yaml
 
 patches:
   - path: soda-values.yaml
@@ -22,29 +18,22 @@ patches:
       name: soda-cephfs-static-pv
 
 
-patches:
-  - path: soda-values.yaml
-    target:
-      kind: HelmRelease
-      name: soda-release
-  - target:
-      kind: PersistentVolumeClaim
-      name: soda-pvc
-    patch: |-
-      - op: replace
-        path: /spec/accessModes
-        value: 
-          - ReadWriteOnce
-      - op: replace
-        path: /spec/resources/requests/storage
-        value: 5Gi
-      - op: replace
-        path: /spec/storageClassName
-        value: csi-cinder
-
-# patchesStrategicMerge:
-#   - path: soda-pvc.yaml
+# patches:
+#   - path: soda-values.yaml
 #     target:
+#       kind: HelmRelease
+#       name: soda-release
+#   - target:
 #       kind: PersistentVolumeClaim
 #       name: soda-pvc
-#       namespace: ska-src-soda
+#     patch: |-
+#       - op: replace
+#         path: /spec/accessModes
+#         value: 
+#           - ReadWriteOnce
+#       - op: replace
+#         path: /spec/resources/requests/storage
+#         value: 5Gi
+#       - op: replace
+#         path: /spec/storageClassName
+#         value: csi-cinder
