@@ -2,9 +2,21 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../base
+  - ../../base/helmRelease.yaml
+  - ../../base/gitRepository.yaml
+  - ../../base/namespace.yaml
+  # - ../../base/soda-pvc.yaml
+# patches:
+#   - path: soda-pvc.yaml
+#     target:
+#       kind: PersistentVolumeClaim
+#       name: soda-pvc
+
 patches:
-  - path: soda-pvc.yaml
+  - path: soda-values.yaml
     target:
-      kind: PersistentVolumeClaim
-      name: soda-pvc
+      kind: HelmRelease
+      name: soda-release
+
+patchesStrategicMerge:
+  - soda-pvc.yaml 
