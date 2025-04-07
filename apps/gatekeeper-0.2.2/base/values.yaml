@@ -1,0 +1,77 @@
+echo:
+  namespace:
+    create: true
+    name: service-gatekeeper-echo
+  image:
+    registry: harbor.srcdev.skao.int/ska-src-dm-da-service-gatekeeper
+    name: service-gatekeeper-echo
+    tag: 1.0.1
+gatekeeper:
+  resolver: 8.8.8.8
+  cache:
+    ttl: 3600
+  permissions:
+    pluginAuthzEndpoint: https://permissions.srcdev.skao.int/api/v1/authorise/plugin/
+  ingress:
+    proxyBodySize: 5000m
+    proxyBuffering: "off"
+    proxyRequestBuffering: "off"
+  siteCapabilities:
+    tokenEndpoint: https://ska-iam.stfc.ac.uk/token
+    getServiceEndpoint: https://site-capabilities.srcdev.skao.int/api/v1/services/
+    clientScopes: site-capabilities-api-service
+    clientAudience: site-capabilities-api
+    existingSecret: true
+  services:
+
+ingress-nginx:
+  controller:
+    replicaCount: 1
+    service:
+      type: LoadBalancer
+    metrics:
+      enabled: true
+    ingressClass: gatekeeper-nginx
+    ingressClassResource:
+      name: gatekeeper-nginx
+      enabled: true
+      default: false
+      controllerValue: "skao.int/gatekeeper-nginx"
+    allowSnippetAnnotations: true
+    extraArgs:
+      enable-ssl-passthrough: ""
+    extraVolumeMounts:
+      - name: lua-scripts
+        mountPath: /etc/nginx/lua/conf/response.lua
+        subPath: response.lua
+        readOnly: true
+      - name: lua-scripts
+        mountPath: /etc/nginx/lua/conf/backend.lua
+        subPath: backend.lua
+        readOnly: true
+      - name: lua-scripts
+        mountPath: /etc/nginx/lua/conf/mappings.lua
+        subPath: mappings.lua
+        readOnly: true
+      - name: lua-scripts
+        mountPath: /etc/nginx/lua/conf/permissions.lua
+        subPath: permissions.lua
+        readOnly: true
+      - name: lua-scripts
+        mountPath: /etc/nginx/lua/conf/site_capabilities.lua
+        subPath: site-capabilities.lua
+        readOnly: true
+      - name: client-credentials
+        mountPath: /etc/credentials
+        readOnly: true
+    extraVolumes:
+      - name: lua-scripts
+        configMap:
+          name: lua-scripts
+      - name: client-credentials
+        secret:
+          secretName: client-credentials
+    podAnnotations:
+      # this is calculated by taking the sum of sha256 checksums for templates/_*.tpl files
+      # to ensure that changes to these configmaps cause pod restarts
+      checksum/templates: 3840126a

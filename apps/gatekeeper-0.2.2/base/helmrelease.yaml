@@ -1,0 +1,28 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: gatekeeper
+  namespace: ska-src-gatekeeper
+spec:
+  chart:
+    spec:
+      chart: ska-src-dm-da-service-gatekeeper
+      sourceRef:
+        kind: HelmRepository
+        name: ska-src-dm-da-service-gatekeeper
+        version: 0.2.2
+  releaseName: ska-src-dm-da-service-gatekeeper
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  driftDetection:
+    mode: enabled
+  interval: 5m
+  valueFiles:
+    - values.yaml
+
