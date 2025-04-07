@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gatekeeper-ingress
+  namespace: ska-src-gatekeeper
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    # cert-manager.io/cluster-issuer: letsencrypt-staging
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ""
+    http:
+      paths:
+      - path: /echo
+        pathType: Prefix
+        backend:
+          service: 
+            name: ska-src-service-gatekeeper-ingress-nginx-controller
+            port:
+              number: 80
+      - path: /soda
+        pathType: Prefix
+        backend:
+          service: 
+            name: ska-src-service-gatekeeper-ingress-nginx-controller
+            port:
+              number: 80
+      - path: /preparedata
+        pathType: Prefix
+        backend:
+          service: 
+            name: ska-src-service-gatekeeper-ingress-nginx-controller
+            port:
+              number: 80                 
+  tls:
+  - hosts:
+    - ""
+    secretName: gatekeeper-cert
