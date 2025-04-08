@@ -12,6 +12,8 @@ spec:
         kind: HelmRepository
         name: ska-src-dm-da-service-gatekeeper
         version: 0.2.2
+        valueFiles:
+          - values.yaml
   releaseName: ska-src-dm-da-service-gatekeeper
   install:
     createNamespace: true
@@ -23,6 +25,5 @@ spec:
   driftDetection:
     mode: enabled
   interval: 5m
-  valueFiles:
-    - values.yaml
+
 
