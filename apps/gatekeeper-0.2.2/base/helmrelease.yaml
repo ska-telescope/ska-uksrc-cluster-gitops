@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: ska-src-dm-da-service-gatekeeper
         version: 0.2.2
-        valueFiles:
+        valuesFiles:
           - values.yaml
   releaseName: ska-src-dm-da-service-gatekeeper
   install:
