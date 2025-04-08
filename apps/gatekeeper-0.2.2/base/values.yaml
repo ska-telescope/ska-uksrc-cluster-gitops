@@ -70,7 +70,7 @@ ingress-nginx:
           name: lua-scripts
       - name: client-credentials
         secret:
-          secretName: client-credentials
+          secretName: ska-src-gatekeeper-secret
     podAnnotations:
       # this is calculated by taking the sum of sha256 checksums for templates/_*.tpl files
       # to ensure that changes to these configmaps cause pod restarts
