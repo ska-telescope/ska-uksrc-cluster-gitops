@@ -11,7 +11,7 @@ resources:
   - ../../infra/ceph-share/overlays/ral-stage
   - ../../infra/monitoring/overlays/ral-stage
   - ../../apps/soda/overlays/ral-stage
-  - ../../apps/gatekeeper-0.2.2/overlays/ral-stage
+  - ../../apps/gatekeeper/overlays/ral-stage
   - ../../apps/jupyterhub/overlays/ral-stage
   - ../../apps/canfar/overlays/ral-stage
   # - ../../apps/preparedata/overlays/ral-stage
