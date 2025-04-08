@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ska-src-gatekeeper
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ska-src-gatekeeper-echo
