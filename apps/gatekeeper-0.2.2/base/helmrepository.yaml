@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: ska-service-gatekeeper
+  name: ska-src-dm-da-service-gatekeeper
   namespace: ska-src-gatekeeper
 spec:
   url: https://gitlab.com/api/v4/projects/60950975/packages/helm/stable

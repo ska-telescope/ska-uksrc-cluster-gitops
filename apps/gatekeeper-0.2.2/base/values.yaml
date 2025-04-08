@@ -75,3 +75,5 @@ ingress-nginx:
       # this is calculated by taking the sum of sha256 checksums for templates/_*.tpl files
       # to ensure that changes to these configmaps cause pod restarts
       checksum/templates: 3840126a
+
+fullnameOverride: ""
