@@ -14,7 +14,7 @@ spec:
         name: ska-src-dm-da-service-gatekeeper
       valuesFiles:
         - values.yaml
-  releaseName: ska-src-dm-da-service-gatekeeper
+  releaseName: ska-service-gatekeeper
   install:
     createNamespace: true
     remediation:
