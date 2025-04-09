@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ska-src-gatekeeper
+  name: gatekeeper
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ska-src-gatekeeper-echo
+  name: gatekeeper-echo

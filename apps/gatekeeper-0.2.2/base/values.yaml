@@ -1,7 +1,7 @@
 echo:
   namespace:
     create: true
-    name: service-gatekeeper-echo
+    name: gatekeeper-echo
   image:
     registry: harbor.srcdev.skao.int/ska-src-dm-da-service-gatekeeper
     name: service-gatekeeper-echo
