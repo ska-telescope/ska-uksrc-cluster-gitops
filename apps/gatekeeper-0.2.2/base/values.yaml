@@ -1,15 +1,12 @@
 echo:
   namespace:
     create: true
-    name: gatekeeper-echo
+    name: service-gatekeeper-echo
   image:
     registry: harbor.srcdev.skao.int/ska-src-dm-da-service-gatekeeper
     name: service-gatekeeper-echo
     tag: 1.0.1
 gatekeeper:
-  namespace:
-    create: true
-    name: gatekeeper
   resolver: 8.8.8.8
   cache:
     ttl: 3600
