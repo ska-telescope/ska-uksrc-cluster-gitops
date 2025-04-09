@@ -76,4 +76,4 @@ ingress-nginx:
       # to ensure that changes to these configmaps cause pod restarts
       checksum/templates: 3840126a
 
-fullnameOverride: "gatekeeper"
+# fullnameOverride: "gatekeeper"
