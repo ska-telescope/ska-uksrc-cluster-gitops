@@ -20,3 +20,5 @@ configMapGenerator:
     namespace: gatekeeper
     files:
       - values.yaml=gatekeeper-values.yaml  
+configurations:
+  - kustomizeconfig.yaml
