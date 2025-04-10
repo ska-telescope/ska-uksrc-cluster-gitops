@@ -19,4 +19,4 @@ configMapGenerator:
   - name: gatekeeper-config
     namespace: gatekeeper
     files:
-      - values.yaml  
+      - values.yaml=gatekeeper-values.yaml  
