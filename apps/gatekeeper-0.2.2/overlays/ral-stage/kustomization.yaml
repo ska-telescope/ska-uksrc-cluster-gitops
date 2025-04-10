@@ -17,5 +17,6 @@ patches:
           - gatekeeper.ral-stage.uksrc.org
 configMapGenerator:
   - name: gatekeeper-config
+    namespace: gatekeeper
     files:
       - gatekeeper-values.yaml  
