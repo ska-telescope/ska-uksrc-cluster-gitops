@@ -1,7 +1,7 @@
 echo:
   namespace:
     create: true
-    name: gatekeeper-echo
+    name: ska-src-gatekeeper-echo
   image:
     registry: harbor.srcdev.skao.int/ska-src-dm-da-service-gatekeeper
     name: service-gatekeeper-echo
@@ -70,10 +70,10 @@ ingress-nginx:
           name: lua-scripts
       - name: client-credentials
         secret:
-          secretName: ska-src-gatekeeper-secret
-    podAnnotations:
-      # this is calculated by taking the sum of sha256 checksums for templates/_*.tpl files
-      # to ensure that changes to these configmaps cause pod restarts
-      checksum/templates: 3840126a
+          secretName: client-credentials
+    # podAnnotations:
+    #   # this is calculated by taking the sum of sha256 checksums for templates/_*.tpl files
+    #   # to ensure that changes to these configmaps cause pod restarts
+    #   checksum/templates: 3840126a
 
 # fullnameOverride: "gatekeeper"
