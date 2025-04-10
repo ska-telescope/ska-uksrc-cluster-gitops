@@ -4,10 +4,6 @@ resources:
   - ../../base
   - gatekeeper-secret.yaml
 patches:
-  - path: gatekeeper-values.yaml
-    target:
-      kind: HelmRelease
-      name: gatekeeper
   - target:
       kind: Ingress
       name: gatekeeper-ingress
@@ -19,3 +15,7 @@ patches:
         path: /spec/tls/0/hosts
         value:
           - gatekeeper.ral-stage.uksrc.org
+configMapGenerator:
+  - name: gatekeeper-config
+    files:
+      - gatekeeper-values.yaml  
