@@ -24,8 +24,8 @@ spec:
     mode: enabled
   interval: 5m
   valuesFrom:
-    - configMapKeyRef:
-        name: gatekeeper-config
+    - kind: ConfigMap
+      name: gatekeeper-config
   # values:
   #   echo:
   #     namespace:
